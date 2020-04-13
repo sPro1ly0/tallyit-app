@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 18px;
+}
+  
+.banner {
+    height: 250px;
+    padding: 45px 15px;
+}
+  
+img {
+    width: 200px;
+}
+  
+section {
+    min-height: 200px;
+    padding: 30px 50px;
+    background-color: rgb(180, 180, 180);
+}
+  
+section:nth-child(even) {
+    background-color: gainsboro;
+}

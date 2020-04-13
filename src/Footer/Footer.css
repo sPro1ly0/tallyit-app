@@ -1,0 +1,16 @@
+footer {
+    display: flex;
+    text-align: center;
+    background-color: white;
+}
+
+footer > p {
+    font-family: 'Arial', sans-serif;
+    margin: 0 auto 0 auto;
+    padding: 10px 0;
+}
+
+.version-number {
+    position: absolute;
+    right: 5px;
+}

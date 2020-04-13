@@ -1,0 +1,16 @@
+nav,
+footer {
+    padding: 1% 0;
+    background-color: #aaa;
+}
+  
+nav {
+    background-color: gainsboro;
+    text-align: center;
+    position: fixed;
+    height: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
