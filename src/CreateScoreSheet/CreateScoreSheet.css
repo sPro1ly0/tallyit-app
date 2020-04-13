@@ -1,0 +1,19 @@
+.create-score-sheet {
+    height: fit-content;
+}
+
+.create-score-sheet-form {
+    margin: 0 auto 20px;
+    height: 300px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+  
+.enter-player-names {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

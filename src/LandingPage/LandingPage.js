@@ -12,35 +12,35 @@ class LandingPage extends Component {
           <h2>Keep your scores and stats in one place</h2>
         </header>
 
-        <section>
+        <section className='signup'>
           <header>
             <h3>
                 New user? Just enter a name for your group to sign up and login
             </h3>
           </header>
-          <form className="signup-form">
+          <form className='signup-form'>
             <div>
-              <label htmlFor="group-name">Add Group Name: </label>
-              <input placeholder=' bestfam123' type="text" name='group-name' id='group-name' required/>
+              <label htmlFor='group-name'>Add Group Name: </label>
+              <input placeholder=' bestfam123' type='text' name='group-name' id='group-name' required/>
             </div>
             <button type='submit'>Sign Up</button>
           </form>
         </section>
 
-        <section>
+        <section className='login'>
           <header>
             <h3>Returning users</h3>
           </header>
           <form className='login-form'>
             <div>
-              <label htmlFor="group-name">Enter Your Group Name: </label>
-              <input placeholder=' bestfam123' type="text" name='group-name' id='group-name' required/>
+              <label htmlFor='group-name'>Enter Your Group Name: </label>
+              <input placeholder=' bestfam123' type='text' name='group-name' id='group-name' required/>
             </div>
             <button type='submit'>Login</button>
           </form>
         </section>
 
-        <section>
+        <section className='features'>
           <h3>Easy Sign Up and Login ✓</h3>
           <h3>Perfect for Game Nights  ✓</h3>
           <h3>Save and View Your Results  ✓</h3>
