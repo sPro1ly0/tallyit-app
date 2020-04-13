@@ -8,6 +8,7 @@ class NavBarTop extends Component {
     return (
       <nav className='nav-top'>
         <Link to="/" className='app-name'>Tally it!</Link>
+        <Link to="/dashboard">Demo Dashboard</Link>
       </nav>
     );
   }

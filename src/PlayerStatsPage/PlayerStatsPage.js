@@ -9,7 +9,7 @@ class PlayerStatsPage extends Component {
         <button className="go-back-player-button">Go Back</button>
         <header>
           <h1>Mom&apos;s Stats</h1>
-          <Link to='/edit-player'>Edit Player</Link>
+          <Link to='/edit-player/'>Edit Player</Link>
         </header>
   
         <section className='win-loss'>

@@ -13,6 +13,7 @@ class EditPlayerForm extends Component {
             <label htmlFor='edit-player'>Edit Player&apos;s Name</label>
             <input id='edit-player' type="text" placeholder="Mom" required/>
             <button>Save New Name</button>
+            <button>Delete Player</button>
           </form>
         </section>
         <button>Go Back</button>

@@ -1,37 +1,45 @@
 import React, { Component } from 'react';
+import TallyContext from '../TallyContext';
+import { Link } from 'react-router-dom';
 import './DashBoard.css';
 
 class DashBoard extends Component {
+
+  static contextType = TallyContext;
+
   render() {
+
+    const { group, players, games } = this.context;
+    let playerList = '';
+    let gameList = '';
+    if (players) {
+      playerList = players.map(p => <li key={p.id}><Link to={`/player-stats/${p.id}`}>{`${p.player_name}`}</Link></li>);
+    }
+
+    if (games) {
+      gameList = games.map(g => <li key={g.id}>{`${g.game_name}`}</li>);
+    }
+
     return (
       <>
         <header>
-          <h1>Hi bestfam123!</h1>
+          <h1>Hi {group}!</h1>
           <button>Start a New Game</button>
         </header>
 
         <div>
-          <section>
+          <section className='all-players'>
             <h2>Players</h2>
             <button>Add a New Player</button>
             <ul>
-              <li><a>Mom</a></li>
-              <li><a>Dad</a></li>
-              <li><a>Ray</a></li>
-              <li><a>Sara</a></li>
-              <li><a>Grandpa</a></li>
-              <li><a>Lilly</a></li>
+              {playerList}
             </ul>
           </section>
 
-          <section>
+          <section className='all-games'>
             <h2>Games Played</h2>
             <ul>
-              <li>Jenga</li>
-              <li>Euchre</li>
-              <li>Monopoly</li>
-              <li>Uno</li>
-              <li>Pictionary</li>
+              {gameList}
             </ul>
           </section>
         </div>
