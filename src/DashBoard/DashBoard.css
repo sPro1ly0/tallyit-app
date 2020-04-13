@@ -1,0 +1,28 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: 140px;
+}
+  
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+  
+button, a {
+    cursor: pointer;
+}
+  
+a {
+    color: blue;
+}
+  
+a:hover {
+    border-bottom: 1px solid blue;
+}
