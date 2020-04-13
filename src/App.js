@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import './App.css';
 import NavBarTop from './NavBarTop/NavBarTop';
 import LandingPage from './LandingPage/LandingPage';
 import DashBoard from './DashBoard/DashBoard';
 
 import AddPlayerForm from './AddPlayerForm/AddPlayerForm';
 import EditPlayerForm from './EditPlayerForm/EditPlayerForm';
+
+import PlayerStatsPage from './PlayerStatsPage/PlayerStatsPage';
 
 import NotFoundPage from './NotFoundPage/NotFoundPage';
 
@@ -32,6 +35,10 @@ class App extends Component {
             <Route 
               exact path='/edit-player'
               component={EditPlayerForm}
+            />
+            <Route 
+              exact path='/player-stats'
+              component={PlayerStatsPage}
             />
             <Route
               component={NotFoundPage}

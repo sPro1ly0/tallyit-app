@@ -10,8 +10,8 @@ class AddPlayerForm extends Component {
         </header>
         <section className='add-edit-player'>
           <form>
-            <label>Add a New Player</label>
-            <input type="text" placeholder="Mila" required/>
+            <label htmlFor='add-player'>Add a New Player</label>
+            <input id='add-player' type="text" placeholder="Mila" required/>
             <button>Add Player</button>
           </form>
         </section>
