@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "alias": "sbecka8111-tallyit-app",
+    "name": "tallyit",
+    "routes": [
+        { "handle": "filesystem" },
+        { "src": "/.*", "dest": "/index.html" }
+    ]
+}
