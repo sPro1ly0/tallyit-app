@@ -6,6 +6,7 @@ import LandingPage from './LandingPage/LandingPage';
 import DashBoard from './DashBoard/DashBoard';
 
 import CreateScoreSheet from './CreateScoreSheet/CreateScoreSheet';
+import ScoreSheetPage from './ScoreSheetPage/ScoreSheetPage';
 
 import AddPlayerForm from './AddPlayerForm/AddPlayerForm';
 import EditPlayerForm from './EditPlayerForm/EditPlayerForm';
@@ -33,6 +34,10 @@ class App extends Component {
             <Route 
               exact path='/create-scoresheet'
               component={CreateScoreSheet}
+            />
+            <Route 
+              exact path='/scoresheet'
+              component={ScoreSheetPage}
             />
             <Route 
               exact path='/add-player'
