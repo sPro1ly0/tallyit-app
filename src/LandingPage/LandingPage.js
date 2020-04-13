@@ -21,7 +21,7 @@ class LandingPage extends Component {
           <form className="signup-form">
             <div>
               <label htmlFor="group-name">Add Group Name: </label>
-              <input placeholder=' bestfam123' type="text" name='group-name' id='group-name' />
+              <input placeholder=' bestfam123' type="text" name='group-name' id='group-name' required/>
             </div>
             <button type='submit'>Sign Up</button>
           </form>
@@ -34,7 +34,7 @@ class LandingPage extends Component {
           <form className='login-form'>
             <div>
               <label htmlFor="group-name">Enter Your Group Name: </label>
-              <input placeholder=' bestfam123' type="text" name='group-name' id='group-name' />
+              <input placeholder=' bestfam123' type="text" name='group-name' id='group-name' required/>
             </div>
             <button type='submit'>Login</button>
           </form>
