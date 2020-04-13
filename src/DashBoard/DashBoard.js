@@ -23,14 +23,14 @@ class DashBoard extends Component {
     return (
       <>
         <header>
-          <h1>Hi {group}!</h1>
+          <h1>Hi {group.group_name}!</h1>
           <button>Start a New Game</button>
         </header>
 
         <div>
           <section className='all-players'>
             <h2>Players</h2>
-            <button>Add a New Player</button>
+            <Link to='/add-player'>Add a New Player</Link>
             <ul>
               {playerList}
             </ul>

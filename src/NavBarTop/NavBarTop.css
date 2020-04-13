@@ -6,8 +6,9 @@ footer {
   
 nav {
     background-color: gainsboro;
-    text-align: center;
     position: fixed;
+    display: flex;
+    justify-content: space-around;
     height: 40px;
     top: 0;
     left: 0;

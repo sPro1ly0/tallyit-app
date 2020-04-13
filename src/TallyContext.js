@@ -4,7 +4,10 @@ const TallyContext = React.createContext({
   groups: [],
   players: [],
   games: [],
-  scores: []
+  scores: [],
+  addPlayer: () => {},
+  updatePlayerName: () => {},
+  deletePlayer: () => {}
 });
 
 export default TallyContext;

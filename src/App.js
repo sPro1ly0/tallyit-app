@@ -25,11 +25,39 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      group: groups[0].group_name,
+      group: groups[0],
       players: players,
       games: games,
       scores: scores
     };
+  }
+
+  addPlayer = player => {
+    this.setState({
+      players: [...this.state.players, player]
+    });
+  }
+
+  updatePlayerName = playerName => {
+    const newPlayers = this.state.players.map(player =>
+      (player.id === playerName.id)
+        ? playerName
+        : player
+    );
+
+    this.setState({
+      players: newPlayers
+    });
+  }
+
+  deletePlayer = player_id => {
+    const newPlayers = this.state.players.filter(player => 
+      player.id !== player_id
+    );
+
+    this.setState({
+      players: newPlayers
+    });
   }
 
   render() {
@@ -38,7 +66,10 @@ class App extends Component {
       group: this.state.group,
       players: this.state.players,
       games: this.state.games,
-      scores: this.state.scores
+      scores: this.state.scores,
+      addPlayer: this.addPlayer,
+      updatePlayerName: this.updatePlayerName,
+      deletePlayer: this.deletePlayer
     };
 
     return (
