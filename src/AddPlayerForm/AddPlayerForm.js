@@ -63,10 +63,10 @@ class AddPlayerForm extends Component {
               name='player_name' 
               placeholder="Mila" 
               required/>
-            <button>Add Player</button>
+            <button type='submit'>Add Player</button>
           </form>
         </section>
-        <button>Go Back</button>
+        <button type='button' onClick={this.handleGoBack}>Go Back</button>
       </>
     );
   }
