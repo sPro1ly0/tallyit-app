@@ -25,7 +25,8 @@ class ScoreSheetPage extends Component {
 
   
   handleScoreChange = (playerId, number) => {
-    console.log('Good', playerId, number);
+    console.log('Good', playerId, number); // 'Good', undefined, undefined
+
     const updatePlayerScores = this.state.current_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};

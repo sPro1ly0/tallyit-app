@@ -10,7 +10,7 @@ function Player(props) {
         {props.name}
       </div>
       <div className='player-score'>
-        <PlayerCounter score={props.score} onChange={(number) => props.onScoreChange(props.id, number)}/>
+        <PlayerCounter id={props.id} score={props.score} onChange={(number) => props.onScoreChange(props.id, number)}/>
       </div>
     </div>
   );
