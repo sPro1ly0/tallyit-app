@@ -7,7 +7,7 @@ function Player(props) {
   return (
     <div className='player'>
       <div className='player-name'>
-        <button className='delete-player'>Delete</button>
+        <button className='delete-player' onClick={() => props.onDeletePlayer(props.id)}>Delete</button>
         {props.name}
       </div>
       <div className='player-score'>

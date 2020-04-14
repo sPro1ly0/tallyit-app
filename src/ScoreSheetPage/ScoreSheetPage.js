@@ -23,9 +23,20 @@ class ScoreSheetPage extends Component {
     });
   }
 
+  deletePlayer = player_id => {
+    // console.log('Test', player_id);
+    const newPlayers = this.state.current_players.filter(player => 
+      player.id !== player_id
+    );
+
+    this.setState({
+      current_players: newPlayers
+    });
+  }
+
   
   handleScoreChange = (playerId, number) => {
-    console.log('Good', playerId, number); // 'Good', undefined, undefined
+    console.log('Good', playerId, number);
 
     const updatePlayerScores = this.state.current_players.map(player => {
       if (player.id === playerId) {
@@ -48,6 +59,7 @@ class ScoreSheetPage extends Component {
         id={player.id}
         name={player.player_name}
         score={player.score}
+        onDeletePlayer={this.deletePlayer}
         onScoreChange={this.handleScoreChange}
       />
     );
