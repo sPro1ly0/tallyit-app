@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import PlayerCounter from '../PlayerCounter/PlayerCounter';
+import './Player.css';
 
 function Player(props) {
   return (
@@ -10,7 +11,7 @@ function Player(props) {
         {props.name}
       </div>
       <div className='player-score'>
-        <PlayerCounter id={props.id} score={props.score} onChange={(number) => props.onScoreChange(props.id, number)}/>
+        <PlayerCounter id={props.id} score={props.score} onChange={props.onScoreChange}/>
       </div>
     </div>
   );

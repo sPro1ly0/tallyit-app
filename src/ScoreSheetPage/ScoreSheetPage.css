@@ -1,5 +1,6 @@
 .score-sheet {
     height: fit-content;
+    padding: 10px;
 }
 
 .score-sheet-form {

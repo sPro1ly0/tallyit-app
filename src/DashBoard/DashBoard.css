@@ -9,12 +9,11 @@ header {
     height: 140px;
 }
 
-.all-players,
 .all-games {
     height: fit-content;
 }
   
-div {
+.games-played {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

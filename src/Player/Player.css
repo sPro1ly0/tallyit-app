@@ -1,0 +1,22 @@
+.player {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border: 1px solid black;
+    padding: 3px;
+}
+
+.delete-player {
+    margin-right: 5px;
+}
+
+.player-name {
+    display: flex;
+    width: 60%;
+}
+
+.player-score {
+    display: flex;
+    width: 30%;
+}

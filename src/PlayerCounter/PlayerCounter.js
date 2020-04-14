@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import './PlayerCounter.css';
 
 function PlayerCounter(props) {
   console.log(props);

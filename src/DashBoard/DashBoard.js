@@ -23,7 +23,7 @@ class DashBoard extends Component {
           <Link to='/create-scoresheet'>Start a New Game</Link>
         </header>
 
-        <div>
+        <div className='games-played'>
           <section className='all-games'>
             <h2>Games Played</h2>
             <ul>
