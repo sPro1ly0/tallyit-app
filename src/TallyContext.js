@@ -2,12 +2,17 @@ import React from 'react';
 
 const TallyContext = React.createContext({
   groups: [],
-  players: [],
+  player_scores: [],
   games: [],
-  scores: [],
+  current_game: '',
+  current_players: [],
   addPlayer: () => {},
   updatePlayerName: () => {},
-  deletePlayer: () => {}
+  deletePlayer: () => {},
+  addGame:() => {},
+  addCurrentGame:() => {},
+  addCurrentPlayers:() => {},
+  handleScoreChange:() => {}
 });
 
 export default TallyContext;

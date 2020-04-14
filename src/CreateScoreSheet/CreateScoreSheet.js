@@ -1,28 +1,70 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import './CreateScoreSheet.css';
+import TallyContext from '../TallyContext';
 
 class CreateScoreSheet extends Component {
+
+  static contextType = TallyContext;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      game_name: ''
+    };
+  }
+
+  handleGameName = (e) => {
+    this.setState({
+      game_name: e.target.value
+    });
+  }
+
+  handleSubmit = () => {
+    const game = {
+      id: Math.random() * 5,
+      game_name: this.state.game_name,
+      group_id: 1,
+      date_played: new Date()
+    };
+
+    console.log(game);
+    this.context.addGame(game);
+    this.context.addCurrentGame(game);
+    this.setState({
+      game_name: ''
+    });    
+    
+    this.props.history.push('/scoresheet');
+    
+  }
+
+  handleGoBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <>
-        <button className="go-back-player-button">Go Back</button>
+        <button className="go-back-player-button" onClick={this.handleGoBack}>Go Back</button>
         <header>
           <h1>Create Score Sheet</h1>
         </header>
         <section className="create-score-sheet">
-          <form className='create-score-sheet-form'>
-            <label htmlFor='game-name'>Game Name: </label>
-            <input id='game-name' type='text' placeholder='Uno'/>
-            <label htmlFor='number-of-players'>How many players?</label>
-            <input id='number-of-players' type='number' min='2' placeholder='2' max='20'/>
-            <div className='enter-player-names'>
-              <label htmlFor='enter-player'>Enter Players: </label>
-              <input type='text' id='enter-player' />
-              <input type='text' id='enter-player' />
-            </div>
+          <form className='create-score-sheet-form' onSubmit={this.handleSubmit}>
+            <label htmlFor='game_name'>Game Name: </label>
+            <input 
+              id='game_name' 
+              type='text' 
+              placeholder='Uno'
+              value={this.state.game_name}
+              onChange={this.handleGameName}
+            />
             <button type='submit'>Submit</button>
           </form>
         </section>
+
       </>
     );
   }

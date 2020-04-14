@@ -10,35 +10,32 @@ class AddPlayerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null
+      error: null,
+      name: ''
     };
+  }
+
+  handleNameChange = (e) => {
+    this.setState({
+      name: e.target.value
+    });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { player_name } = e.target;
-    
-    let notUniqueName = this.context.players.filter(p =>
-      p.player_name === player_name.value
-    );
-
-    console.log(notUniqueName);
-
-    if (notUniqueName.length) {
-      return alert('That name already exists!');
-    }
-
     const player = {
       id: Math.random() * 5,
-      player_name: player_name.value,
-      group_id: 1
+      player_name: this.state.name,
+      game_id: 1, // ???????
+      score: 0
     };
 
     console.log(player);
-    this.context.addPlayer(player);
-
-    alert(`${player.player_name} was added!`);
+    this.context.addCurrentPlayers(player);
+    this.setState({
+      name: ''
+    });
   }
 
   handleGoBack = () => {
@@ -49,9 +46,6 @@ class AddPlayerForm extends Component {
   render() {
     return (
       <>
-        <header>
-          <h1>Add a New Player</h1>
-        </header>
         <section className='add-edit-player'>
           <form
             onSubmit={this.handleSubmit}
@@ -61,7 +55,8 @@ class AddPlayerForm extends Component {
               id='player_name' 
               type='text'
               name='player_name' 
-              placeholder="Mila" 
+              value={this.state.name}
+              onChange={this.handleNameChange} 
               required/>
             <button type='submit'>Add Player</button>
           </form>
