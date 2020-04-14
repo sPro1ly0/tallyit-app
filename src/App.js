@@ -11,10 +11,6 @@ import DashBoard from './DashBoard/DashBoard';
 import CreateScoreSheet from './CreateScoreSheet/CreateScoreSheet';
 import ScoreSheetPage from './ScoreSheetPage/ScoreSheetPage';
 
-import EditPlayerForm from './EditPlayerForm/EditPlayerForm';
-
-import PlayerStatsPage from './PlayerStatsPage/PlayerStatsPage';
-
 import NotFoundPage from './NotFoundPage/NotFoundPage';
 
 class App extends Component {
@@ -28,7 +24,6 @@ class App extends Component {
       player_scores: player_scores,
       games: games,
       current_game: '',
-      current_players: []
     };
   }
 
@@ -72,20 +67,6 @@ class App extends Component {
     });
   }
 
-  addCurrentPlayers = player => {
-    this.setState({
-      current_players: [...this.state.current_players, player]
-    });
-  }
-
-  handleScoreChange(index, number) {
-    if (number === 1) {
-      this.setState(this.state.current_players[index].score + 1);
-    } else {
-      this.setState(this.state.current_players[index].score - 1);
-    }
-  }
-
   render() {
 
     const contextValue = {
@@ -98,9 +79,7 @@ class App extends Component {
       updatePlayerName: this.updatePlayerName,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,
-      addCurrentGame: this.addCurrentGame,
-      handleScoreChange: this.handleScoreChange,
-      addCurrentPlayers: this.addCurrentPlayers
+      addCurrentGame: this.addCurrentGame
     };
 
     return (
@@ -124,14 +103,6 @@ class App extends Component {
               <Route 
                 exact path='/scoresheet'
                 component={ScoreSheetPage}
-              />
-              <Route 
-                exact path='/edit-player/:player_id'
-                component={EditPlayerForm}
-              />
-              <Route 
-                exact path='/player-stats/:player_id'
-                component={PlayerStatsPage}
               />
               <Route
                 component={NotFoundPage}

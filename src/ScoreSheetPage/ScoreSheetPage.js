@@ -13,7 +13,29 @@ class ScoreSheetPage extends Component {
     this.state = {
       error: null,
       current_players: []
+      // add player object with id, name, and score
     };
+  }
+
+  addCurrentPlayers = player => {
+    this.setState({
+      current_players: [...this.state.current_players, player]
+    });
+  }
+
+  
+  handleScoreChange = (playerId, number) => {
+    const updatePlayerScores = this.state.current_players.map(player => {
+      if (player.id === playerId) {
+        return {...player, score: player.score + number};
+      }
+
+      return player;
+    });
+    
+    this.setState({
+      current_players: updatePlayerScores
+    });
   }
 
   render() {
@@ -23,7 +45,7 @@ class ScoreSheetPage extends Component {
         key={player.id}
         name={player.player_name}
         score={player.score}
-        onScoreChange={this.context.handleScoreChange(index)}
+        onScoreChange={this.handleScoreChange(index)}
       />
     );
     
@@ -32,7 +54,7 @@ class ScoreSheetPage extends Component {
         <header>
           <h1>{this.context.current_game}</h1>
         </header>
-        <AddPlayerForm />
+        <AddPlayerForm onAddCurrentPlayer={this.addCurrentPlayers}/>
         <section className='score-sheet'>
           {playerList}      
           <button type='submit'>Save</button>

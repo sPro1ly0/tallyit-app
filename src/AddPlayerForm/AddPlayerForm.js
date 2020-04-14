@@ -32,7 +32,7 @@ class AddPlayerForm extends Component {
     };
 
     console.log(player);
-    this.context.addCurrentPlayers(player);
+    this.props.onAddCurrentPlayer(player);
     this.setState({
       name: ''
     });
