@@ -48,7 +48,7 @@ class ScoreSheetPage extends Component {
         id={player.id}
         name={player.player_name}
         score={player.score}
-        onScoreChange={() => this.handleScoreChange()}
+        onScoreChange={this.handleScoreChange}
       />
     );
     
