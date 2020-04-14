@@ -32,7 +32,7 @@ class ScoreSheetPage extends Component {
 
       return player;
     });
-    
+
     this.setState({
       current_players: updatePlayerScores
     });
@@ -45,7 +45,7 @@ class ScoreSheetPage extends Component {
         key={player.id}
         name={player.player_name}
         score={player.score}
-        onScoreChange={this.handleScoreChange(index)}
+        onScoreChange={() => this.handleScoreChange(index)}
       />
     );
     
