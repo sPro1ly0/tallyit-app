@@ -2,7 +2,7 @@
 import React from 'react';
 
 function PlayerCounter(props) {
-    console.log(props);
+  console.log(props);
   return (
     <div className='score-counter'>
       <button 
