@@ -12,7 +12,7 @@ class GameStatsPage extends Component {
 
   
   handleGoBack = () => {
-    this.props.history.goBack();
+    this.props.history.push('/dashboard');
   };
 
   

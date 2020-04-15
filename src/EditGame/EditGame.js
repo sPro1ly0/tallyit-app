@@ -35,6 +35,37 @@ class EditGame extends Component {
     });
   }
 
+  handleScoreChange = (playerId, number) => {
+    console.log('Good', playerId, number);
+
+    const updatePlayerScores = this.state.game_players.map(player => {
+      if (player.id === playerId) {
+        return {...player, score: player.score + number};
+      }
+
+      return player;
+    });
+
+    this.setState({
+      game_players: updatePlayerScores
+    });
+  }
+
+  handleSubmit = (e) => {
+    const { game_id } = this.props.match.params;
+    e.preventDefault();
+    console.log('work!');
+    this.context.updatePlayerScores(this.state.game_players);
+
+    this.props.history.push(`/game/${game_id}`);
+
+    this.setState({
+      error: null,
+      game_name: '',
+      game_players: []        
+    });
+  }
+
   handleClickCancel = () => {
     this.props.history.goBack();
   };

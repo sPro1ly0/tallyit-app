@@ -7,7 +7,7 @@ function Footer() {
   let copyrightYear = new Date();
 
   return (
-    <footer role='content-info'>
+    <footer>
       <p>© {copyrightYear.getFullYear()} Sabrina Becker</p>
       <p className='version-number'>{config.APP_VERSION}</p>
     </footer>

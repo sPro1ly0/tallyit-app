@@ -27,18 +27,6 @@ const games = [
     game_name: 'Monopoly',
     group_id: 1,
     date_played: 'Fri Feb 14 2020 12:00:00 GMT-0500 (Eastern Standard Time)'
-  },
-  {
-    id: 4,
-    game_name: 'Uno',
-    group_id: 1,
-    date_played: 'Fri Feb 14 2020 12:00:00 GMT-0500 (Eastern Standard Time)',
-  },
-  {
-    id: 5,
-    game_name: 'Pictionary',
-    group_id: 1,
-    date_played: 'Mon Feb 10 2020 12:00:00 GMT-0500 (Eastern Standard Time)'
   }
 ];
 
@@ -72,6 +60,30 @@ const player_scores = [
     player_name: 'Leia',
     game_id: 3,
     score: 500
+  },
+  {
+    id: 6,
+    player_name: 'Grandpa',
+    game_id: 2,
+    score: 10
+  },
+  {
+    id: 7,
+    player_name: 'Luke',
+    game_id: 2,
+    score: 20
+  },
+  {
+    id: 8,
+    player_name: 'Leia',
+    game_id: 2,
+    score: 20
+  },
+  {
+    id: 9,
+    player_name: 'Nala',
+    game_id: 2,
+    score: 10
   }
 ];
 

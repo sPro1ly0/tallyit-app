@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TallyContext from '../TallyContext';
 import { Link } from 'react-router-dom';
 import './DashBoard.css';
+import moment from 'moment';
 
 class DashBoard extends Component {
 
@@ -13,7 +14,9 @@ class DashBoard extends Component {
     let gameList = '';
 
     if (games) {
-      gameList = games.map(g => <Link to={`/game/${g.id}`} key={g.id}>{`${g.game_name}`}</Link>);
+      gameList = games.map(g => 
+        <Link to={`/game/${g.id}`} key={g.id}>{`${moment(g.date_played).format('lll')} - ${g.game_name}`}</Link>
+      );
     }
 
     return (

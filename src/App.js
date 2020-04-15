@@ -67,6 +67,24 @@ class App extends Component {
     });
   }
 
+  // expecting array of players from EditGame comp when user clicks Save button
+  updatePlayerScores = update_players => {
+    let currentScore = this.state.player_scores;
+
+    for (let i = 0; i < currentScore.length; i++) {
+      let currentPlayer = update_players[i];
+      if (currentPlayer) {
+        let indexCurrentScore = currentScore.findIndex(player => player.id === currentPlayer.id);
+        console.log(indexCurrentScore);
+        currentScore[indexCurrentScore] = currentPlayer;
+      }
+    }
+    console.log(currentScore);
+    this.setState({
+      player_scores: currentScore
+    });
+  }
+
   render() {
 
     const contextValue = {
@@ -77,7 +95,8 @@ class App extends Component {
       addPlayers: this.addPlayers,
       addGame: this.addGame,
       addCurrentGame: this.addCurrentGame,
-      deleteGame: this.deleteGame
+      deleteGame: this.deleteGame,
+      updatePlayerScores: this.updatePlayerScores
     };
 
     return (
