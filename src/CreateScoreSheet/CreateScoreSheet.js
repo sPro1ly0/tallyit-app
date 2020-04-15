@@ -32,11 +32,8 @@ class CreateScoreSheet extends Component {
     console.log(game);
     this.context.addGame(game);
     this.context.addCurrentGame(game);
-    this.setState({
-      game_name: ''
-    });    
     
-    this.props.history.push('/scoresheet');
+    this.props.history.push(`/scoresheet/${game.id}`);
     
   }
 

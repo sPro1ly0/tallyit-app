@@ -79,6 +79,13 @@ class ScoreSheetPage extends Component {
 
   render() {
 
+    const { games } = this.context;
+    const { game_id } = this.props.match.params;
+
+    const game = games.find(g =>
+      g.id === Number(game_id)    
+    );
+
     const playerList = this.state.current_players.map((player) => 
       <Player 
         key={player.id}
@@ -93,10 +100,13 @@ class ScoreSheetPage extends Component {
     return (
       <>
         <header>
-          <h1>{this.context.current_game}</h1>
+          <h1>{game.game_name}</h1>
         </header>
 
-        <AddPlayerForm onAddCurrentPlayer={this.addCurrentPlayers}/>
+        <AddPlayerForm 
+          gameId={game.id}
+          onAddCurrentPlayer={this.addCurrentPlayers}
+        />
         <div className='player-error' role="alert">
           {this.state.error && <p className="red-error">{this.state.error}</p>}
         </div>

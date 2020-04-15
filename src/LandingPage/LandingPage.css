@@ -15,6 +15,10 @@ section {
     height: fit-content;
 }
 
+.login {
+    background-color: white;
+}
+
 .signup > header,
 .login > header {
     margin-top: 0;

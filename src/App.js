@@ -25,13 +25,21 @@ class App extends Component {
       group: groups[0],
       player_scores: player_scores,
       games: games,
-      current_game: '',
+      current_game: []
     };
   }
 
+  // adding array of player objects from ScoreSheetPage
   addPlayers = players => {
     this.setState({
       player_scores: [...this.state.player_scores, ...players]
+    });
+  }
+
+  // adding one player from EditGame page when editing a game
+  addPlayer = player => {
+    this.setState({
+      player_scores: [...this.state.player_scores, player]
     });
   }
 
@@ -56,7 +64,7 @@ class App extends Component {
 
   addCurrentGame = game => {
     this.setState({
-      current_game: game.game_name
+      current_game: [game]
     });
   }
 
@@ -94,6 +102,7 @@ class App extends Component {
       games: this.state.games,
       current_game: this.state.current_game,
       addPlayers: this.addPlayers,
+      addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,
       addCurrentGame: this.addCurrentGame,
@@ -120,7 +129,7 @@ class App extends Component {
                 component={CreateScoreSheet}
               />
               <Route 
-                exact path='/scoresheet'
+                exact path='/scoresheet/:game_id'
                 component={ScoreSheetPage}
               />
               <Route 

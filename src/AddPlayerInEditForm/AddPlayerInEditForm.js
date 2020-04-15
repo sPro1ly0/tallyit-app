@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import './AddPlayerForm.css';
+import '../AddPlayerForm/AddPlayerForm.css';
 import TallyContext from '../TallyContext';
 
-class AddPlayerForm extends Component {
+class AddPlayerInEditForm extends Component {
 
   static contextType = TallyContext;
 
@@ -32,7 +32,8 @@ class AddPlayerForm extends Component {
     };
 
     console.log(player);
-    this.props.onAddCurrentPlayer(player);
+    this.props.onAddNewPlayer(player);
+    this.context.addPlayer(player);
 
     this.setState({
       name: ''
@@ -62,4 +63,4 @@ class AddPlayerForm extends Component {
   }
 }
 
-export default AddPlayerForm;
+export default AddPlayerInEditForm;

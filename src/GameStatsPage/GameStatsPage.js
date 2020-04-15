@@ -33,7 +33,7 @@ class GameStatsPage extends Component {
     
     let date = (moment(game.date_played).format('MMM Do YYYY'));
 
-    console.log(player_scores);
+    // console.log(player_scores);
     const findScores = player_scores.filter(p => p.game_id === game.id);
     const results = findScores.map(p => 
       <GameResult key={p.id} name={p.player_name} score={p.score} />
