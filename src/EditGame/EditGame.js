@@ -35,11 +35,9 @@ class EditGame extends Component {
     });
   }
 
-  handleDelete = () => {
-    const { game_id } = this.props.match.params;
-    this.context.deleteGame(Number(game_id)); 
-    this.props.history.push('/dashboard');
-  }
+  handleClickCancel = () => {
+    this.props.history.goBack();
+  };
 
   render() {
 
@@ -71,7 +69,7 @@ class EditGame extends Component {
           </button>
         </section>
       
-        <button onClick={this.handleDelete}>Delete</button>
+        <button type="button" onClick={this.handleClickCancel}>Cancel</button>
       </>
     );
   }

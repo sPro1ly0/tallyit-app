@@ -15,6 +15,13 @@ class GameStatsPage extends Component {
     this.props.history.goBack();
   };
 
+  
+  handleDelete = () => {
+    const { game_id } = this.props.match.params;
+    this.context.deleteGame(Number(game_id)); 
+    this.props.history.push('/dashboard');
+  }
+
   render() {
 
     const { games, player_scores } = this.context;
@@ -24,7 +31,7 @@ class GameStatsPage extends Component {
       g.id === Number(game_id)    
     );
     
-    let date = (moment(game.date_played).format('MMMM Do YYYY'));
+    let date = (moment(game.date_played).format('MMM Do YYYY'));
 
     console.log(player_scores);
     const findScores = player_scores.filter(p => p.game_id === game.id);
@@ -37,7 +44,6 @@ class GameStatsPage extends Component {
         <button className='go-back-button' onClick={this.handleGoBack}>Go Back</button>
         <header>
           <h1>{game.game_name} Stats</h1>
-          <Link to={`/edit-game/${game.id}`}>Edit Game</Link>
         </header>
 
         <section className='date-played'>
@@ -55,10 +61,14 @@ class GameStatsPage extends Component {
                 </tr>
                 {results}
               </tbody>
-
             </table>
           </div>
         </section>
+
+        <div className='game-edit-delete-buttons'>
+          <Link className='edit-game-button' to={`/edit-game/${game.id}`}>Edit Game</Link>
+          <button className='delete-game-button' onClick={this.handleDelete}>Delete Game</button>
+        </div>
 
       </>
     );
