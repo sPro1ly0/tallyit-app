@@ -35,15 +35,16 @@ class App extends Component {
     });
   }
 
-  // deletePlayer = player_id => {
-  //   const newPlayers = this.state.players.filter(player => 
-  //     player.id !== player_id
-  //   );
+  deletePlayer = player_id => {
+    console.log('work', player_id);
+    const newPlayers = this.state.player_scores.filter(player => 
+      player.id !== player_id
+    );
 
-  //   this.setState({
-  //     players: newPlayers
-  //   });
-  // }
+    this.setState({
+      player_scores: newPlayers
+    });
+  }
 
   addGame = game => {
 
@@ -93,6 +94,7 @@ class App extends Component {
       games: this.state.games,
       current_game: this.state.current_game,
       addPlayers: this.addPlayers,
+      deletePlayer: this.deletePlayer,
       addGame: this.addGame,
       addCurrentGame: this.addCurrentGame,
       deleteGame: this.deleteGame,

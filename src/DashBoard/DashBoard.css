@@ -11,6 +11,8 @@ header {
 
 .all-games {
     height: fit-content;
+    width: 100%;
+    padding: 8px;
 }
   
 .games-played {
@@ -22,6 +24,10 @@ header {
 .game-links {
     display: flex;
     flex-direction: column;
+}
+
+.game-links > a {
+    line-height: 1.8em;
 }
   
 button, a {

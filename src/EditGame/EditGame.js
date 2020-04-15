@@ -28,11 +28,25 @@ class EditGame extends Component {
       game_name: game.game_name
     });
 
-    console.log(player_scores);
+    // console.log(player_scores);
     const findScores = player_scores.filter(p => p.game_id === game.id);
     this.setState({
       game_players: findScores
     });
+  }
+
+  deletePlayer = player_id => {
+    // console.log('Test', player_id);
+    const newPlayers = this.state.game_players.filter(player => 
+      player.id !== player_id
+    );
+
+    this.setState({
+      error: null,
+      game_players: newPlayers
+    });
+
+    this.context.deletePlayer(player_id);
   }
 
   handleScoreChange = (playerId, number) => {
