@@ -46,27 +46,32 @@ const player_scores = [
   {
     id: 1,
     player_name: 'Mom',
-    game_id: 1
+    game_id: 1,
+    score: 1
   },
   {
     id: 2,
     player_name: 'Dad',
-    game_id: 1
+    game_id: 1,
+    score: 0
   },
   {
     id: 3,
     player_name: 'Grandma',
-    game_id: 3
+    game_id: 3,
+    score: 300
   },
   {
     id: 4,
     player_name: 'Luke',
-    game_id: 3
+    game_id: 3,
+    score: 1000
   },
   {
     id: 5,
     player_name: 'Leia',
-    game_id: 3
+    game_id: 3,
+    score: 500
   }
 ];
 

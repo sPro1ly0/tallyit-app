@@ -7,6 +7,7 @@ import { groups, player_scores, games } from './ExampleData';
 import NavBarTop from './NavBarTop/NavBarTop';
 import LandingPage from './LandingPage/LandingPage';
 import DashBoard from './DashBoard/DashBoard';
+import GameStatsPage from './GameStatsPage/GameStatsPage';
 
 import CreateScoreSheet from './CreateScoreSheet/CreateScoreSheet';
 import ScoreSheetPage from './ScoreSheetPage/ScoreSheetPage';
@@ -89,6 +90,10 @@ class App extends Component {
               <Route 
                 exact path='/scoresheet'
                 component={ScoreSheetPage}
+              />
+              <Route 
+                exact path='/game/:game_id'
+                component={GameStatsPage}
               />
               <Route
                 component={NotFoundPage}

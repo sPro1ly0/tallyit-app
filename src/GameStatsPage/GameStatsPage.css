@@ -1,0 +1,42 @@
+.go-back-button {
+    margin-top: 8px;
+    position: absolute;
+    left: 0;
+}
+
+.date-played {
+    height: 80px;
+}
+
+.date-played > h2 {
+    margin: 0;
+}
+
+.games-played {
+    height: fit-content;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.player-list {
+    overflow-x:auto;
+}
+
+#game-results {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+#game-results th,
+#game-results tr {
+    text-align: center;
+}
+
+#game-results td,  
+#game-results th {
+    border: 1px solid black;
+    padding: 2px;
+} 
