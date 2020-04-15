@@ -15,6 +15,21 @@ section {
     height: fit-content;
 }
 
+.signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 290px;
+}
+
+.signup-form > div,
+.login-form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 100px;
+}
+
 .login {
     background-color: white;
 }
@@ -22,6 +37,10 @@ section {
 .signup > header,
 .login > header {
     margin-top: 0;
+}
+
+.login > header {
+    height: 80px;
 }
   
 section:nth-child(even) {

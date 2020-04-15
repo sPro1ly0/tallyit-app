@@ -1,6 +1,11 @@
 .score-sheet {
     height: fit-content;
     padding: 10px;
+    margin-bottom: 20px;
+}
+
+.score-sheet > button {
+    margin-top: 30px;
 }
 
 .score-sheet-form {

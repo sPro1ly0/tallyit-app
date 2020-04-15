@@ -1,6 +1,18 @@
 .add-edit-player {
     text-align: center;
-    margin-top: 60px;
-    height: 120px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 130px;
     width: 100%;
+}
+
+.add-edit-player > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.add-edit-player > form > label {
+    font-size: 1.12em;
 }

@@ -15,3 +15,7 @@ nav {
     right: 0;
     z-index: 1;
 }
+
+nav > a {
+    font-size: 1.2em;
+}

@@ -5,10 +5,12 @@
     width: 100%;
     border: 1px solid black;
     padding: 3px;
+    font-size: 1.15em;
 }
 
 .delete-player {
     margin-right: 5px;
+    font-size: 0.7em;
 }
 
 .player-name {

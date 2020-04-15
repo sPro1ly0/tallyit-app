@@ -23,7 +23,7 @@ class DashBoard extends Component {
       <>
         <header>
           <h1>Hi {group.group_name}!</h1>
-          <Link to='/create-scoresheet'>Start a New Game</Link>
+          <Link className='start-game-link' to='/create-scoresheet'>Start a New Game</Link>
         </header>
         {error 
           ? <div className="red-error">{error}</div>

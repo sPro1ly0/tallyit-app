@@ -55,7 +55,7 @@ class CreateScoreSheet extends Component {
           : ''}
         <section className="create-score-sheet">
           <form className='create-score-sheet-form' onSubmit={this.handleSubmit}>
-            <label htmlFor='game_name'>Game Name: </label>
+            <label htmlFor='game_name'>Add Game Name: </label>
             <input 
               id='game_name' 
               type='text' 
