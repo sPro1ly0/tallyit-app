@@ -11,6 +11,7 @@ import GameStatsPage from './GameStatsPage/GameStatsPage';
 
 import CreateScoreSheet from './CreateScoreSheet/CreateScoreSheet';
 import ScoreSheetPage from './ScoreSheetPage/ScoreSheetPage';
+import EditGame from './EditGame/EditGame';
 
 import NotFoundPage from './NotFoundPage/NotFoundPage';
 
@@ -58,6 +59,14 @@ class App extends Component {
     });
   }
 
+  deleteGame = game_id => {
+    const newGames = this.state.games.filter(game => game.id !== game_id);
+
+    this.setState({
+      games: newGames
+    });
+  }
+
   render() {
 
     const contextValue = {
@@ -66,9 +75,9 @@ class App extends Component {
       games: this.state.games,
       current_game: this.state.current_game,
       addPlayers: this.addPlayers,
-      // deletePlayer: this.deletePlayer,
       addGame: this.addGame,
-      addCurrentGame: this.addCurrentGame
+      addCurrentGame: this.addCurrentGame,
+      deleteGame: this.deleteGame
     };
 
     return (
@@ -96,6 +105,10 @@ class App extends Component {
               <Route 
                 exact path='/game/:game_id'
                 component={GameStatsPage}
+              />
+              <Route 
+                exact path='/edit-game/:game_id'
+                component={EditGame}
               />
               <Route
                 component={NotFoundPage}
