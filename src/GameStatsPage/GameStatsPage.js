@@ -4,6 +4,7 @@ import TallyContext from '../TallyContext';
 import { Link } from 'react-router-dom';
 import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
+import moment from 'moment';
 
 class GameStatsPage extends Component {
 
@@ -22,6 +23,9 @@ class GameStatsPage extends Component {
     const game = games.find(g =>
       g.id === Number(game_id)    
     );
+    
+    let date = (moment(game.date_played).format('MMMM Do YYYY'));
+
     console.log(player_scores);
     const findScores = player_scores.filter(p => p.game_id === game.id);
     const results = findScores.map(p => 
@@ -37,7 +41,7 @@ class GameStatsPage extends Component {
         </header>
 
         <section className='date-played'>
-          <h2>Date Played: {game.date_played}</h2>
+          <h2>Date Played: {date}</h2>
         </section>
 
         <section className='games-played'>

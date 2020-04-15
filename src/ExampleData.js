@@ -14,31 +14,31 @@ const games = [
     id: 1,
     game_name: 'Jenga',
     group_id: 1,
-    date_played: '4/13',
+    date_played: 'Mon Apr 10 2020 12:00:00 GMT-0500 (Eastern Standard Time)',
   },
   {
     id: 2,
     game_name: 'Euchre',
     group_id: 1,
-    date_played: '4/10',
+    date_played: 'Mon APr 10 2020 12:00:00 GMT-0500 (Eastern Standard Time)',
   },
   {
     id: 3,
     game_name: 'Monopoly',
     group_id: 1,
-    date_played: '4/10'
+    date_played: 'Fri Feb 14 2020 12:00:00 GMT-0500 (Eastern Standard Time)'
   },
   {
     id: 4,
     game_name: 'Uno',
     group_id: 1,
-    date_played: '4/01',
+    date_played: 'Fri Feb 14 2020 12:00:00 GMT-0500 (Eastern Standard Time)',
   },
   {
     id: 5,
     game_name: 'Pictionary',
     group_id: 1,
-    date_played: '3/29'
+    date_played: 'Mon Feb 10 2020 12:00:00 GMT-0500 (Eastern Standard Time)'
   }
 ];
 

@@ -45,8 +45,10 @@ class App extends Component {
   // }
 
   addGame = game => {
+
+    const newGames = [...this.state.games, game];
     this.setState({
-      games: [...this.state.games, game]
+      games: newGames
     });
   }
 
