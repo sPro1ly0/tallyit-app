@@ -14,6 +14,7 @@ import ScoreSheetPage from './ScoreSheetPage/ScoreSheetPage';
 import EditGame from './EditGame/EditGame';
 
 import NotFoundPage from './NotFoundPage/NotFoundPage';
+import TallyError from './TallyError';
 
 class App extends Component {
 
@@ -22,6 +23,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: null,
       group: groups[0],
       player_scores: player_scores,
       games: games,
@@ -97,6 +99,7 @@ class App extends Component {
   render() {
 
     const contextValue = {
+      error: this.state.error,
       group: this.state.group,
       player_scores: this.state.player_scores,
       games: this.state.games,
@@ -115,35 +118,37 @@ class App extends Component {
         <TallyContext.Provider value={contextValue}>
           <NavBarTop />
           <main className='App'>
-            <Switch>
-              <Route 
-                exact path='/'
-                component={LandingPage}
-              />
-              <Route 
-                exact path='/dashboard'
-                component={DashBoard}
-              />
-              <Route 
-                exact path='/create-scoresheet'
-                component={CreateScoreSheet}
-              />
-              <Route 
-                exact path='/scoresheet/:game_id'
-                component={ScoreSheetPage}
-              />
-              <Route 
-                exact path='/game/:game_id'
-                component={GameStatsPage}
-              />
-              <Route 
-                exact path='/edit-game/:game_id'
-                component={EditGame}
-              />
-              <Route
-                component={NotFoundPage}
-              />
-            </Switch>
+            <TallyError>
+              <Switch>
+                <Route 
+                  exact path='/'
+                  component={LandingPage}
+                />
+                <Route 
+                  exact path='/dashboard'
+                  component={DashBoard}
+                />
+                <Route 
+                  exact path='/create-scoresheet'
+                  component={CreateScoreSheet}
+                />
+                <Route 
+                  exact path='/scoresheet/:game_id'
+                  component={ScoreSheetPage}
+                />
+                <Route 
+                  exact path='/game/:game_id'
+                  component={GameStatsPage}
+                />
+                <Route 
+                  exact path='/edit-game/:game_id'
+                  component={EditGame}
+                />
+                <Route
+                  component={NotFoundPage}
+                />
+              </Switch>     
+            </TallyError>
           </main>
         </TallyContext.Provider>
       </>

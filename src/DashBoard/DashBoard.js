@@ -10,7 +10,7 @@ class DashBoard extends Component {
 
   render() {
 
-    const { group, games } = this.context;
+    const { group, games, error } = this.context;
     let gameList = '';
 
     if (games) {
@@ -25,7 +25,9 @@ class DashBoard extends Component {
           <h1>Hi {group.group_name}!</h1>
           <Link to='/create-scoresheet'>Start a New Game</Link>
         </header>
-
+        {error 
+          ? <div className="red-error">{error}</div>
+          : ''}
         <div className='games-played'>
           <section className='all-games'>
             <h2>Games Played</h2>

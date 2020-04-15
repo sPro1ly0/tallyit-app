@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TallyContext = React.createContext({
+  error: null,
   groups: [],
   player_scores: [],
   games: [],

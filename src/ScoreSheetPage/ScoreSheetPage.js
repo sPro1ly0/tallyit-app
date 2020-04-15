@@ -65,10 +65,18 @@ class ScoreSheetPage extends Component {
     console.log('working');
     this.context.addPlayers(this.state.current_players);
 
-    this.handleDelete();
+    this.setState({
+      error: null,
+      current_players: []
+    });
+
+    this.props.history.push('/dashboard');  
   }
 
   handleDelete = () => {
+    const { game_id } = this.props.match.params;
+    this.context.deleteGame(Number(game_id));
+
     this.setState({
       error: null,
       current_players: []
@@ -79,7 +87,7 @@ class ScoreSheetPage extends Component {
 
   render() {
 
-    const { games } = this.context;
+    const { games, error } = this.context;
     const { game_id } = this.props.match.params;
 
     const game = games.find(g =>
@@ -96,13 +104,17 @@ class ScoreSheetPage extends Component {
         onScoreChange={this.handleScoreChange}
       />
     );
+
+    let disable = (this.state.current_players.length === 0) ? true : false;
     
     return (
       <>
         <header>
           <h1>{game.game_name}</h1>
         </header>
-
+        {error 
+          ? <p className='red-error'>{this.state.error}</p>
+          : ''}
         <AddPlayerForm 
           gameId={game.id}
           onAddCurrentPlayer={this.addCurrentPlayers}
@@ -114,12 +126,16 @@ class ScoreSheetPage extends Component {
           {playerList}      
           <button 
             type='submit'
+            disabled={disable}
             onClick={this.handleSubmit}>
               Save
           </button>
         </section>
       
-        <button onClick={this.handleDelete}>Delete</button>
+        <button 
+          onClick={this.handleDelete}>
+            Delete
+        </button>
       </>
     );
   }

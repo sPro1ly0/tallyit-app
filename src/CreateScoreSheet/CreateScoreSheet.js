@@ -42,12 +42,17 @@ class CreateScoreSheet extends Component {
   };
 
   render() {
+    const { error } = this.context;
+
     return (
       <>
         <button className="go-back-player-button" onClick={this.handleGoBack}>Go Back</button>
         <header>
           <h1>Create Score Sheet</h1>
         </header>
+        {error 
+          ? <div className="error">{this.state.error}</div>
+          : ''}
         <section className="create-score-sheet">
           <form className='create-score-sheet-form' onSubmit={this.handleSubmit}>
             <label htmlFor='game_name'>Game Name: </label>
@@ -57,6 +62,7 @@ class CreateScoreSheet extends Component {
               placeholder='Uno'
               value={this.state.game_name}
               onChange={this.handleGameName}
+              required
             />
             <button type='submit'>Submit</button>
           </form>

@@ -117,6 +117,8 @@ class EditGame extends Component {
       />
     );
 
+    let disable = (this.state.game_players.length === 0) ? true : false;
+
     return (
       <>
         <header>
@@ -135,6 +137,7 @@ class EditGame extends Component {
           {playerList}      
           <button 
             type='submit'
+            disabled={disable}
             onClick={this.handleSubmit}>
               Save
           </button>
