@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import './ScoreSheetPage.css';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
@@ -18,9 +19,16 @@ class ScoreSheetPage extends Component {
   }
 
   addCurrentPlayers = player => {
-    this.setState({
-      current_players: [...this.state.current_players, player]
-    });
+    let { current_players } = this.state;
+    if (current_players.length > 20) {
+      this.setState({
+        error: 'Do not enter more than 20 players'
+      });
+    } else {
+      this.setState({
+        current_players: [...current_players, player]
+      });
+    }
   }
 
   deletePlayer = player_id => {
@@ -30,6 +38,7 @@ class ScoreSheetPage extends Component {
     );
 
     this.setState({
+      error: null,
       current_players: newPlayers
     });
   }
@@ -51,6 +60,19 @@ class ScoreSheetPage extends Component {
     });
   }
 
+  handleSubmit = () => {
+
+  }
+
+  handleDelete = () => {
+    this.setState({
+      error: null,
+      current_players: []
+    });
+
+    this.props.history.push('/dashboard');
+  }
+
   render() {
 
     const playerList = this.state.current_players.map((player) => 
@@ -69,13 +91,21 @@ class ScoreSheetPage extends Component {
         <header>
           <h1>{this.context.current_game}</h1>
         </header>
+
         <AddPlayerForm onAddCurrentPlayer={this.addCurrentPlayers}/>
+        <div className='player-error' role="alert">
+          {this.state.error && <p className="red-error">{this.state.error}</p>}
+        </div>
         <section className='score-sheet'>
           {playerList}      
-          <button type='submit'>Save</button>
+          <button 
+            type='submit'
+            onSubmit={this.handleSubmit}>
+              Save
+          </button>
         </section>
       
-        <button>Delete</button>
+        <button onClick={this.handleDelete}>Delete</button>
       </>
     );
   }

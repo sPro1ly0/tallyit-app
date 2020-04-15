@@ -38,11 +38,6 @@ class AddPlayerForm extends Component {
     });
   }
 
-  handleGoBack = () => {
-    this.props.history.goBack();
-  };
-
-
   render() {
     return (
       <>
@@ -61,7 +56,6 @@ class AddPlayerForm extends Component {
             <button type='submit'>Add Player</button>
           </form>
         </section>
-        <button type='button' onClick={this.handleGoBack}>Go Back</button>
       </>
     );
   }
