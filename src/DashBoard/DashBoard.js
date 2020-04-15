@@ -13,7 +13,7 @@ class DashBoard extends Component {
     let gameList = '';
 
     if (games) {
-      gameList = games.map(g => <li key={g.id}>{`${g.game_name}`}</li>);
+      gameList = games.map(g => <Link to={`/game/${g.id}`} key={g.id}>{`${g.game_name}`}</Link>);
     }
 
     return (
@@ -26,9 +26,9 @@ class DashBoard extends Component {
         <div className='games-played'>
           <section className='all-games'>
             <h2>Games Played</h2>
-            <ul>
+            <div className='game-links'>
               {gameList}
-            </ul>
+            </div>
           </section>
         </div>
       </>

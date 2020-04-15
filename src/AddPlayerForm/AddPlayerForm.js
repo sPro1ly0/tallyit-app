@@ -27,7 +27,7 @@ class AddPlayerForm extends Component {
     const player = {
       id: Math.random() * 5,
       player_name: this.state.name,
-      game_id: 1, 
+      game_id: this.context.games[this.context.games.length - 1].id, 
       score: 0
     };
 

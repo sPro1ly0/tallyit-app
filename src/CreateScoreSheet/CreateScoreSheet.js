@@ -23,7 +23,7 @@ class CreateScoreSheet extends Component {
 
   handleSubmit = () => {
     const game = {
-      id: Math.random() * 5,
+      id: 5 + Math.round(Math.random() * 100),
       game_name: this.state.game_name,
       group_id: 1,
       date_played: new Date()

@@ -9,6 +9,11 @@ class GameStatsPage extends Component {
 
   static contextType = TallyContext;
 
+  
+  handleGoBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
 
     const { games, player_scores } = this.context;
@@ -17,7 +22,7 @@ class GameStatsPage extends Component {
     const game = games.find(g =>
       g.id === Number(game_id)    
     );
-
+    console.log(player_scores);
     const findScores = player_scores.filter(p => p.game_id === game.id);
     const results = findScores.map(p => 
       <GameResult key={p.id} name={p.player_name} score={p.score} />
@@ -25,7 +30,7 @@ class GameStatsPage extends Component {
 
     return (
       <>
-        <button className='go-back-button'>Go Back</button>
+        <button className='go-back-button' onClick={this.handleGoBack}>Go Back</button>
         <header>
           <h1>{game.game_name} Stats</h1>
           <Link to={`/edit-game/${game.id}`}>Edit Game</Link>
