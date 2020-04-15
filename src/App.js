@@ -27,33 +27,21 @@ class App extends Component {
     };
   }
 
-  addPlayer = player => {
+  addPlayers = players => {
     this.setState({
-      player_scores: [...this.state.player_scores, player]
+      player_scores: [...this.state.player_scores, ...players]
     });
   }
 
-  updatePlayerName = playerName => {
-    const newPlayers = this.state.players.map(player =>
-      (player.id === playerName.id)
-        ? playerName
-        : player
-    );
+  // deletePlayer = player_id => {
+  //   const newPlayers = this.state.players.filter(player => 
+  //     player.id !== player_id
+  //   );
 
-    this.setState({
-      players: newPlayers
-    });
-  }
-
-  deletePlayer = player_id => {
-    const newPlayers = this.state.players.filter(player => 
-      player.id !== player_id
-    );
-
-    this.setState({
-      players: newPlayers
-    });
-  }
+  //   this.setState({
+  //     players: newPlayers
+  //   });
+  // }
 
   addGame = game => {
     this.setState({
@@ -71,13 +59,11 @@ class App extends Component {
 
     const contextValue = {
       group: this.state.group,
-      players: this.state.players,
+      player_scores: this.state.player_scores,
       games: this.state.games,
-      scores: this.state.scores,
       current_game: this.state.current_game,
-      addPlayer: this.addPlayer,
-      updatePlayerName: this.updatePlayerName,
-      deletePlayer: this.deletePlayer,
+      addPlayers: this.addPlayers,
+      // deletePlayer: this.deletePlayer,
       addGame: this.addGame,
       addCurrentGame: this.addCurrentGame
     };

@@ -60,8 +60,12 @@ class ScoreSheetPage extends Component {
     });
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('working');
+    this.context.addPlayers(this.state.current_players);
 
+    this.handleDelete();
   }
 
   handleDelete = () => {
@@ -100,7 +104,7 @@ class ScoreSheetPage extends Component {
           {playerList}      
           <button 
             type='submit'
-            onSubmit={this.handleSubmit}>
+            onClick={this.handleSubmit}>
               Save
           </button>
         </section>
