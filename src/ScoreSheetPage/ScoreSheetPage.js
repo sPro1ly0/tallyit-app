@@ -31,11 +31,13 @@ class ScoreSheetPage extends Component {
     }
   }
 
-  deletePlayer = player_id => {
+  handleDeletePlayer = player_id => {
     // console.log('Test', player_id);
     const newPlayers = this.state.current_players.filter(player => 
       player.id !== player_id
     );
+
+    this.context.deletePlayer(player_id);
 
     this.setState({
       error: null,
@@ -63,8 +65,7 @@ class ScoreSheetPage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('working');
-    this.context.addPlayers(this.state.current_players);
-
+    this.context.updatePlayerScores(this.state.current_players);
     this.setState({
       error: null,
       current_players: []
@@ -100,7 +101,7 @@ class ScoreSheetPage extends Component {
         id={player.id}
         name={player.player_name}
         score={player.score}
-        onDeletePlayer={this.deletePlayer}
+        onDeletePlayer={this.handleDeletePlayer}
         onScoreChange={this.handleScoreChange}
       />
     );
@@ -117,7 +118,7 @@ class ScoreSheetPage extends Component {
           : ''}
         <AddPlayerForm 
           gameId={game.id}
-          onAddCurrentPlayer={this.addCurrentPlayers}
+          onAddPlayer={this.addCurrentPlayers}
         />
         <div className='player-error' role="alert">
           {this.state.error && <p className="red-error">{this.state.error}</p>}

@@ -24,18 +24,11 @@ class App extends Component {
     super(props);
     this.state = {
       error: null,
-      group: groups[0],
+      group: [groups[0]],
       player_scores: player_scores,
       games: games,
       current_game: []
     };
-  }
-
-  // adding array of player objects from ScoreSheetPage
-  addPlayers = players => {
-    this.setState({
-      player_scores: [...this.state.player_scores, ...players]
-    });
   }
 
   // adding one player from EditGame page when editing a game
@@ -80,19 +73,19 @@ class App extends Component {
 
   // expecting array of players from EditGame comp when user clicks Save button
   updatePlayerScores = update_players => {
-    let currentScore = this.state.player_scores;
+    let currentScores = this.state.player_scores;
 
-    for (let i = 0; i < currentScore.length; i++) {
+    for (let i = 0; i < currentScores.length; i++) {
       let currentPlayer = update_players[i];
       if (currentPlayer) {
-        let indexCurrentScore = currentScore.findIndex(player => player.id === currentPlayer.id);
+        let indexCurrentScore = currentScores.findIndex(player => player.id === currentPlayer.id);
         console.log(indexCurrentScore);
-        currentScore[indexCurrentScore] = currentPlayer;
+        currentScores[indexCurrentScore] = currentPlayer;
       }
     }
-    console.log(currentScore);
+    console.log(currentScores);
     this.setState({
-      player_scores: currentScore
+      player_scores: currentScores
     });
   }
 
@@ -104,7 +97,6 @@ class App extends Component {
       player_scores: this.state.player_scores,
       games: this.state.games,
       current_game: this.state.current_game,
-      addPlayers: this.addPlayers,
       addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,

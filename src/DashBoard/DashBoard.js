@@ -22,7 +22,7 @@ class DashBoard extends Component {
     return (
       <>
         <header>
-          <h1>Hi {group.group_name}!</h1>
+          <h1>Hi {group[0].group_name}!</h1>
           <Link className='start-game-link' to='/create-scoresheet'>Start a New Game</Link>
         </header>
         {error 

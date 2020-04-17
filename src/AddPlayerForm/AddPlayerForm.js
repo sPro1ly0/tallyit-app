@@ -25,14 +25,15 @@ class AddPlayerForm extends Component {
     e.preventDefault();
 
     const player = {
-      id: Math.random() * 5,
+      id: Math.round(Math.random() * 100),
       player_name: this.state.name,
       game_id: this.props.gameId, 
       score: 0
     };
 
     console.log(player);
-    this.props.onAddCurrentPlayer(player);
+    this.props.onAddPlayer(player);
+    this.context.addPlayer(player);
 
     this.setState({
       name: ''
