@@ -1,6 +1,6 @@
 .score-sheet {
     height: fit-content;
-    padding: 10px;
+    padding: 2px;
     margin-bottom: 20px;
 }
 
@@ -34,4 +34,8 @@
     width: 150px;
     font-size: 2em;
     text-align: right;
+}
+
+.change-counter-number {
+    height: 95px;
 }

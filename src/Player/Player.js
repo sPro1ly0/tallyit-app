@@ -11,7 +11,11 @@ function Player(props) {
         {props.name}
       </div>
       <div className='player-score'>
-        <PlayerCounter id={props.id} score={props.score} onChange={props.onScoreChange}/>
+        <PlayerCounter 
+          id={props.id} 
+          score={props.score} 
+          counterNumber={props.counterNumber} 
+          onChange={props.onScoreChange}/>
       </div>
     </div>
   );

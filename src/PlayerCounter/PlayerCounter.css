@@ -4,7 +4,12 @@
     width: 100%;
 }
 
+.score {
+    padding: 3px;
+}
+
 .decrease-button,
 .increase-button {
     font-size: 1em;
+    max-width: 120px;
 }

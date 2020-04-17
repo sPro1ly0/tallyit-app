@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './ScoreSheetPage.css';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
+import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
 import TallyContext from '../TallyContext';
 import Player from '../Player/Player';
 
@@ -13,7 +14,8 @@ class ScoreSheetPage extends Component {
     super(props);
     this.state = {
       error: null,
-      current_players: []
+      current_players: [],
+      counter_number: 1
       // add player object with id, name, and score
     };
   }
@@ -62,13 +64,21 @@ class ScoreSheetPage extends Component {
     });
   }
 
+  handleNumberChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      counter_number: Number(e.target.value)
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('working');
     this.context.updatePlayerScores(this.state.current_players);
     this.setState({
       error: null,
-      current_players: []
+      current_players: [],
+      counter_number: 1
     });
 
     this.props.history.push('/dashboard');  
@@ -80,7 +90,8 @@ class ScoreSheetPage extends Component {
 
     this.setState({
       error: null,
-      current_players: []
+      current_players: [],
+      counter_number: 1
     });
 
     this.props.history.push('/dashboard');
@@ -101,6 +112,7 @@ class ScoreSheetPage extends Component {
         id={player.id}
         name={player.player_name}
         score={player.score}
+        counterNumber={this.state.counter_number}
         onDeletePlayer={this.handleDeletePlayer}
         onScoreChange={this.handleScoreChange}
       />
@@ -123,6 +135,10 @@ class ScoreSheetPage extends Component {
         <div className='player-error' role="alert">
           {this.state.error && <p className="red-error">{this.state.error}</p>}
         </div>
+        <CounterNumberForm 
+          counterNumber={this.state.counter_number}
+          onNumberChange={this.handleNumberChange}
+        />
         <section className='score-sheet'>
           {playerList}      
           <button 

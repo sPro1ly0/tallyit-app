@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
+import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
 import Player from '../Player/Player';
 import TallyContext from '../TallyContext';
 
@@ -13,7 +14,8 @@ class EditGame extends Component {
     this.state = {
       error: null,
       game_name: '',
-      new_players: []
+      new_players: [],
+      counter_number: 1
     };
   }
 
@@ -79,6 +81,13 @@ class EditGame extends Component {
     });
   }
 
+  handleNumberChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      counter_number: Number(e.target.value)
+    });
+  }
+
   handleSubmit = (e) => {
     const { game_id } = this.props.match.params;
     e.preventDefault();
@@ -90,7 +99,8 @@ class EditGame extends Component {
     this.setState({
       error: null,
       game_name: '',
-      new_players: []        
+      new_players: [],
+      counter_number: 1        
     });
   }
 
@@ -112,6 +122,7 @@ class EditGame extends Component {
         id={player.id}
         name={player.player_name}
         score={player.score}
+        counterNumber={this.state.counter_number}
         onDeletePlayer={this.deletePlayer}
         onScoreChange={this.handleScoreChange}
       />
@@ -133,6 +144,10 @@ class EditGame extends Component {
         <div className='player-error' role="alert">
           {this.state.error && <p className="red-error">{this.state.error}</p>}
         </div>
+        <CounterNumberForm 
+          counterNumber={this.state.counter_number}
+          onNumberChange={this.handleNumberChange}
+        />
         <section className='score-sheet'>
           {playerList}      
           <button 

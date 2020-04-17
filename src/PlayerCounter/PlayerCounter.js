@@ -8,11 +8,11 @@ function PlayerCounter(props) {
     <div className='score-counter'>
       <button 
         className='decrease-button'
-        onClick={() => props.onChange(props.id, -1)}>-</button>
+        onClick={() => props.onChange(props.id, -(props.counterNumber))}>-{props.counterNumber}</button>
       <div className='score'>{props.score}</div>
       <button 
         className='increase-button'
-        onClick={() => props.onChange(props.id, 1)}>+</button>
+        onClick={() => props.onChange(props.id, props.counterNumber)}>+{props.counterNumber}</button>
     </div>
   );
 }
