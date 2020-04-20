@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './LandingPage.css';
+import SignUpForm from '../SignUpForm/SignUpForm';
+import LoginForm from '../LoginForm/LoginForm';
 import Footer from '../Footer/Footer';
 
 class LandingPage extends Component {
@@ -12,33 +14,9 @@ class LandingPage extends Component {
           <h2>Keep your scores and stats in one place</h2>
         </header>
 
-        <section className='signup'>
-          <header>
-            <h3>
-                New user? Just enter a name for your group to sign up and login
-            </h3>
-          </header>
-          <form className='signup-form'>
-            <div>
-              <label htmlFor='group-name'>Add Group Name: </label>
-              <input placeholder=' bestfam123' type='text' name='group-name' id='group-name' required/>
-            </div>
-            <button type='submit'>Sign Up</button>
-          </form>
-        </section>
+        <SignUpForm />
 
-        <section className='login'>
-          <header>
-            <h3>Returning users</h3>
-          </header>
-          <form className='login-form'>
-            <div>
-              <label htmlFor='group-name'>Enter Your Group Name: </label>
-              <input placeholder=' bestfam123' type='text' name='group-name' id='group-name' required/>
-            </div>
-            <button type='submit'>Login</button>
-          </form>
-        </section>
+        <LoginForm />
 
         <section className='features'>
           <h3>Easy Sign Up and Login ✓</h3>

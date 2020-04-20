@@ -20,7 +20,7 @@ const games = [
     id: 2,
     game_name: 'Euchre',
     group_id: 1,
-    date_played: 'Mon APr 10 2020 12:00:00 GMT-0500 (Eastern Standard Time)',
+    date_played: 'Mon Apr 10 2020 12:00:00 GMT-0500 (Eastern Standard Time)',
   },
   {
     id: 3,

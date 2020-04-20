@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import TallyContext from './TallyContext';
-import { groups, player_scores, games } from './ExampleData';
+import TallyContext from '../TallyContext';
+import { groups, player_scores, games } from '../ExampleData';
 
-import NavBarTop from './NavBarTop/NavBarTop';
-import LandingPage from './LandingPage/LandingPage';
-import DashBoard from './DashBoard/DashBoard';
-import GameStatsPage from './GameStatsPage/GameStatsPage';
+import NavBarTop from '../NavBarTop/NavBarTop';
+import LandingPage from '../LandingPage/LandingPage';
+import DashBoard from '../DashBoard/DashBoard';
+import GameStatsPage from '../GameStatsPage/GameStatsPage';
 
-import CreateScoreSheet from './CreateScoreSheet/CreateScoreSheet';
-import ScoreSheetPage from './ScoreSheetPage/ScoreSheetPage';
-import EditGame from './EditGame/EditGame';
+import CreateScoreSheet from '../CreateScoreSheet/CreateScoreSheet';
+import ScoreSheetPage from '../ScoreSheetPage/ScoreSheetPage';
+import EditGame from '../EditGame/EditGame';
 
-import NotFoundPage from './NotFoundPage/NotFoundPage';
-import TallyError from './TallyError';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import TallyError from '../TallyError';
 
 class App extends Component {
 
