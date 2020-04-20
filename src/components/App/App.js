@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import TallyContext from '../TallyContext';
-import { groups, player_scores, games } from '../ExampleData';
+import TallyContext from '../../TallyContext';
+import { groups, player_scores, games } from '../../ExampleData';
 
 import NavBarTop from '../NavBarTop/NavBarTop';
 import LandingPage from '../LandingPage/LandingPage';
@@ -14,7 +14,7 @@ import ScoreSheetPage from '../ScoreSheetPage/ScoreSheetPage';
 import EditGame from '../EditGame/EditGame';
 
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
-import TallyError from '../TallyError';
+import TallyError from '../../TallyError';
 
 class App extends Component {
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TallyContext from '../TallyContext';
+import TallyContext from '../../TallyContext';
 import { Link } from 'react-router-dom';
 import './DashBoard.css';
 import moment from 'moment';

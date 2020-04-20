@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import './AddPlayerForm.css';
-import TallyContext from '../TallyContext';
+import TallyContext from '../../TallyContext';
 
 class AddPlayerForm extends Component {
 

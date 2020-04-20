@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import './ScoreSheetPage.css';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
 import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
+import TallyContext from '../../TallyContext';
 import Player from '../Player/Player';
-import TallyContext from '../TallyContext';
 
-class EditGame extends Component {
+class ScoreSheetPage extends Component {
 
   static contextType = TallyContext;
 
@@ -13,62 +14,44 @@ class EditGame extends Component {
     super(props);
     this.state = {
       error: null,
-      game_name: '',
-      new_players: [],
+      current_players: [],
       counter_number: 1
+      // add player object with id, name, and score
     };
   }
 
-  componentDidMount() {
-    const { games, player_scores } = this.context;
-    const { game_id } = this.props.match.params;
-
-    const game = games.find(g =>
-      g.id === Number(game_id)    
-    );
-
-    this.setState({
-      game_name: game.game_name
-    });
-
-    // console.log(player_scores);
-    const findScores = player_scores.filter(p => p.game_id === game.id);
-    this.setState({
-      new_players: findScores
-    });
-  }
-
-  addNewPlayers = player => {
-    let { new_players } = this.state;
-    if (new_players.length > 20) {
+  addCurrentPlayers = player => {
+    let { current_players } = this.state;
+    if (current_players.length > 20) {
       this.setState({
         error: 'Do not enter more than 20 players'
       });
     } else {
       this.setState({
-        new_players: [...new_players, player]
+        current_players: [...current_players, player]
       });
     }
   }
 
-  deletePlayer = player_id => {
+  handleDeletePlayer = player_id => {
     // console.log('Test', player_id);
-    const newPlayers = this.state.new_players.filter(player => 
+    const newPlayers = this.state.current_players.filter(player => 
       player.id !== player_id
     );
 
+    this.context.deletePlayer(player_id);
+
     this.setState({
       error: null,
-      new_players: newPlayers
+      current_players: newPlayers
     });
-
-    this.context.deletePlayer(player_id);
   }
 
+  
   handleScoreChange = (playerId, number) => {
     console.log('Good', playerId, number);
 
-    const updatePlayerScores = this.state.new_players.map(player => {
+    const updatePlayerScores = this.state.current_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};
       }
@@ -77,7 +60,7 @@ class EditGame extends Component {
     });
 
     this.setState({
-      new_players: updatePlayerScores
+      current_players: updatePlayerScores
     });
   }
 
@@ -89,58 +72,66 @@ class EditGame extends Component {
   }
 
   handleSubmit = (e) => {
-    const { game_id } = this.props.match.params;
     e.preventDefault();
-    // console.log('work!');
-    this.context.updatePlayerScores(this.state.new_players);
+    console.log('working');
+    this.context.updatePlayerScores(this.state.current_players);
+    this.setState({
+      error: null,
+      current_players: [],
+      counter_number: 1
+    });
 
-    this.props.history.push(`/game/${game_id}`);
+    this.props.history.push('/dashboard');  
+  }
+
+  handleDelete = () => {
+    const { game_id } = this.props.match.params;
+    this.context.deleteGame(Number(game_id));
 
     this.setState({
       error: null,
-      game_name: '',
-      new_players: [],
-      counter_number: 1        
+      current_players: [],
+      counter_number: 1
     });
+
+    this.props.history.push('/dashboard');
   }
 
-  handleClickCancel = () => {
-    this.props.history.goBack();
-  };
-
   render() {
-    const { games } = this.context;
+
+    const { games, error } = this.context;
     const { game_id } = this.props.match.params;
 
     const game = games.find(g =>
       g.id === Number(game_id)    
     );
 
-    const playerList = this.state.new_players.map((player) => 
+    const playerList = this.state.current_players.map((player) => 
       <Player 
         key={player.id}
         id={player.id}
         name={player.player_name}
         score={player.score}
         counterNumber={this.state.counter_number}
-        onDeletePlayer={this.deletePlayer}
+        onDeletePlayer={this.handleDeletePlayer}
         onScoreChange={this.handleScoreChange}
       />
     );
 
-    let disable = (this.state.new_players.length === 0) ? true : false;
-
+    let disable = (this.state.current_players.length === 0) ? true : false;
+    
     return (
       <>
         <header>
-          <h1>{this.state.game_name}</h1>
+          <h1>{game.game_name}</h1>
         </header>
-
+        {error 
+          ? <p className='red-error'>{this.state.error}</p>
+          : ''}
         <AddPlayerForm 
           gameId={game.id}
-          onAddPlayer={this.addNewPlayers}
+          onAddPlayer={this.addCurrentPlayers}
         />
-
         <div className='player-error' role="alert">
           {this.state.error && <p className="red-error">{this.state.error}</p>}
         </div>
@@ -158,10 +149,13 @@ class EditGame extends Component {
           </button>
         </section>
       
-        <button type="button" onClick={this.handleClickCancel}>Cancel</button>
+        <button 
+          onClick={this.handleDelete}>
+            Delete
+        </button>
       </>
     );
   }
 }
 
-export default EditGame;
+export default ScoreSheetPage;

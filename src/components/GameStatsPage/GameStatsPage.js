@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import TallyContext from '../TallyContext';
+import TallyContext from '../../TallyContext';
 import { Link } from 'react-router-dom';
 import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
