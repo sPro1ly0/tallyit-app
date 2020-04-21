@@ -129,6 +129,7 @@ class App extends Component {
   clearData = () => {
     this.setGroupName([]);
     this.setAllGames([]);
+    this.setCurrentGame([]);
     this.clearError();
   }
 

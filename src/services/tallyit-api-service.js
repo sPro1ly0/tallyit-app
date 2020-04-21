@@ -85,7 +85,20 @@ const TallyitApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       );      
-  }
+  },
+  deletePlayer(playerId) {
+    return fetch(`${config.API_ENDPOINT}/player-scores/${playerId}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          res.json().then(e => Promise.reject(e));
+        }
+      });
+  },
 };
 
 export default TallyitApiService;

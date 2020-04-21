@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
 import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
 import Player from '../Player/Player';
 import TallyContext from '../../TallyContext';
+import TallyitApiService from '../../services/tallyit-api-service';
 
 class EditGame extends Component {
 
@@ -57,12 +59,14 @@ class EditGame extends Component {
       player.id !== player_id
     );
 
+    TallyitApiService.deletePlayer(player_id)
+      .then(this.context.deletePlayer(player_id))
+      .catch(this.context.setError);
+
     this.setState({
       error: null,
       new_players: newPlayers
     });
-
-    this.context.deletePlayer(player_id);
   }
 
   handleScoreChange = (playerId, number) => {

@@ -39,9 +39,11 @@ class ScoreSheetPage extends Component {
     const newPlayers = this.state.current_players.filter(player => 
       player.id !== player_id
     );
-
-    this.context.deletePlayer(player_id);
-
+    
+    TallyitApiService.deletePlayer(player_id)
+      .then(this.context.deletePlayer(player_id))
+      .catch(this.context.setError);
+    
     this.setState({
       error: null,
       current_players: newPlayers
