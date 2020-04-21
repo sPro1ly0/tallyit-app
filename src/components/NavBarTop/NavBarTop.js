@@ -12,6 +12,7 @@ class NavBarTop extends Component {
   handleLogoutLink = () => {
     TokenService.clearAuthToken();
     this.context.setLoginStatus(false);
+    this.context.clearData();
   }
 
   renderDashAndLogoutLink() {

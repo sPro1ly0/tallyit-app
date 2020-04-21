@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TallyContext from '../../TallyContext';
+import TallyitApiService from '../../services/tallyit-api-service';
 import { Link } from 'react-router-dom';
 import './DashBoard.css';
 import moment from 'moment';
@@ -8,10 +9,24 @@ class DashBoard extends Component {
 
   static contextType = TallyContext;
 
+  componentDidMount() {
+    TallyitApiService.getGroupName()
+      .then(this.context.setGroupName)
+      .catch(this.context.setError);
+  }
+
   render() {
 
     const { group, games, error } = this.context;
+    let groupName;
     let gameList = '';
+    console.log(group);
+
+    if (group.length === 0) {
+      groupName = 'there';
+    } else {
+      groupName = group[0].group_name;
+    }
 
     if (games) {
       gameList = games.map(g => 
@@ -22,7 +37,7 @@ class DashBoard extends Component {
     return (
       <>
         <header>
-          <h1>Hi {group[0].group_name}!</h1>
+          <h1>Hi {groupName}!</h1>
           <Link className='start-game-link' to='/create-scoresheet'>Start a New Game</Link>
         </header>
         {error 

@@ -1,6 +1,15 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'; // helps pass history object to nested components
+import TallyContext from '../../TallyContext';
+import AuthApiService from '../../services/auth-api-service';
+import TokenService from '../../services/token-service';
+import TallyitApiService from '../../services/tallyit-api-service';
 
 class LoginForm extends Component {
+
+  static contextType = TallyContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -8,10 +17,31 @@ class LoginForm extends Component {
     };
   }
 
+  handleLoginSuccess = () => {
+    this.props.history.push('/dashboard');
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { group_name } = e.target;
     this.setState({ error: null });
+
+    AuthApiService.postLogin({
+      group_name: group_name.value
+    })
+      .then(res => {
+        group_name.value = '';
+        TokenService.saveAuthToken(res.authToken);
+        this.handleLoginSuccess();
+        this.context.setLoginStatus(true);
+        TallyitApiService.getGroupName()
+          .then(this.context.setGroupName)
+          .catch(this.context.setError);
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+
   }
 
   render() {
@@ -47,4 +77,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

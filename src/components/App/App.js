@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import TallyContext from '../../TallyContext';
-import { groups, player_scores, games } from '../../ExampleData';
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicOnlyRoute from '../../Utils/PublicOnlyRoute';
 
@@ -28,16 +27,31 @@ class App extends Component {
     this.state = {
       error: null,
       loggedIn: TokenService.hasAuthToken() ? true : false,
-      group: [groups[0]],
-      player_scores: player_scores,
-      games: games,
+      group: [],
+      player_scores: [],
+      games: [],
       current_game: []
     };
+  }
+
+  setError = error => {
+    this.setState({ error });
+  }
+
+  clearError = () => {
+    this.setState({ error: null });
   }
 
   setLoginStatus = status => {
     this.setState({
       loggedIn: status
+    });
+  }
+
+  setGroupName = group_name => {
+    const name = group_name;
+    this.setState({
+      group: [name]
     });
   }
 
@@ -99,6 +113,11 @@ class App extends Component {
     });
   }
 
+  clearData = () => {
+    this.setGroupName([]);
+    this.clearError();
+  }
+
   render() {
 
     const contextValue = {
@@ -107,13 +126,17 @@ class App extends Component {
       player_scores: this.state.player_scores,
       games: this.state.games,
       current_game: this.state.current_game,
+      setError: this.setError,
+      clearError: this.clearError,
       setLoginStatus: this.setLoginStatus,
+      setGroupName: this.setGroupName,
       addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,
       addCurrentGame: this.addCurrentGame,
       deleteGame: this.deleteGame,
-      updatePlayerScores: this.updatePlayerScores
+      updatePlayerScores: this.updatePlayerScores,
+      clearData: this.clearData
     };
 
     return (

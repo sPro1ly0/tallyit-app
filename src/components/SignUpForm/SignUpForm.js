@@ -63,7 +63,7 @@ class SignUpForm extends Component {
           onSubmit={this.handleSubmit}
         >
           <div>
-            <label htmlFor='group_name'>Enter Group Name: </label>
+            <label htmlFor='group_name'>Create a Group Name: </label>
             <input
               type='text' 
               id='group_name'
