@@ -20,15 +20,12 @@ class LoginForm extends Component {
     return (
       <section className='login'>
         <header>
-          <h3>Returning users</h3>
+          <h3>Login</h3>
         </header>
         <form 
           autoComplete='on'
           className='login-form'
           onSubmit={this.handleSubmit}>
-          <div className='login-error' role="alert">
-            {error && <p className="red-error">{error}</p>}
-          </div>
           <div>
             <label htmlFor='group_name'>Enter Your Group Name: </label>
             <input  
@@ -41,6 +38,9 @@ class LoginForm extends Component {
               required/>
           </div>
           <button type='submit'>Login</button>
+          <div className='login-error' role="alert">
+            {error && <p className="red-error">{error}</p>}
+          </div>
         </form>
       </section>
     );

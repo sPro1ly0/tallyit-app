@@ -46,3 +46,8 @@ section {
 section:nth-child(even) {
     background-color: gainsboro;
 }
+
+.signup-error,
+.login-error {
+    width: 100%;
+}

@@ -15,8 +15,9 @@ import CreateScoreSheet from '../CreateScoreSheet/CreateScoreSheet';
 import ScoreSheetPage from '../ScoreSheetPage/ScoreSheetPage';
 import EditGame from '../EditGame/EditGame';
 
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import TallyError from '../../TallyError';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import TokenService from '../../services/token-service';
 
 class App extends Component {
 
@@ -26,11 +27,18 @@ class App extends Component {
     super(props);
     this.state = {
       error: null,
+      loggedIn: TokenService.hasAuthToken() ? true : false,
       group: [groups[0]],
       player_scores: player_scores,
       games: games,
       current_game: []
     };
+  }
+
+  setLoginStatus = status => {
+    this.setState({
+      loggedIn: status
+    });
   }
 
   // adding one player from EditGame page when editing a game
@@ -99,6 +107,7 @@ class App extends Component {
       player_scores: this.state.player_scores,
       games: this.state.games,
       current_game: this.state.current_game,
+      setLoginStatus: this.setLoginStatus,
       addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,

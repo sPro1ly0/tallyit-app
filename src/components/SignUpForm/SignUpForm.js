@@ -29,7 +29,7 @@ class SignUpForm extends Component {
       <section className='signup'>
         <header>
           <h3>
-            New user? Just enter a group name to sign up and use to login
+            New user? Sign up with a group name use it to login
           </h3>
         </header>
         <form
@@ -37,9 +37,6 @@ class SignUpForm extends Component {
           className='signup-form'
           onSubmit={this.handleSubmit}
         >
-          <div className="signup-error" role="alert">
-            {error && <p className="red-error">{error}</p>}
-          </div>
           <div>
             <label htmlFor='group_name'>Enter Group Name: </label>
             <input
@@ -52,6 +49,9 @@ class SignUpForm extends Component {
               required/>
           </div>
           <button type='submit'>Sign Up</button>
+          <div className="signup-error" role="alert">
+            {error && <p className="red-error">{error}</p>}
+          </div>
         </form>
       </section>
     );

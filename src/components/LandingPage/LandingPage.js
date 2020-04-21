@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './LandingPage.css';
 import SignUpForm from '../SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
+import { Element } from 'react-scroll';
 import Footer from '../Footer/Footer';
 
 class LandingPage extends Component {
@@ -14,9 +15,15 @@ class LandingPage extends Component {
           <h2>Keep your scores and stats in one place</h2>
         </header>
 
-        <SignUpForm />
+        <Element id='signup' name='signup'>
+          <SignUpForm />
+        </Element>
+        
 
-        <LoginForm />
+        <Element id='login' name='login'>
+          <LoginForm />
+        </Element>
+        
 
         <section className='features'>
           <h3>Easy Sign Up and Login ✓</h3>
