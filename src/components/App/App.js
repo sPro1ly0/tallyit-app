@@ -94,7 +94,7 @@ class App extends Component {
     });
   }
 
-  addCurrentGame = game => {
+  setCurrentGame = game => {
     this.setState({
       current_game: [game]
     });
@@ -149,7 +149,7 @@ class App extends Component {
       addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,
-      addCurrentGame: this.addCurrentGame,
+      setCurrentGame: this.setCurrentGame,
       deleteGame: this.deleteGame,
       updatePlayerScores: this.updatePlayerScores,
       clearData: this.clearData
@@ -175,7 +175,7 @@ class App extends Component {
                   component={CreateScoreSheet}
                 />
                 <PrivateRoute 
-                  exact path='/scoresheet/:game_id'
+                  exact path='/scoresheet'
                   component={ScoreSheetPage}
                 />
                 <PrivateRoute 

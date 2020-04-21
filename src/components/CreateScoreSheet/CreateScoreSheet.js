@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './CreateScoreSheet.css';
 import TallyContext from '../../TallyContext';
+import TallyitApiService from '../../services/tallyit-api-service';
 
 class CreateScoreSheet extends Component {
 
@@ -23,19 +24,19 @@ class CreateScoreSheet extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     const game = {
-      id: 5 + Math.round(Math.random() * 100),
-      game_name: this.state.game_name,
-      group_id: 1,
-      date_played: new Date()
+      game_name: this.state.game_name
     };
 
-    console.log(game);
-    this.context.addGame(game);
-    this.context.addCurrentGame(game);
-    
-    this.props.history.push(`/scoresheet/${game.id}`);
-    
+    TallyitApiService.postGame(game)
+      .then(res => {
+        this.context.setCurrentGame(res);
+        this.context.addGame(res);
+
+        this.props.history.push('/scoresheet');
+      })
+      .catch(this.context.setError);
   }
 
   handleGoBack = () => {

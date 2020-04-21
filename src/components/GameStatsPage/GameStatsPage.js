@@ -11,6 +11,12 @@ class GameStatsPage extends Component {
 
   static contextType = TallyContext;
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null
+    };
+  }
   
   handleGoBack = () => {
     this.props.history.push('/dashboard');
@@ -19,7 +25,15 @@ class GameStatsPage extends Component {
   
   handleDelete = () => {
     const { game_id } = this.props.match.params;
-    this.context.deleteGame(Number(game_id)); 
+
+    TallyitApiService.deleteGame(game_id)
+      .then(this.context.deleteGame(game_id))
+      .catch(this.context.setError);
+
+    this.setState({
+      error: null
+    });
+
     this.props.history.push('/dashboard');
   }
 

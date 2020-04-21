@@ -5,6 +5,7 @@ import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
 import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
 import TallyContext from '../../TallyContext';
 import Player from '../Player/Player';
+import TallyitApiService from '../../services/tallyit-api-service';
 
 class ScoreSheetPage extends Component {
 
@@ -85,26 +86,27 @@ class ScoreSheetPage extends Component {
   }
 
   handleDelete = () => {
-    const { game_id } = this.props.match.params;
-    this.context.deleteGame(Number(game_id));
+    const { current_game } = this.context;
+    const gameId = current_game[0].id;
+
+    TallyitApiService.deleteGame(gameId)
+      .then(this.context.deleteGame(gameId))
+      .catch(this.context.setError);
 
     this.setState({
       error: null,
       current_players: [],
       counter_number: 1
     });
-
+    this.context.setCurrentGame([]);
     this.props.history.push('/dashboard');
   }
 
   render() {
 
-    const { games, error } = this.context;
-    const { game_id } = this.props.match.params;
-
-    const game = games.find(g =>
-      g.id === Number(game_id)    
-    );
+    const { current_game, error } = this.context;
+    const gameName = current_game[0].game_name;
+    const gameId = current_game[0].id;
 
     const playerList = this.state.current_players.map((player) => 
       <Player 
@@ -123,13 +125,13 @@ class ScoreSheetPage extends Component {
     return (
       <>
         <header>
-          <h1>{game.game_name}</h1>
+          <h1>{gameName}</h1>
         </header>
         {error 
           ? <p className='red-error'>{this.state.error}</p>
           : ''}
         <AddPlayerForm 
-          gameId={game.id}
+          gameId={gameId}
           onAddPlayer={this.addCurrentPlayers}
         />
         <div className='player-error' role="alert">

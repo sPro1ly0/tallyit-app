@@ -33,7 +33,7 @@ class DashBoard extends Component {
 
     if (games.length > 0) {
       gameList = games.map(g => 
-        <Link to={`/game/${g.id}`} key={g.id}>{`${moment(g.date_played).format('lll')} - ${g.game_name}`}</Link>
+        <Link to={`/game/${g.id}`} key={g.id}>{`${moment(g.date_created).format('lll')} - ${g.game_name}`}</Link>
       );
     } else if (games.length === 0) {
       gameList = 'Game scores you record will appear right here.';
