@@ -67,6 +67,24 @@ const TallyitApiService = {
           res.json().then(e => Promise.reject(e));
         }
       });
+  },
+  postPlayerScore(playerName) {
+    return fetch(`${config.API_ENDPOINT}/player-scores`, {
+      method: 'POST',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        player_name: playerName.player_name,
+        game_id: playerName.game_id
+      })
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      );      
   }
 };
 

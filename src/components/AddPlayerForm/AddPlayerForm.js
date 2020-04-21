@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './AddPlayerForm.css';
 import TallyContext from '../../TallyContext';
+import TallyitApiService from '../../services/tallyit-api-service';
 
 class AddPlayerForm extends Component {
 
@@ -25,16 +26,18 @@ class AddPlayerForm extends Component {
     e.preventDefault();
 
     const player = {
-      id: Math.round(Math.random() * 100),
       player_name: this.state.name,
-      game_id: this.props.gameId, 
+      game_id: this.props.gameId,
       score: 0
     };
 
-    console.log(player);
-    this.props.onAddPlayer(player);
-    this.context.addPlayer(player);
-
+    TallyitApiService.postPlayerScore(player)
+      .then(res => {
+        this.props.onAddPlayer(res);
+        this.context.addPlayer(res);
+      })
+      .catch(this.context.setError);
+    
     this.setState({
       name: ''
     });
