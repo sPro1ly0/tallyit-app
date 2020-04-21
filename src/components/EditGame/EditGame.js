@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
 import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
-import Player from '../../Player/Player';
+import Player from '../Player/Player';
 import TallyContext from '../../TallyContext';
 
 class EditGame extends Component {

@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import TallyContext from '../../TallyContext';
 import { groups, player_scores, games } from '../../ExampleData';
+import PrivateRoute from '../../Utils/PrivateRoute';
+import PublicOnlyRoute from '../../Utils/PublicOnlyRoute';
 
 import NavBarTop from '../NavBarTop/NavBarTop';
 import LandingPage from '../LandingPage/LandingPage';
@@ -112,27 +114,27 @@ class App extends Component {
           <main className='App'>
             <TallyError>
               <Switch>
-                <Route 
+                <PublicOnlyRoute 
                   exact path='/'
                   component={LandingPage}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/dashboard'
                   component={DashBoard}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/create-scoresheet'
                   component={CreateScoreSheet}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/scoresheet/:game_id'
                   component={ScoreSheetPage}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/game/:game_id'
                   component={GameStatsPage}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/edit-game/:game_id'
                   component={EditGame}
                 />
