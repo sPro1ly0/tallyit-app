@@ -49,8 +49,9 @@ class LoginForm extends Component {
 
     return (
       <section className='login'>
-        <header>
+        <header className='login-header'>
           <h3>Login</h3>
+          <p>Enter &apos;Demo&apos; to view demo account.</p>
         </header>
         <form 
           autoComplete='on'
@@ -64,7 +65,7 @@ class LoginForm extends Component {
               name='group_name'
               aria-label='Enter your group name to login. Use the name you signed up with.'
               aria-required='true' 
-              placeholder='bestfam123'
+              placeholder='Demo'
               required/>
           </div>
           <button type='submit'>Login</button>

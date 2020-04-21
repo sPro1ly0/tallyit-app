@@ -50,7 +50,7 @@ class NavBarTop extends Component {
           to='login'
           spy={true}
           smooth={true}
-          offset={-30}
+          offset={-50}
           duration={500}
         >
           Login

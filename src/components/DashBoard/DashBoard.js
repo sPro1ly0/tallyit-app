@@ -13,6 +13,9 @@ class DashBoard extends Component {
     TallyitApiService.getGroupName()
       .then(this.context.setGroupName)
       .catch(this.context.setError);
+    TallyitApiService.getGroupGames()
+      .then(this.context.setAllGames)
+      .catch(this.context.setError);
   }
 
   render() {
@@ -28,10 +31,12 @@ class DashBoard extends Component {
       groupName = group[0].group_name;
     }
 
-    if (games) {
+    if (games.length > 0) {
       gameList = games.map(g => 
         <Link to={`/game/${g.id}`} key={g.id}>{`${moment(g.date_played).format('lll')} - ${g.game_name}`}</Link>
       );
+    } else if (games.length === 0) {
+      gameList = 'Game scores you record will appear right here.';
     }
 
     return (

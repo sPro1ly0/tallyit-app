@@ -55,6 +55,13 @@ class App extends Component {
     });
   }
 
+  setAllGames = games => {
+    const allGames = games.reverse();
+    this.setState({
+      games: allGames
+    });
+  }
+
   // adding one player from EditGame page when editing a game
   addPlayer = player => {
     this.setState({
@@ -115,6 +122,7 @@ class App extends Component {
 
   clearData = () => {
     this.setGroupName([]);
+    this.setAllGames([]);
     this.clearError();
   }
 
@@ -130,6 +138,7 @@ class App extends Component {
       clearError: this.clearError,
       setLoginStatus: this.setLoginStatus,
       setGroupName: this.setGroupName,
+      setAllGames: this.setAllGames,
       addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,

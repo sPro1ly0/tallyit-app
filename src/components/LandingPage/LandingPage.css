@@ -35,12 +35,19 @@ section {
 }
 
 .signup > header,
-.login > header {
+.login-header {
     margin-top: 0;
 }
 
-.login > header {
-    height: 80px;
+.login-header {
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.login-header > h3 {
+    margin: 0;
 }
   
 section:nth-child(even) {
