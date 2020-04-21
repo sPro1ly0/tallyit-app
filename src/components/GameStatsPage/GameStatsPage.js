@@ -4,6 +4,7 @@ import TallyContext from '../../TallyContext';
 import { Link } from 'react-router-dom';
 import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
+import TallyitApiService from '../../services/tallyit-api-service';
 import moment from 'moment';
 
 class GameStatsPage extends Component {
@@ -22,6 +23,18 @@ class GameStatsPage extends Component {
     this.props.history.push('/dashboard');
   }
 
+  componentDidMount() {
+    this.context.clearError();
+    const { game_id } = this.props.match.params;
+    TallyitApiService.getGamePlayerScores(game_id)
+      .then(this.context.setPlayerScores)
+      .catch(this.context.setError);
+  }
+
+  componentWillUnmount() {
+    this.context.setPlayerScores([]);
+  }
+
   render() {
 
     const { games, player_scores } = this.context;
@@ -34,8 +47,7 @@ class GameStatsPage extends Component {
     let date = (moment(game.date_played).format('MMM Do YYYY'));
 
     // console.log(player_scores);
-    const findScores = player_scores.filter(p => p.game_id === game.id);
-    const results = findScores.map(p => 
+    const results = player_scores.map(p => 
       <GameResult key={p.id} name={p.player_name} score={p.score} />
     );
 

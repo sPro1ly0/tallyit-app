@@ -62,6 +62,12 @@ class App extends Component {
     });
   }
 
+  setPlayerScores = scores => {
+    this.setState({
+      player_scores: scores
+    });
+  }
+
   // adding one player from EditGame page when editing a game
   addPlayer = player => {
     this.setState({
@@ -139,6 +145,7 @@ class App extends Component {
       setLoginStatus: this.setLoginStatus,
       setGroupName: this.setGroupName,
       setAllGames: this.setAllGames,
+      setPlayerScores: this.setPlayerScores,
       addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,
