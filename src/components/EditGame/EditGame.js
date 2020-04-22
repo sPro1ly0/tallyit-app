@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
 import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
-import Player from '../../Player/Player';
+import Player from '../Player/Player';
 import TallyContext from '../../TallyContext';
+import TallyitApiService from '../../services/tallyit-api-service';
 
 class EditGame extends Component {
 
@@ -57,18 +59,21 @@ class EditGame extends Component {
       player.id !== player_id
     );
 
-    this.setState({
-      error: null,
-      new_players: newPlayers
-    });
-
-    this.context.deletePlayer(player_id);
+    TallyitApiService.deletePlayerScore(player_id)
+      .then(() => {
+        this.setState({
+          error: null,
+          new_players: newPlayers
+        });
+      })
+      .catch(this.context.setError);
+    
   }
 
   handleScoreChange = (playerId, number) => {
     console.log('Good', playerId, number);
 
-    const updatePlayerScores = this.state.new_players.map(player => {
+    const updateScores = this.state.new_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};
       }
@@ -77,7 +82,7 @@ class EditGame extends Component {
     });
 
     this.setState({
-      new_players: updatePlayerScores
+      new_players: updateScores
     });
   }
 
@@ -91,17 +96,12 @@ class EditGame extends Component {
   handleSubmit = (e) => {
     const { game_id } = this.props.match.params;
     e.preventDefault();
-    // console.log('work!');
-    this.context.updatePlayerScores(this.state.new_players);
-
-    this.props.history.push(`/game/${game_id}`);
-
-    this.setState({
-      error: null,
-      game_name: '',
-      new_players: [],
-      counter_number: 1        
-    });
+    let playerScores = this.state.new_players;
+    TallyitApiService.updatePlayersScores(playerScores)
+      .then(() => {
+        this.props.history.push(`/game/${game_id}`);  
+      })
+      .catch(this.context.setError);
   }
 
   handleClickCancel = () => {

@@ -5,13 +5,17 @@ const TallyContext = React.createContext({
   group: [],
   player_scores: [],
   games: [],
-  current_players: [],
-  addPlayer:() => {},
-  deletePlayer: () => {},
-  addGame:() => {},
-  addCurrentGame:() => {},
-  deleteGame:() => {},
-  updatePlayerScores:() => {}
+  current_game: [],
+  setError: () => {},
+  clearError: () => {},
+  setLoginStatus: () => {},
+  setGroupName: () => {},
+  setAllGames: () => {},
+  setPlayerScores: () => {},
+  addGame: () => {},
+  setCurrentGame: () => {},
+  deleteGame: () => {},
+  clearData: () => {}
 });
 
 export default TallyContext;

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import TallyContext from '../../TallyContext';
-import { groups, player_scores, games } from '../../ExampleData';
+import PrivateRoute from '../../Utils/PrivateRoute';
+import PublicOnlyRoute from '../../Utils/PublicOnlyRoute';
 
 import NavBarTop from '../NavBarTop/NavBarTop';
 import LandingPage from '../LandingPage/LandingPage';
@@ -13,8 +14,11 @@ import CreateScoreSheet from '../CreateScoreSheet/CreateScoreSheet';
 import ScoreSheetPage from '../ScoreSheetPage/ScoreSheetPage';
 import EditGame from '../EditGame/EditGame';
 
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import TallyError from '../../TallyError';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import TokenService from '../../services/token-service';
+import AuthApiService from '../../services/auth-api-service';
+import IdleService from '../../services/idle-service';
 
 class App extends Component {
 
@@ -24,28 +28,69 @@ class App extends Component {
     super(props);
     this.state = {
       error: null,
-      group: [groups[0]],
-      player_scores: player_scores,
-      games: games,
+      loggedIn: TokenService.hasAuthToken() ? true : false,
+      group: [],
+      player_scores: [],
+      games: [],
       current_game: []
     };
   }
 
-  // adding one player from EditGame page when editing a game
-  addPlayer = player => {
+  componentDidMount() {
+    //  set the function (callback) to call when a user goes idle
+    //  logout a user when they're idle
+    IdleService.setIdleCallback(this.logoutFromIdle);
+    /* if a user is logged in */
+    if (TokenService.hasAuthToken()) {
+
+      IdleService.registerIdleTimerResets();
+      TokenService.queueCallbackBeforeExpiry(() => {
+        AuthApiService.postRefreshToken();
+      });
+      
+    }
+  }
+
+  componentWillUnmount() {
+    //  when the app unmounts,
+    //  stop the event listeners that auto logout (clear the token from storage)
+    //  and remove the refresh endpoint request
+    IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+  }
+
+  logoutFromIdle = () => {
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.forceUpdate();
+  }
+
+  setError = error => {
+    this.setState({ error });
+  }
+
+  clearError = () => {
+    this.setState({ error: null });
+  }
+
+  setLoginStatus = status => {
     this.setState({
-      player_scores: [...this.state.player_scores, player]
+      loggedIn: status
     });
   }
 
-  deletePlayer = player_id => {
-    console.log('work', player_id);
-    const newPlayers = this.state.player_scores.filter(player => 
-      player.id !== player_id
-    );
-
+  setGroupName = group_name => {
+    const name = group_name;
     this.setState({
-      player_scores: newPlayers
+      group: [name]
+    });
+  }
+
+  setAllGames = games => {
+    const allGames = games;
+    this.setState({
+      games: allGames
     });
   }
 
@@ -57,7 +102,7 @@ class App extends Component {
     });
   }
 
-  addCurrentGame = game => {
+  setCurrentGame = game => {
     this.setState({
       current_game: [game]
     });
@@ -65,28 +110,23 @@ class App extends Component {
 
   deleteGame = game_id => {
     const newGames = this.state.games.filter(game => game.id !== game_id);
-
     this.setState({
       games: newGames
     });
   }
 
-  // expecting array of players from EditGame comp when user clicks Save button
-  updatePlayerScores = update_players => {
-    let currentScores = this.state.player_scores;
-
-    for (let i = 0; i < currentScores.length; i++) {
-      let currentPlayer = update_players[i];
-      if (currentPlayer) {
-        let indexCurrentScore = currentScores.findIndex(player => player.id === currentPlayer.id);
-        console.log(indexCurrentScore);
-        currentScores[indexCurrentScore] = currentPlayer;
-      }
-    }
-    console.log(currentScores);
+  setPlayerScores = scores => {
     this.setState({
-      player_scores: currentScores
+      player_scores: scores
     });
+  }
+
+  clearData = () => {
+    this.setGroupName([]);
+    this.setAllGames([]);
+    this.setPlayerScores([]);
+    this.setCurrentGame([]);
+    this.clearError();
   }
 
   render() {
@@ -97,12 +137,16 @@ class App extends Component {
       player_scores: this.state.player_scores,
       games: this.state.games,
       current_game: this.state.current_game,
-      addPlayer: this.addPlayer,
-      deletePlayer: this.deletePlayer,
+      setError: this.setError,
+      clearError: this.clearError,
+      setLoginStatus: this.setLoginStatus,
+      setGroupName: this.setGroupName,
+      setAllGames: this.setAllGames,
+      setPlayerScores: this.setPlayerScores,
       addGame: this.addGame,
-      addCurrentGame: this.addCurrentGame,
+      setCurrentGame: this.setCurrentGame,
       deleteGame: this.deleteGame,
-      updatePlayerScores: this.updatePlayerScores
+      clearData: this.clearData
     };
 
     return (
@@ -112,27 +156,27 @@ class App extends Component {
           <main className='App'>
             <TallyError>
               <Switch>
-                <Route 
+                <PublicOnlyRoute 
                   exact path='/'
                   component={LandingPage}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/dashboard'
                   component={DashBoard}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/create-scoresheet'
                   component={CreateScoreSheet}
                 />
-                <Route 
-                  exact path='/scoresheet/:game_id'
+                <PrivateRoute 
+                  exact path='/scoresheet'
                   component={ScoreSheetPage}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/game/:game_id'
                   component={GameStatsPage}
                 />
-                <Route 
+                <PrivateRoute 
                   exact path='/edit-game/:game_id'
                   component={EditGame}
                 />

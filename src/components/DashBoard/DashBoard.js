@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TallyContext from '../../TallyContext';
+import TallyitApiService from '../../services/tallyit-api-service';
 import { Link } from 'react-router-dom';
 import './DashBoard.css';
 import moment from 'moment';
@@ -8,21 +9,47 @@ class DashBoard extends Component {
 
   static contextType = TallyContext;
 
+  componentDidMount() {
+    this.forceUpdate();
+    
+    TallyitApiService.getGroupName()
+      .then(res => {
+        this.context.setGroupName(res);
+      })
+      .catch(this.context.setError);
+
+    TallyitApiService.getGroupGames()
+      .then(res => {
+        this.context.setAllGames(res);
+      })
+      .catch(this.context.setError);
+  }
+
   render() {
 
     const { group, games, error } = this.context;
+    let groupName;
     let gameList = '';
+    // console.log(group);
 
-    if (games) {
+    if (group.length === 0) {
+      groupName = 'there';
+    } else {
+      groupName = group[0].group_name;
+    }
+
+    if (games.length > 0) {
       gameList = games.map(g => 
-        <Link to={`/game/${g.id}`} key={g.id}>{`${moment(g.date_played).format('lll')} - ${g.game_name}`}</Link>
+        <Link to={`/game/${g.id}`} key={g.id}>{`${moment(g.date_created).format('lll')} - ${g.game_name}`}</Link>
       );
+    } else if (games.length === 0) {
+      gameList = 'Game scores you record will appear right here.';
     }
 
     return (
       <>
         <header>
-          <h1>Hi {group[0].group_name}!</h1>
+          <h1>Hi {groupName}!</h1>
           <Link className='start-game-link' to='/create-scoresheet'>Start a New Game</Link>
         </header>
         {error 

@@ -3,19 +3,50 @@ footer {
     padding: 1% 0;
     background-color: #aaa;
 }
-  
-nav {
+
+.nav-top {
     background-color: gainsboro;
+    text-align: center;
     position: fixed;
     display: flex;
-    justify-content: space-around;
-    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 nav > a {
     font-size: 1.2em;
+}
+
+.app-name {
+    font-size: 1.25em;
+}
+
+.nav-top-links {
+    min-width: 120px;
+    max-width: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    text-decoration: none;
+}
+
+.nav-top-links > a {
+    text-decoration: none;
+    font-size: 1em;
+    padding: 2px;
+}
+
+.nav-show-logout-link {
+    justify-content: flex-end;
+}
+
+.dashboard-link {
+    background-color: yellow;
 }

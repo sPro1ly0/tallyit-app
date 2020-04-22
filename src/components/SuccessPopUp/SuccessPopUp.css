@@ -1,0 +1,13 @@
+.popup-success {  
+    position: fixed;  
+    width: 280px;  
+    height: 280px;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    margin: auto;  
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;  
+}  

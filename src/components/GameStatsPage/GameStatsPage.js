@@ -4,12 +4,19 @@ import TallyContext from '../../TallyContext';
 import { Link } from 'react-router-dom';
 import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
+import TallyitApiService from '../../services/tallyit-api-service';
 import moment from 'moment';
 
 class GameStatsPage extends Component {
 
   static contextType = TallyContext;
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null
+    };
+  }
   
   handleGoBack = () => {
     this.props.history.push('/dashboard');
@@ -18,8 +25,30 @@ class GameStatsPage extends Component {
   
   handleDelete = () => {
     const { game_id } = this.props.match.params;
-    this.context.deleteGame(Number(game_id)); 
+
+    TallyitApiService.deleteGame(game_id)
+      .then(this.context.deleteGame(game_id))
+      .catch(this.context.setError);
+
+    this.setState({
+      error: null
+    });
+    
     this.props.history.push('/dashboard');
+    this.context.setCurrentGame([]);
+    window.location.reload();
+  }
+
+  componentDidMount() {
+    this.context.clearError();
+    const { game_id } = this.props.match.params;
+    TallyitApiService.getGamePlayerScores(game_id)
+      .then(this.context.setPlayerScores)
+      .catch(this.context.setError);
+  }
+
+  componentWillUnmount() {
+    this.context.setPlayerScores([]);
   }
 
   render() {
@@ -31,11 +60,10 @@ class GameStatsPage extends Component {
       g.id === Number(game_id)    
     );
     
-    let date = (moment(game.date_played).format('MMM Do YYYY'));
+    let date = (moment(game.date_created).format('MMM Do YYYY'));
 
     // console.log(player_scores);
-    const findScores = player_scores.filter(p => p.game_id === game.id);
-    const results = findScores.map(p => 
+    const results = player_scores.map(p => 
       <GameResult key={p.id} name={p.player_name} score={p.score} />
     );
 

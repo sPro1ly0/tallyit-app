@@ -5,6 +5,7 @@ import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
 import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
 import TallyContext from '../../TallyContext';
 import Player from '../Player/Player';
+import TallyitApiService from '../../services/tallyit-api-service';
 
 class ScoreSheetPage extends Component {
 
@@ -38,20 +39,22 @@ class ScoreSheetPage extends Component {
     const newPlayers = this.state.current_players.filter(player => 
       player.id !== player_id
     );
-
-    this.context.deletePlayer(player_id);
-
-    this.setState({
-      error: null,
-      current_players: newPlayers
-    });
+    
+    TallyitApiService.deletePlayerScore(player_id)
+      .then(() => {
+        this.setState({
+          error: null,
+          current_players: newPlayers
+        });
+      })
+      .catch(this.context.setError);
+    
   }
-
   
   handleScoreChange = (playerId, number) => {
     console.log('Good', playerId, number);
 
-    const updatePlayerScores = this.state.current_players.map(player => {
+    const updateScores = this.state.current_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};
       }
@@ -60,7 +63,7 @@ class ScoreSheetPage extends Component {
     });
 
     this.setState({
-      current_players: updatePlayerScores
+      current_players: updateScores
     });
   }
 
@@ -70,41 +73,41 @@ class ScoreSheetPage extends Component {
       counter_number: Number(e.target.value)
     });
   }
+  
+  handleDelete = () => {
+    const { current_game } = this.context;
+    const gameId = current_game[0].id;
+
+    TallyitApiService.deleteGame(gameId)
+      .then(this.context.deleteGame(gameId))
+      .catch(this.context.setError);
+    
+    this.props.history.push('/dashboard');
+    this.context.setCurrentGame([]);
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    this.setState({
+      error: null
+    });
+
     console.log('working');
-    this.context.updatePlayerScores(this.state.current_players);
-    this.setState({
-      error: null,
-      current_players: [],
-      counter_number: 1
-    });
-
-    this.props.history.push('/dashboard');  
-  }
-
-  handleDelete = () => {
-    const { game_id } = this.props.match.params;
-    this.context.deleteGame(Number(game_id));
-
-    this.setState({
-      error: null,
-      current_players: [],
-      counter_number: 1
-    });
-
-    this.props.history.push('/dashboard');
+    const playerScores = this.state.current_players;
+    TallyitApiService.updatePlayersScores(playerScores)
+      .then(() => {
+        this.props.history.push('/dashboard');  
+      })
+      .catch(this.context.setError);
+    
   }
 
   render() {
 
-    const { games, error } = this.context;
-    const { game_id } = this.props.match.params;
-
-    const game = games.find(g =>
-      g.id === Number(game_id)    
-    );
+    const { current_game, error } = this.context;
+    const gameName = current_game[0].game_name;
+    const gameId = current_game[0].id;
 
     const playerList = this.state.current_players.map((player) => 
       <Player 
@@ -123,13 +126,13 @@ class ScoreSheetPage extends Component {
     return (
       <>
         <header>
-          <h1>{game.game_name}</h1>
+          <h1>{gameName}</h1>
         </header>
         {error 
           ? <p className='red-error'>{this.state.error}</p>
           : ''}
         <AddPlayerForm 
-          gameId={game.id}
+          gameId={gameId}
           onAddPlayer={this.addCurrentPlayers}
         />
         <div className='player-error' role="alert">
