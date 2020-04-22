@@ -10,12 +10,14 @@ class DashBoard extends Component {
   static contextType = TallyContext;
 
   componentDidMount() {
+    this.forceUpdate();
     
     TallyitApiService.getGroupName()
       .then(res => {
         this.context.setGroupName(res);
       })
       .catch(this.context.setError);
+
     TallyitApiService.getGroupGames()
       .then(res => {
         this.context.setAllGames(res);

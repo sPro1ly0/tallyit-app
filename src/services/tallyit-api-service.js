@@ -86,7 +86,7 @@ const TallyitApiService = {
           : res.json()
       );      
   },
-  deletePlayer(playerId) {
+  deletePlayerScore(playerId) {
     return fetch(`${config.API_ENDPOINT}/player-scores/${playerId}`, {
       method: 'DELETE',
       headers: {

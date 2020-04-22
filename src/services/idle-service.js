@@ -17,10 +17,9 @@ const IdleService = {
   },
   registerIdleTimerResets() {
     // register the resetIdleTimer for events when user interacts with page
-    _notIdleEvents.forEach(event => {
-      console.log(event);
-      document.addEventListener(event, IdleService.resetIdleTimer, true);    
-    });
+    _notIdleEvents.forEach(event => 
+      document.addEventListener(event, IdleService.resetIdleTimer, true)    
+    );
   },
   unRegisterIdleResets() {
     // remove any queued callback and events that will queue callbacks

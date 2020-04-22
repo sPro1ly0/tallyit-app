@@ -59,14 +59,15 @@ class EditGame extends Component {
       player.id !== player_id
     );
 
-    TallyitApiService.deletePlayer(player_id)
-      .then(this.context.deletePlayer(player_id))
+    TallyitApiService.deletePlayerScore(player_id)
+      .then(() => {
+        this.setState({
+          error: null,
+          new_players: newPlayers
+        });
+      })
       .catch(this.context.setError);
-
-    this.setState({
-      error: null,
-      new_players: newPlayers
-    });
+    
   }
 
   handleScoreChange = (playerId, number) => {

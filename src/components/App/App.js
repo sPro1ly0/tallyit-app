@@ -88,7 +88,7 @@ class App extends Component {
   }
 
   setAllGames = games => {
-    const allGames = games.reverse();
+    const allGames = games;
     this.setState({
       games: allGames
     });
@@ -110,8 +110,9 @@ class App extends Component {
 
   deleteGame = game_id => {
     const newGames = this.state.games.filter(game => game.id !== game_id);
-
-    this.setAllGames(newGames);
+    this.setState({
+      games: newGames
+    });
   }
 
   setPlayerScores = scores => {
@@ -119,19 +120,6 @@ class App extends Component {
       player_scores: scores
     });
   }
-
-  deletePlayer = player_id => {
-    console.log('work', player_id);
-    const newPlayers = this.state.player_scores.filter(player => 
-      player.id !== player_id
-    );
-
-    this.setState({
-      player_scores: newPlayers
-    });
-  }
-
-
 
   clearData = () => {
     this.setGroupName([]);
@@ -155,7 +143,6 @@ class App extends Component {
       setGroupName: this.setGroupName,
       setAllGames: this.setAllGames,
       setPlayerScores: this.setPlayerScores,
-      deletePlayer: this.deletePlayer,
       addGame: this.addGame,
       setCurrentGame: this.setCurrentGame,
       deleteGame: this.deleteGame,

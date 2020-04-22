@@ -33,8 +33,10 @@ class GameStatsPage extends Component {
     this.setState({
       error: null
     });
-
+    
     this.props.history.push('/dashboard');
+    this.context.setCurrentGame([]);
+    window.location.reload();
   }
 
   componentDidMount() {
