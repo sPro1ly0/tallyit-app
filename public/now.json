@@ -8,12 +8,12 @@
     ],
     "env": {
         "TOKEY_KEY": "@token-key",
-        "REACT_APP_API_BASE_URL": "react-app-api-base-url"
+        "REACT_APP_API_BASE_URL": "@react-app-api-base-url"
     },
     "build": {
         "env": {
             "TOKEY_KEY": "@token-key",
-            "REACT_APP_API_BASE_URL": "react-app-api-base-url"
+            "REACT_APP_API_BASE_URL": "@react-app-api-base-url"
         }
     }
 }
