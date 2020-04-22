@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'; // helps pass history object to n
 import TallyContext from '../../TallyContext';
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
+import IdleService from '../../services/idle-service';
 import TallyitApiService from '../../services/tallyit-api-service';
 
 class LoginForm extends Component {
@@ -32,6 +33,10 @@ class LoginForm extends Component {
       .then(res => {
         group_name.value = '';
         TokenService.saveAuthToken(res.authToken);
+        IdleService.registerIdleTimerResets();
+        TokenService.queueCallbackBeforeExpiry(() => {
+          AuthApiService.postRefreshToken();
+        });
         this.handleLoginSuccess();
         this.context.setLoginStatus(true);
         TallyitApiService.getGroupName()

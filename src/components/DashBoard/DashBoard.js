@@ -10,11 +10,16 @@ class DashBoard extends Component {
   static contextType = TallyContext;
 
   componentDidMount() {
+    
     TallyitApiService.getGroupName()
-      .then(this.context.setGroupName)
+      .then(res => {
+        this.context.setGroupName(res);
+      })
       .catch(this.context.setError);
     TallyitApiService.getGroupGames()
-      .then(this.context.setAllGames)
+      .then(res => {
+        this.context.setAllGames(res);
+      })
       .catch(this.context.setError);
   }
 
@@ -23,7 +28,7 @@ class DashBoard extends Component {
     const { group, games, error } = this.context;
     let groupName;
     let gameList = '';
-    console.log(group);
+    // console.log(group);
 
     if (group.length === 0) {
       groupName = 'there';

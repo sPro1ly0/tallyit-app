@@ -17,6 +17,8 @@ import EditGame from '../EditGame/EditGame';
 import TallyError from '../../TallyError';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import TokenService from '../../services/token-service';
+import AuthApiService from '../../services/auth-api-service';
+import IdleService from '../../services/idle-service';
 
 class App extends Component {
 
@@ -32,6 +34,36 @@ class App extends Component {
       games: [],
       current_game: []
     };
+  }
+
+  componentDidMount() {
+    //  set the function (callback) to call when a user goes idle
+    //  logout a user when they're idle
+    IdleService.setIdleCallback(this.logoutFromIdle);
+    /* if a user is logged in */
+    if (TokenService.hasAuthToken()) {
+
+      IdleService.registerIdleTimerResets();
+      TokenService.queueCallbackBeforeExpiry(() => {
+        AuthApiService.postRefreshToken();
+      });
+      
+    }
+  }
+
+  componentWillUnmount() {
+    //  when the app unmounts,
+    //  stop the event listeners that auto logout (clear the token from storage)
+    //  and remove the refresh endpoint request
+    IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+  }
+
+  logoutFromIdle = () => {
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.forceUpdate();
   }
 
   setError = error => {
@@ -62,30 +94,6 @@ class App extends Component {
     });
   }
 
-  setPlayerScores = scores => {
-    this.setState({
-      player_scores: scores
-    });
-  }
-
-  // adding one player from EditGame page when editing a game
-  addPlayer = player => {
-    this.setState({
-      player_scores: [...this.state.player_scores, player]
-    });
-  }
-
-  deletePlayer = player_id => {
-    console.log('work', player_id);
-    const newPlayers = this.state.player_scores.filter(player => 
-      player.id !== player_id
-    );
-
-    this.setState({
-      player_scores: newPlayers
-    });
-  }
-
   addGame = game => {
 
     const newGames = [...this.state.games, game];
@@ -103,32 +111,32 @@ class App extends Component {
   deleteGame = game_id => {
     const newGames = this.state.games.filter(game => game.id !== game_id);
 
+    this.setAllGames(newGames);
+  }
+
+  setPlayerScores = scores => {
     this.setState({
-      games: newGames
+      player_scores: scores
     });
   }
 
-  // expecting array of players from EditGame comp when user clicks Save button
-  updatePlayerScores = update_players => {
-    let currentScores = this.state.player_scores;
+  deletePlayer = player_id => {
+    console.log('work', player_id);
+    const newPlayers = this.state.player_scores.filter(player => 
+      player.id !== player_id
+    );
 
-    for (let i = 0; i < currentScores.length; i++) {
-      let currentPlayer = update_players[i];
-      if (currentPlayer) {
-        let indexCurrentScore = currentScores.findIndex(player => player.id === currentPlayer.id);
-        console.log(indexCurrentScore);
-        currentScores[indexCurrentScore] = currentPlayer;
-      }
-    }
-    console.log(currentScores);
     this.setState({
-      player_scores: currentScores
+      player_scores: newPlayers
     });
   }
+
+
 
   clearData = () => {
     this.setGroupName([]);
     this.setAllGames([]);
+    this.setPlayerScores([]);
     this.setCurrentGame([]);
     this.clearError();
   }
@@ -147,12 +155,10 @@ class App extends Component {
       setGroupName: this.setGroupName,
       setAllGames: this.setAllGames,
       setPlayerScores: this.setPlayerScores,
-      addPlayer: this.addPlayer,
       deletePlayer: this.deletePlayer,
       addGame: this.addGame,
       setCurrentGame: this.setCurrentGame,
       deleteGame: this.deleteGame,
-      updatePlayerScores: this.updatePlayerScores,
       clearData: this.clearData
     };
 

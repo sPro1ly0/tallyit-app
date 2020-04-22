@@ -72,7 +72,7 @@ class EditGame extends Component {
   handleScoreChange = (playerId, number) => {
     console.log('Good', playerId, number);
 
-    const updatePlayerScores = this.state.new_players.map(player => {
+    const updateScores = this.state.new_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};
       }
@@ -81,7 +81,7 @@ class EditGame extends Component {
     });
 
     this.setState({
-      new_players: updatePlayerScores
+      new_players: updateScores
     });
   }
 
@@ -95,17 +95,12 @@ class EditGame extends Component {
   handleSubmit = (e) => {
     const { game_id } = this.props.match.params;
     e.preventDefault();
-    // console.log('work!');
-    this.context.updatePlayerScores(this.state.new_players);
-
-    this.props.history.push(`/game/${game_id}`);
-
-    this.setState({
-      error: null,
-      game_name: '',
-      new_players: [],
-      counter_number: 1        
-    });
+    let playerScores = this.state.new_players;
+    TallyitApiService.updatePlayersScores(playerScores)
+      .then(() => {
+        this.props.history.push(`/game/${game_id}`);  
+      })
+      .catch(this.context.setError);
   }
 
   handleClickCancel = () => {

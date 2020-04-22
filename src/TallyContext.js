@@ -8,16 +8,14 @@ const TallyContext = React.createContext({
   current_game: [],
   setError: () => {},
   clearError: () => {},
+  setLoginStatus: () => {},
   setGroupName: () => {},
   setAllGames: () => {},
   setPlayerScores: () => {},
-  addPlayer: () => {},
   deletePlayer: () => {},
   addGame: () => {},
   setCurrentGame: () => {},
   deleteGame: () => {},
-  updatePlayerScores: () => {},
-  setLoginStatus: () => {},
   clearData: () => {}
 });
 

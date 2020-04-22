@@ -99,6 +99,21 @@ const TallyitApiService = {
         }
       });
   },
+  updatePlayersScores(scores) {
+    return fetch(`${config.API_ENDPOINT}/player-scores`, {
+      method: 'PATCH',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(scores)      
+    })
+      .then(res => {
+        if (!res.ok) {
+          res.json().then(e => Promise.reject(e));
+        }
+      });
+  }
 };
 
 export default TallyitApiService;

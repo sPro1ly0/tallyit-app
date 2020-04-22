@@ -49,12 +49,11 @@ class ScoreSheetPage extends Component {
       current_players: newPlayers
     });
   }
-
   
   handleScoreChange = (playerId, number) => {
     console.log('Good', playerId, number);
 
-    const updatePlayerScores = this.state.current_players.map(player => {
+    const updateScores = this.state.current_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};
       }
@@ -63,7 +62,7 @@ class ScoreSheetPage extends Component {
     });
 
     this.setState({
-      current_players: updatePlayerScores
+      current_players: updateScores
     });
   }
 
@@ -76,15 +75,19 @@ class ScoreSheetPage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('working');
-    this.context.updatePlayerScores(this.state.current_players);
+
     this.setState({
-      error: null,
-      current_players: [],
-      counter_number: 1
+      error: null
     });
 
-    this.props.history.push('/dashboard');  
+    console.log('working');
+    const playerScores = this.state.current_players;
+    TallyitApiService.updatePlayersScores(playerScores)
+      .then(() => {
+        this.props.history.push('/dashboard');  
+      })
+      .catch(this.context.setError);
+    
   }
 
   handleDelete = () => {
@@ -94,12 +97,7 @@ class ScoreSheetPage extends Component {
     TallyitApiService.deleteGame(gameId)
       .then(this.context.deleteGame(gameId))
       .catch(this.context.setError);
-
-    this.setState({
-      error: null,
-      current_players: [],
-      counter_number: 1
-    });
+    
     this.context.setCurrentGame([]);
     this.props.history.push('/dashboard');
   }

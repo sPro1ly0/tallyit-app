@@ -16,6 +16,10 @@ class CreateScoreSheet extends Component {
     };
   }
 
+  componentDidMount() {
+    this.context.setCurrentGame([]);
+  }
+
   handleGameName = (e) => {
     this.setState({
       game_name: e.target.value

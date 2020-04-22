@@ -34,7 +34,6 @@ class AddPlayerForm extends Component {
     TallyitApiService.postPlayerScore(player)
       .then(res => {
         this.props.onAddPlayer(res);
-        this.context.addPlayer(res);
       })
       .catch(this.context.setError);
     

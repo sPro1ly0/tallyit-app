@@ -58,7 +58,7 @@ class GameStatsPage extends Component {
       g.id === Number(game_id)    
     );
     
-    let date = (moment(game.date_played).format('MMM Do YYYY'));
+    let date = (moment(game.date_created).format('MMM Do YYYY'));
 
     // console.log(player_scores);
     const results = player_scores.map(p => 
