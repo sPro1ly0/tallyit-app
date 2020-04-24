@@ -21,3 +21,8 @@ input {
 .red-error {
   color: red;
 }
+
+.not-found,
+.error-boundary {
+  margin-top: 100px;
+}

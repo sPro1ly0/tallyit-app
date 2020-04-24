@@ -4,13 +4,8 @@
     left: 0;
 }
 
-.date-played {
-    height: 80px;
-}
-
-.date-played > h2 {
-    margin: 0;
-    font-size: 1.2em;
+.pie-chart {
+    height: 320px;
 }
 
 .game-edit-delete-buttons {

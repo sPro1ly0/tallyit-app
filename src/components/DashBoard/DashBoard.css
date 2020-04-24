@@ -53,3 +53,21 @@ a {
 a:hover {
     border-bottom: 1px solid blue;
 }
+
+.pagination {
+    display: inline-block;
+    width: 284px;
+    margin: 10px auto;
+}
+
+.page-number {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    background-color: white;
+    padding: 7px 15px;
+    margin: 0 2px;
+}
+
+.page-number:hover {
+    background-color: yellow;
+}

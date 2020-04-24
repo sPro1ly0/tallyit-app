@@ -7,6 +7,7 @@ import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
 import TallyitApiService from '../../services/tallyit-api-service';
 import moment from 'moment';
+import PieChart from 'react-minimal-pie-chart';
 
 class GameStatsPage extends Component {
 
@@ -91,16 +92,12 @@ class GameStatsPage extends Component {
             : false
         }
         <button className='go-back-button' onClick={this.handleGoBack}>Go Back</button>
-        <header>
+        <header className='game-stats-header'>
           <h1>{game.game_name} Stats</h1>
+          <h2>Date Played: {date}</h2>
         </header>
 
-        <section className='date-played'>
-          <h2>Date Played: {date}</h2>
-        </section>
-
         <section className='games-played'>
-          <h3>Games Played</h3>
           <div className='player-list'>
             <table id='game-results'>
               <tbody>
@@ -112,6 +109,37 @@ class GameStatsPage extends Component {
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section className='pie-chart'>
+          <PieChart
+            animate
+            animationDuration={500}
+            animationEasing='ease-out'
+            cx={50}
+            cy={50}
+            data={[
+              { title: 'One', value: 10, color: '#E38627' },
+              { title: 'Two', value: 15, color: '#C13C37' },
+              { title: 'Three', value: 20, color: '#6A2135' },
+            ]}
+            label={true}
+            labelPosition={50}
+            labelStyle={{
+              fontFamily: 'sans-serif',
+              fontSize: '5px'
+            }}
+            lengthAngle={360}
+            lineWidth={100}
+            paddingAngle={0}
+            radius={50}
+            rounded={false}
+            startAngle={0}
+            viewBoxSize={[
+              100,
+              100
+            ]} 
+          />
         </section>
 
         <div className='game-edit-delete-buttons'>

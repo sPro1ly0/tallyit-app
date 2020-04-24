@@ -13,7 +13,9 @@ class DashBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false
+      isLoading: false,
+      currentPage: 1,
+      resultsPerPage: 10
     };
   }
 
@@ -47,9 +49,22 @@ class DashBoard extends Component {
       });
   }
 
+  handlePagination = (event) => {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
+  }
+
   render() {
 
     const { group, games, error } = this.context;
+    const { currentPage, resultsPerPage } = this.state;
+
+    const lastIndexOfResults = currentPage * resultsPerPage;
+    const firstIndexOfResults = lastIndexOfResults - resultsPerPage;
+    const currentGameResults = games.slice(firstIndexOfResults, lastIndexOfResults);
+    const pageNumbers = [];
+
     let groupName;
     let gameList = '';
     // console.log(group);
@@ -60,13 +75,31 @@ class DashBoard extends Component {
       groupName = group[0].group_name;
     }
 
-    if (games.length > 0) {
-      gameList = games.map(g => 
-        <Link to={`/game/${g.id}`} key={g.id}>{`${moment(g.date_created).format('lll')} - ${g.game_name}`}</Link>
+    if (currentGameResults.length > 0) {
+      gameList = currentGameResults.map(g => 
+        <Link to={`/game/${g.id}`} key={g.id}>{`${g.game_name} - ${moment(g.date_created).format('lll')}`}</Link>
       );
-    } else if (games.length === 0) {
+    } else if (currentGameResults.length === 0) {
       gameList = 'Game scores you record will appear right here.';
     }
+
+    for (let i = 1; i <= Math.ceil(games.length / resultsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <button
+          key={number}
+          id={number}
+          onClick={this.handlePagination}
+          className='page-number'
+        >
+          {number}
+        </button>
+      );
+    });
+
 
     return (
       <>
@@ -87,6 +120,9 @@ class DashBoard extends Component {
             <h2>Games Played</h2>
             <div className='game-links'>
               {gameList}
+            </div>
+            <div className='pagination'>
+              {renderPageNumbers}
             </div>
           </section>
         </div>
