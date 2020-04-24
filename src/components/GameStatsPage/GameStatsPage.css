@@ -4,8 +4,19 @@
     left: 0;
 }
 
+.game-stats-header {
+    margin-top: 80px;
+    height: fit-content;
+}
+
+.game-stats-header > h2 {
+    font-size: 1.2em;
+}
+
 .pie-chart {
-    height: 320px;
+  background-color: white;
+  min-height: 320px;
+  height: fit-content;
 }
 
 .game-edit-delete-buttons {

@@ -49,10 +49,6 @@ section {
 .login-header > h3 {
     margin: 0;
 }
-  
-section:nth-child(even) {
-    background-color: gainsboro;
-}
 
 .signup-error,
 .login-error {

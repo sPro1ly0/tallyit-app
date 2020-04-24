@@ -8,6 +8,7 @@ import './GameStatsPage.css';
 import TallyitApiService from '../../services/tallyit-api-service';
 import moment from 'moment';
 import PieChart from 'react-minimal-pie-chart';
+import colors from '../Colors';
 
 class GameStatsPage extends Component {
 
@@ -84,6 +85,17 @@ class GameStatsPage extends Component {
       <GameResult key={p.id} name={p.player_name} score={p.score} />
     );
 
+    // data for pie chart
+    const playerData = player_scores.map((p, i) => {
+      return { 
+        title: p.player_name,
+        value: p.score, 
+        color: colors[i] 
+      };
+    }
+    
+    );
+
     return (
       <>
         {
@@ -114,24 +126,20 @@ class GameStatsPage extends Component {
         <section className='pie-chart'>
           <PieChart
             animate
-            animationDuration={500}
+            animationDuration={1000}
             animationEasing='ease-out'
             cx={50}
             cy={50}
-            data={[
-              { title: 'One', value: 10, color: '#E38627' },
-              { title: 'Two', value: 15, color: '#C13C37' },
-              { title: 'Three', value: 20, color: '#6A2135' },
-            ]}
+            data={playerData}
             label={true}
-            labelPosition={50}
+            labelPosition={60}
             labelStyle={{
               fontFamily: 'sans-serif',
-              fontSize: '5px'
+              fontSize: '6px'
             }}
             lengthAngle={360}
-            lineWidth={100}
-            paddingAngle={0}
+            lineWidth={20}
+            paddingAngle={5}
             radius={50}
             rounded={false}
             startAngle={0}
