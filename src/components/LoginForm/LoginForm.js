@@ -27,6 +27,8 @@ class LoginForm extends Component {
     const { group_name } = e.target;
     this.setState({ error: null });
 
+    this.props.onLoading(true);
+
     AuthApiService.postLogin({
       group_name: group_name.value
     })
@@ -44,6 +46,7 @@ class LoginForm extends Component {
           .catch(this.context.setError);
       })
       .catch(res => {
+        this.props.onLoading(false);
         this.setState({ error: res.error });
       });
 

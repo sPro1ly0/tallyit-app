@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import SucessPopUp from '../SuccessPopUp/SucessPopUp';
@@ -8,6 +9,7 @@ class SignUpForm extends Component {
     super(props);
     this.state = {
       error: null,
+      isLoading: false,
       showPopUp: false,
       group_name: ''
     };
@@ -21,22 +23,34 @@ class SignUpForm extends Component {
   }
 
   handleSignUpSuccessPopUp = () => {
+
     this.setState({
       showPopUp: !this.state.showPopUp
     });
+    
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    
     const { group_name } = this.state;
-    this.setState({ error: null });
+    
+    this.setState({
+      error: null
+    });
+
+    this.props.onLoading(true);
+
     AuthApiService.postGroup({
       group_name: group_name
     })
       .then(() => {
+        this.props.onLoading(false);
         this.handleSignUpSuccessPopUp();
       })
       .catch(res => {
+        this.props.onLoading(false);
+
         this.setState({ error: res.error });
       });
   }
@@ -78,6 +92,7 @@ class SignUpForm extends Component {
           <div className="signup-error" role="alert">
             {error && <p className="red-error">{error}</p>}
           </div>
+
           {
             this.state.showPopUp
               ? <SucessPopUp groupName={group_name} closePopUp={this.handleSignUpSuccessPopUp}/>

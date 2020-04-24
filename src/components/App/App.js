@@ -67,7 +67,9 @@ class App extends Component {
   }
 
   setError = error => {
-    this.setState({ error });
+    this.setState({ 
+      error: [error] 
+    });
   }
 
   clearError = () => {
@@ -88,7 +90,7 @@ class App extends Component {
   }
 
   setAllGames = games => {
-    const allGames = games;
+    const allGames = games.reverse();
     this.setState({
       games: allGames
     });
@@ -130,7 +132,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log('games',this.state.games);
     const contextValue = {
       error: this.state.error,
       group: this.state.group,

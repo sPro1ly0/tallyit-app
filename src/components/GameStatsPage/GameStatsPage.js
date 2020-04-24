@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import TallyContext from '../../TallyContext';
+import Spinner from '../Spinner/Spinner';
 import { Link } from 'react-router-dom';
 import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
@@ -14,8 +15,15 @@ class GameStatsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null
+      error: null,
+      isLoading: false
     };
+  }
+
+  setLoadingStatus = status => {
+    this.setState({
+      isLoading: status
+    });
   }
   
   handleGoBack = () => {
@@ -26,25 +34,33 @@ class GameStatsPage extends Component {
   handleDelete = () => {
     const { game_id } = this.props.match.params;
 
-    TallyitApiService.deleteGame(game_id)
-      .then(this.context.deleteGame(game_id))
-      .catch(this.context.setError);
-
     this.setState({
       error: null
     });
-    
-    this.props.history.push('/dashboard');
-    this.context.setCurrentGame([]);
-    window.location.reload();
+
+    TallyitApiService.deleteGame(game_id)
+      .then(() => { 
+        this.context.deleteGame(game_id);
+        this.props.history.push('/dashboard');
+        this.context.setCurrentGame([]);
+      })
+      .catch(this.context.setError);
+
   }
 
   componentDidMount() {
+    this.setLoadingStatus(true);
     this.context.clearError();
     const { game_id } = this.props.match.params;
     TallyitApiService.getGamePlayerScores(game_id)
-      .then(this.context.setPlayerScores)
-      .catch(this.context.setError);
+      .then((res) => {
+        this.context.setPlayerScores(res);
+        this.setLoadingStatus(false);
+      })
+      .catch((res) => {
+        this.context.setError(res);
+        this.setLoadingStatus(false);
+      });
   }
 
   componentWillUnmount() {
@@ -69,6 +85,11 @@ class GameStatsPage extends Component {
 
     return (
       <>
+        {
+          this.state.isLoading
+            ? <Spinner />
+            : false
+        }
         <button className='go-back-button' onClick={this.handleGoBack}>Go Back</button>
         <header>
           <h1>{game.game_name} Stats</h1>

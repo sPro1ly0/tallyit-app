@@ -79,11 +79,13 @@ class ScoreSheetPage extends Component {
     const gameId = current_game[0].id;
 
     TallyitApiService.deleteGame(gameId)
-      .then(this.context.deleteGame(gameId))
+      .then(() => {
+        this.context.deleteGame(gameId);
+        this.props.history.push('/dashboard');
+        this.context.setCurrentGame([]);
+      })
       .catch(this.context.setError);
-    
-    this.props.history.push('/dashboard');
-    this.context.setCurrentGame([]);
+
   }
 
   handleSubmit = (e) => {
