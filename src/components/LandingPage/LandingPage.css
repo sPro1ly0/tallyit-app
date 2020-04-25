@@ -1,12 +1,13 @@
 .banner {
+    background-color: #A3F7BF;
     height: 250px;
     padding: 45px 15px;
+    font-size: 1em;
 }
   
 section {
     height: 200px;
     padding: 20px 20px;
-    background-color: rgb(221, 221, 221);
 }
 
 .signup,
@@ -15,7 +16,21 @@ section {
     height: fit-content;
 }
 
+.features {
+    font-size: 0.9em;
+}
+
+.features > h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    line-height: 1.5em;
+    min-height: 100px;
+}
+
 .signup {
+    background-color: #FFF591;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -31,7 +46,7 @@ section {
 }
 
 .login {
-    background-color: white;
+    background-color: #A3F7BF;
 }
 
 .signup > header,
@@ -53,4 +68,32 @@ section {
 .signup-error,
 .login-error {
     width: 100%;
+}
+
+.signup-form > button,
+.login-form > button {
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: linear-gradient(to bottom, white 5%, #E9E9E9 100%);
+	background-color:white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	border: 1px solid lightgray;
+	display: inline-block;
+	color:black;
+	font-family: 'Open Sans', 'Arial', sans-serif;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 5px 20px;
+}
+
+.signup-form > button:hover,
+.login-form > button:hover {
+    background: linear-gradient(to bottom, #E9E9E9 5%, white 100%);
+	background-color:#E9E9E9;
+}
+
+.signup-form > button:focus,
+.login-form > button:focus {
+    background: linear-gradient(to bottom, #E9E9E9 5%, white 100%);
+	background-color:#E9E9E9;
 }

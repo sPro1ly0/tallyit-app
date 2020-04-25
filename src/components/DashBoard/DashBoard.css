@@ -46,12 +46,8 @@ button, a {
     cursor: pointer;
 }
   
-a {
-    color: blue;
-}
-  
 a:hover {
-    border-bottom: 1px solid blue;
+    border-bottom: 3px solid #05DFD7;
 }
 
 .pagination {

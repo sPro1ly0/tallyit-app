@@ -1,11 +1,11 @@
 footer {
     display: flex;
     text-align: center;
-    background-color: white;
+    background-color: #05DFD7;
 }
 
 footer > p {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Open Sans', 'Arial', sans-serif;
     margin: 0 auto 0 auto;
     padding: 10px 0;
 }

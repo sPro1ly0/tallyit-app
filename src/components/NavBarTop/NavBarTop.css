@@ -1,11 +1,11 @@
 nav,
 footer {
     padding: 1% 0;
-    background-color: #aaa;
 }
 
 .nav-top {
-    background-color: gainsboro;
+    background-color: #A3F7BF;
+    box-shadow: 0px 1px 10px #999;
     text-align: center;
     position: fixed;
     display: flex;
@@ -25,12 +25,14 @@ nav > a {
 }
 
 .app-name {
-    font-size: 1.25em;
+
+    font-size: 1.95em;
+    font-family: 'Bubblegum Sans', 'Arial', 'Helvetica', sans-serif;
 }
 
 .nav-top-links {
-    min-width: 120px;
-    max-width: 140px;
+    min-width: 125px;
+    max-width: 150px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -38,6 +40,7 @@ nav > a {
 }
 
 .nav-top-links > a {
+    font-family: 'Open Sans', 'Arial', 'Helvetica', sans-serif;
     text-decoration: none;
     font-size: 1em;
     padding: 2px;

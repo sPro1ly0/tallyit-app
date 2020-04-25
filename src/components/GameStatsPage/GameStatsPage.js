@@ -125,7 +125,7 @@ class GameStatsPage extends Component {
 
         <section className='pie-chart'>
           <PieChart
-            animate
+            animate={true}
             animationDuration={1000}
             animationEasing='ease-out'
             cx={50}

@@ -4,6 +4,7 @@ import SignUpForm from '../SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import Spinner from '../Spinner/Spinner';
 import { Element } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Footer from '../Footer/Footer';
 
 class LandingPage extends Component {
@@ -31,14 +32,13 @@ class LandingPage extends Component {
         }
 
         <header className='banner' role='banner'>
-          <h1>Tally it!</h1>
-          <h2>Keep your scores and stats in one place</h2>
+          <h1>Keep your game scores and stats in one place <FontAwesomeIcon icon='dice-one' size='1x' /></h1>
         </header>
    
         <section className='features'>
-          <h3>Easy Sign Up and Login ✓</h3>
-          <h3>Perfect for Game Nights  ✓</h3>
-          <h3>Save and View Your Results  ✓</h3>
+          <h2>Easy Sign Up and Login <FontAwesomeIcon icon='check-circle' size='2x' /></h2>
+          <h2>Perfect for Family Game Nights  <FontAwesomeIcon icon='users' size='2x' /></h2>
+          <h2>Save and View Your Results <FontAwesomeIcon icon='list-alt' size='2x' /></h2>
         </section>
         
         <Element id='signup' name='signup'>

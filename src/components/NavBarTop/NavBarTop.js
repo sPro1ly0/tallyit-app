@@ -44,7 +44,7 @@ class NavBarTop extends Component {
           to='signup'
           spy={true}
           smooth={true}
-          offset={-30}
+          offset={-60}
           duration={500}
         >
           Sign Up

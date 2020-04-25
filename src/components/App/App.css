@@ -3,14 +3,9 @@
 }
 
 body {
-  font-family: sans-serif;
   text-align: center;
   line-height: 1.5;
   font-size: 18px;
-}
-
-a {
-  text-decoration: none;
 }
 
 button, 
