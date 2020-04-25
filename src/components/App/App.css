@@ -8,8 +8,16 @@ body {
   font-size: 18px;
 }
 
-button, 
-input {
+  
+button, a {
+  cursor: pointer;
+}
+
+a:hover {
+  border-bottom: 3px solid #05DFD7;
+}
+
+button {
   font-size: 1.2em;
 }
 

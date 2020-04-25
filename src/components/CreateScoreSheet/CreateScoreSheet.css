@@ -1,10 +1,28 @@
-.create-score-sheet {
+.create-scoresheet {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    height: 450px;
+}
+
+.create-scoresheet-section {
+    background-color: #A3F7BF;
     height: fit-content;
+    height: 300px;
+}
+
+.create-scoresheet-header {
+    padding: 0;
+    height: 100px;
+}
+
+.create-scoresheet-header > h1 {
+    font-size: 1.7em;
 }
 
 .create-score-sheet-form {
     margin: 0 auto 20px;
-    height: 300px;
+    height: 100%;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -20,4 +38,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.go-back-button {
+    position: absolute;
+    margin: 10px auto 20px -50px;
+    left: 45%;
 }

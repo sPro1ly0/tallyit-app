@@ -66,10 +66,9 @@ class SignUpForm extends Component {
 
     return (
       <section className='signup'>
-        <header>
-          <h3>
-            New user? Sign up with a group name and use it to login
-          </h3>
+        <header className='signup-header'>
+          <h2 className='new-user'>New user?</h2>
+          <p className='signup-info'>Sign up with a group name and use it to login</p>         
         </header>
         <form
           autoComplete='on'

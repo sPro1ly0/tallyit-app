@@ -132,7 +132,7 @@ class EditGame extends Component {
 
     return (
       <>
-        <header>
+        <header className='game-header'>
           <h1>{this.state.game_name}</h1>
         </header>
 

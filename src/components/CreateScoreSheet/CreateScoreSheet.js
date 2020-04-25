@@ -51,15 +51,15 @@ class CreateScoreSheet extends Component {
     const { error } = this.context;
 
     return (
-      <>
-        <button className="go-back-player-button" onClick={this.handleGoBack}>Go Back</button>
-        <header>
+      <div className='create-scoresheet'>
+        <button className="go-back-button" onClick={this.handleGoBack}>Go Back</button>
+        <header className='create-scoresheet-header'>
           <h1>Create Score Sheet</h1>
         </header>
         {error 
           ? <div className="error">{this.state.error}</div>
           : ''}
-        <section className="create-score-sheet">
+        <section className="create-scoresheet-section">
           <form className='create-score-sheet-form' onSubmit={this.handleSubmit}>
             <label htmlFor='game_name'>Add Game Name: </label>
             <input 
@@ -73,8 +73,7 @@ class CreateScoreSheet extends Component {
             <button type='submit'>Submit</button>
           </form>
         </section>
-
-      </>
+      </div>
     );
   }
 }

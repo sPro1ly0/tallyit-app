@@ -2,7 +2,10 @@
     background-color: #A3F7BF;
     height: 250px;
     padding: 45px 15px;
-    font-size: 1em;
+}
+
+.banner > h1 {
+    font-size: 1.75em;
 }
   
 section {
@@ -42,16 +45,20 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    min-height: 100px;
+    min-height: 120px;
 }
 
 .login {
     background-color: #A3F7BF;
 }
 
-.signup > header,
-.login-header {
-    margin-top: 0;
+.new-user {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.signup-info {
+    font-size: 1.1em;
 }
 
 .login-header {
@@ -61,8 +68,21 @@ section {
     padding-top: 10px;
 }
 
-.login-header > h3 {
+.login-header > h2 {
     margin: 0;
+}
+
+.signup-form > div > label,
+.login-form > div > label {
+    font-weight: 600;
+}
+
+#group_name,
+#game_name {
+    font-size: 1.15em;
+    padding-left: 3px;
+    border-radius: 3px;
+    border: 1px solid gray;
 }
 
 .signup-error,
@@ -70,10 +90,7 @@ section {
     width: 100%;
 }
 
-.signup-form > button,
-.login-form > button {
-	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	background: linear-gradient(to bottom, white 5%, #E9E9E9 100%);
+button {
 	background-color:white;
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -86,14 +103,7 @@ section {
 	padding: 5px 20px;
 }
 
-.signup-form > button:hover,
-.login-form > button:hover {
-    background: linear-gradient(to bottom, #E9E9E9 5%, white 100%);
-	background-color:#E9E9E9;
-}
-
-.signup-form > button:focus,
-.login-form > button:focus {
-    background: linear-gradient(to bottom, #E9E9E9 5%, white 100%);
-	background-color:#E9E9E9;
+button:hover,
+button:focus {
+	background-color: #05DFD7;
 }

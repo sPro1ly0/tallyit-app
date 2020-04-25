@@ -127,7 +127,7 @@ class ScoreSheetPage extends Component {
     
     return (
       <>
-        <header>
+        <header className='game-header'>
           <h1>{gameName}</h1>
         </header>
         {error 

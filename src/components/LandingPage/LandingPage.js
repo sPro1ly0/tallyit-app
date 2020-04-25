@@ -30,16 +30,18 @@ class LandingPage extends Component {
             ? <Spinner />
             : false
         }
-
-        <header className='banner' role='banner'>
-          <h1>Keep your game scores and stats in one place <FontAwesomeIcon icon='dice-one' size='1x' /></h1>
-        </header>
+        <div>
+          <header className='banner' role='banner'>
+            <h1>Keep your game scores and stats in one place <FontAwesomeIcon icon='dice-one' size='1x' /></h1>
+          </header>
    
-        <section className='features'>
-          <h2>Easy Sign Up and Login <FontAwesomeIcon icon='check-circle' size='2x' /></h2>
-          <h2>Perfect for Family Game Nights  <FontAwesomeIcon icon='users' size='2x' /></h2>
-          <h2>Save and View Your Results <FontAwesomeIcon icon='list-alt' size='2x' /></h2>
-        </section>
+          <section className='features'>
+            <h2>Easy Sign Up and Login <FontAwesomeIcon icon='check-circle' size='2x' /></h2>
+            <h2>Perfect for Family Game Nights  <FontAwesomeIcon icon='users' size='2x' /></h2>
+            <h2>Save and View Your Results <FontAwesomeIcon icon='list-alt' size='2x' /></h2>
+          </section>
+        </div>
+
         
         <Element id='signup' name='signup'>
           <SignUpForm onLoading={this.setLoadingStatus} />

@@ -1,7 +1,7 @@
 .spinner-loading {
     position: fixed;
     border: 16px solid lightgray;
-    border-top: 16px solid skyblue;
+    border-top: 16px solid #A3F7BF;
     border-radius: 50%;
     top: 0;  
     left: 0;  

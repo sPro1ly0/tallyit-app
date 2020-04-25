@@ -58,7 +58,7 @@ class LoginForm extends Component {
     return (
       <section className='login'>
         <header className='login-header'>
-          <h3>Login</h3>
+          <h2>Login</h2>
           <p>Enter &apos;Demo&apos; to view demo account.</p>
         </header>
         <form 

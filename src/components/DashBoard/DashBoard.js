@@ -77,7 +77,7 @@ class DashBoard extends Component {
 
     if (currentGameResults.length > 0) {
       gameList = currentGameResults.map(g => 
-        <Link to={`/game/${g.id}`} key={g.id}>{`${g.game_name} - ${moment(g.date_created).format('lll')}`}</Link>
+        <Link to={`/game/${g.id}`} key={g.id}><span className='game-name'>{`${g.game_name}`}</span> <span className='game-date'>{`${moment(g.date_created).format('lll')}`}</span></Link>
       );
     } else if (currentGameResults.length === 0) {
       gameList = 'Game scores you record will appear right here.';
@@ -108,7 +108,7 @@ class DashBoard extends Component {
             ? <Spinner />
             : false
         }
-        <header>
+        <header className='dashboard-header'>
           <h1>Hi {groupName}!</h1>
           <Link className='start-game-link' to='/create-scoresheet'>Start a New Game</Link>
         </header>
@@ -122,6 +122,7 @@ class DashBoard extends Component {
               {gameList}
             </div>
             <div className='pagination'>
+              <span>Page</span>
               {renderPageNumbers}
             </div>
           </section>
