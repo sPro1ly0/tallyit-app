@@ -136,15 +136,13 @@ class EditGame extends Component {
         <header className='game-header'>
           <h1>{this.state.game_name}</h1>
         </header>
-
+        <div className='player-error' role='alert'>
+          {this.state.error && <p className='red-error'>{this.state.error}</p>}
+        </div>
         <AddPlayerForm 
           gameId={game.id}
           onAddPlayer={this.addNewPlayers}
         />
-
-        <div className='player-error' role='alert'>
-          {this.state.error && <p className='red-error'>{this.state.error}</p>}
-        </div>
         <CounterNumberForm 
           counterNumber={this.state.counter_number}
           onNumberChange={this.handleNumberChange}

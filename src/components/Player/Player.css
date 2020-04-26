@@ -11,6 +11,7 @@
     border-radius: 3px;
     padding: 3px;
     font-size: 1.15em;
+    margin-bottom: 3px;
 }
 
 .delete-player {
@@ -32,4 +33,15 @@
 .player-score {
     display: flex;
     width: 49%;
+}
+
+@media screen and (min-width: 736px) {
+    .player {
+        width: 580px;
+        margin: 5px auto;
+    }
+
+    .delete-player {
+        margin-right: 10px;
+    }
 }

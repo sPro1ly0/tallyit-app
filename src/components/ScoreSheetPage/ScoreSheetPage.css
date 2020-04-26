@@ -47,10 +47,30 @@
 }
 
 .change-counter-number {
+    background-color: #F4E76E;
     height: 105px;
     line-height: 1.8em;
 }
 
+#counter-number {
+    text-align: right;
+    margin-left: 5px;
+    width: 100px;
+    padding-right: 5px;
+}
+
 .delete-cancel-button {
     margin: 50px auto;
+}
+
+.player-error {
+    height: 50px;
+}
+
+@media screen and (min-width: 568px) {
+
+    .change-counter-number {
+        height: 76px;
+    }
+
 }

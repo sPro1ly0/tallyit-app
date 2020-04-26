@@ -45,7 +45,7 @@ class AddPlayerForm extends Component {
   render() {
     return (
       <>
-        <section className='add-edit-player'>
+        <section className='add-player-section'>
           <form
             onSubmit={this.handleSubmit}
           >

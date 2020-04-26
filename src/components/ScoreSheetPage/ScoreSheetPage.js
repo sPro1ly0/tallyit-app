@@ -52,7 +52,6 @@ class ScoreSheetPage extends Component {
   }
   
   handleScoreChange = (playerId, number) => {
-    console.log('Good', playerId, number);
 
     const updateScores = this.state.current_players.map(player => {
       if (player.id === playerId) {
@@ -133,13 +132,13 @@ class ScoreSheetPage extends Component {
         {error 
           ? <p className='red-error'>{this.state.error}</p>
           : ''}
+        <div className='player-error' role='alert'>
+          {this.state.error && <p className='red-error'>{this.state.error}</p>}
+        </div>
         <AddPlayerForm 
           gameId={gameId}
           onAddPlayer={this.addCurrentPlayers}
         />
-        <div className='player-error' role='alert'>
-          {this.state.error && <p className='red-error'>{this.state.error}</p>}
-        </div>
         <CounterNumberForm 
           counterNumber={this.state.counter_number}
           onNumberChange={this.handleNumberChange}

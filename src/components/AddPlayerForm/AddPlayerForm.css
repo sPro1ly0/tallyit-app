@@ -1,24 +1,48 @@
-.add-edit-player {
+.add-player-section {
     background-color: #A3F7BF;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 10px;
     min-height: 130px;
     width: 100%;
 }
 
-.add-edit-player > form {
+.add-player-section > form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
 }
 
-.add-edit-player > form > label {
+.add-player-section > form > label {
     font-size: 1.12em;
 }
 
 .add-player-button {
+    font-size: 1.1em;
     padding: 5px 20px;
     margin:  0 auto;
+}
+
+@media screen and (min-width: 768px) {
+
+    .add-player-section {
+        height: 110px;
+    }
+
+    .add-player-section > form {
+        flex-direction: row;
+        align-items: center;
+        width: 580px;
+        margin: 0 auto;
+    }
+
+    #player_name {
+        margin-left: 5px;
+        width: 250px;
+    }
+
+    .add-player-button {
+        font-size: 1em;
+    }
+
 }
