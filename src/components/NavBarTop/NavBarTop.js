@@ -65,7 +65,7 @@ class NavBarTop extends Component {
   render() {
     return (
       <nav className='nav-top'>
-        <p className='app-name'>Tally it!</p>
+        <p className='app-name'><span role='img' aria-label='pencil writing on paper emoji'>📝</span>tally<span>it</span></p>
         {
           TokenService.hasAuthToken()
             ? this.renderDashAndLogoutLink()

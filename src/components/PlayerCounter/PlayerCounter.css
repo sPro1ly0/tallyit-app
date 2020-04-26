@@ -16,3 +16,8 @@
     max-width: 120px;
     padding: 5px 8px;
 }
+
+.decrease-button:hover,
+.decrease-button:focus {
+    background-color: #F80008;
+}

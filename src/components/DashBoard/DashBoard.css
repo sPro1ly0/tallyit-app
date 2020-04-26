@@ -11,7 +11,7 @@
 
 .start-game-link {
     background-color: white;
-    border: 1px solid #05DFD7;
+    border: 1px solid #06D6A0;
     border-radius: 3px;
     box-shadow: 0px 3px 10px 5px rgba(119, 119, 119, 0.4);
     -moz-box-shadow: 0px 3px 10px 5px rgba(119, 119, 119, 0.4);
@@ -24,7 +24,8 @@
 }
 
 .start-game-link:hover {
-    background-color: #05DFD7;
+    background-color: #06D6A0;
+    color: white;
 }
 
 .all-games {
@@ -68,8 +69,11 @@
 }
 
 .game-links > a:hover,
-.game-links > a:focus {
-    background-color: #05DFD7;
+.game-links > a:focus,
+.game-links > a > span:hover,
+.game-links > a > span:focus {
+    background-color: #06D6A0;
+    color: white;
 }
 
 .game-name {

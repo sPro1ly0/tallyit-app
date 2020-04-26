@@ -19,6 +19,11 @@
     padding: 0 8px;
 }
 
+.delete-player:hover,
+.delete-player:focus {
+    background-color: #F80008;
+}
+
 .player-name {
     display: flex;
     width: 60%;

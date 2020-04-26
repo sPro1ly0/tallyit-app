@@ -33,7 +33,7 @@ section {
 }
 
 .signup {
-    background-color: #FFF591;
+    background-color: #F4E76E;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -108,5 +108,6 @@ button {
 
 button:hover,
 button:focus {
-	background-color: #05DFD7;
+    background-color: #06D6A0;
+    color: white;
 }

@@ -25,9 +25,13 @@ nav > a {
 }
 
 .app-name {
+    color: #0F7425;
+    font-size: 1.85em;
+    font-family: 'Delius', 'Arial', 'Helvetica', sans-serif;
+}
 
-    font-size: 1.95em;
-    font-family: 'Bubblegum Sans', 'Arial', 'Helvetica', sans-serif;
+.app-name > span {
+    color: black;
 }
 
 .nav-top-links {
@@ -52,5 +56,5 @@ nav > a {
 }
 
 .dashboard-link {
-    border-bottom: 3px solid #05DFD7;
+    border-bottom: 3px solid #06D6A0;
 }
