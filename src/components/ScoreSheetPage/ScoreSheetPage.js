@@ -23,7 +23,7 @@ class ScoreSheetPage extends Component {
 
   addCurrentPlayers = player => {
     let { current_players } = this.state;
-    if (current_players.length > 20) {
+    if (current_players.length >= 20) {
       this.setState({
         error: 'Do not enter more than 20 players'
       });

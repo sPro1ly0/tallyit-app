@@ -20,10 +20,6 @@ footer {
     padding-right: 10px;
 }
 
-nav > a {
-    font-size: 1.2em;
-}
-
 .app-name {
     color: #0F7425;
     font-size: 1.85em;
@@ -46,13 +42,14 @@ nav > a {
 .nav-top-links > a {
     font-family: 'Open Sans', 'Arial', 'Helvetica', sans-serif;
     text-decoration: none;
-    font-size: 1.03em;
+    font-size: 1em;
     padding: 2px;
     color: black;
 }
 
-.nav-show-logout-link {
-    justify-content: flex-end;
+.nav-top-links > a:active,
+.nav-top-links > a:focus {
+    border-bottom: 3px solid #06D6A0;
 }
 
 .dashboard-link {

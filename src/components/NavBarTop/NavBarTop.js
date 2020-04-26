@@ -4,7 +4,7 @@ import TokenService from '../../services/token-service';
 import IdleService from '../../services/idle-service';
 import TallyContext from '../../TallyContext';
 import './NavBarTop.css';
-import { Link } from 'react-scroll';
+import Scroll, { Link } from 'react-scroll';
 
 class NavBarTop extends Component {
 
@@ -46,6 +46,8 @@ class NavBarTop extends Component {
           smooth={true}
           offset={-60}
           duration={500}
+          tabIndex='0'
+          onKeyDown={() => Scroll.animateScroll.scrollTo(700)}
         >
           Sign Up
         </Link>
@@ -55,6 +57,8 @@ class NavBarTop extends Component {
           smooth={true}
           offset={-50}
           duration={500}
+          tabIndex='0'
+          onKeyDown={() => Scroll.animateScroll.scrollTo(1900)}
         >
           Login
         </Link>

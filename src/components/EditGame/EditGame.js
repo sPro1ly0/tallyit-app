@@ -43,7 +43,7 @@ class EditGame extends Component {
 
   addNewPlayers = player => {
     let { new_players } = this.state;
-    if (new_players.length > 20) {
+    if (new_players.length >= 20) {
       this.setState({
         error: 'Do not enter more than 20 players'
       });

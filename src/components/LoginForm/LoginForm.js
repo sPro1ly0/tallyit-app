@@ -66,7 +66,7 @@ class LoginForm extends Component {
           className='login-form'
           onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor='group_name'>Enter Your Group Name: </label>
+            <label htmlFor='group_name'>Enter Your Group Name </label>
             <input  
               type='text' 
               id='group_name' 

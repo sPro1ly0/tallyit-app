@@ -14,7 +14,9 @@ button, a {
   cursor: pointer;
 }
 
-a:hover {
+a:hover,
+a:active,
+a:focus {
   border-bottom: 3px solid #06D6A0;
 }
 

@@ -140,7 +140,7 @@ class GameStatsPage extends Component {
             }}
             lengthAngle={360}
             lineWidth={20}
-            paddingAngle={5}
+            paddingAngle={2}
             radius={50}
             rounded={false}
             startAngle={0}
