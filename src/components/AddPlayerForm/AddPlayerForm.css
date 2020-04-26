@@ -1,4 +1,5 @@
 .add-edit-player {
+    background-color: #A3F7BF;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -15,4 +16,9 @@
 
 .add-edit-player > form > label {
     font-size: 1.12em;
+}
+
+.add-player-button {
+    padding: 5px 20px;
+    margin:  0 auto;
 }

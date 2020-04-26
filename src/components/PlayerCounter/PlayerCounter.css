@@ -1,6 +1,7 @@
 .score-counter {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
 }
 
@@ -11,5 +12,7 @@
 .decrease-button,
 .increase-button {
     font-size: 1em;
+    font-weight: 400;
     max-width: 120px;
+    padding: 5px 8px;
 }

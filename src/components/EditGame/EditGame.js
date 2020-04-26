@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import '../ScoreSheetPage/ScoreSheetPage.css';
 import AddPlayerForm from '../AddPlayerForm/AddPlayerForm';
 import CounterNumberForm from '../CounterNumberForm/CounterNumberForm';
 import Player from '../Player/Player';
@@ -141,8 +142,8 @@ class EditGame extends Component {
           onAddPlayer={this.addNewPlayers}
         />
 
-        <div className='player-error' role="alert">
-          {this.state.error && <p className="red-error">{this.state.error}</p>}
+        <div className='player-error' role='alert'>
+          {this.state.error && <p className='red-error'>{this.state.error}</p>}
         </div>
         <CounterNumberForm 
           counterNumber={this.state.counter_number}
@@ -158,7 +159,11 @@ class EditGame extends Component {
           </button>
         </section>
       
-        <button type="button" onClick={this.handleClickCancel}>Cancel</button>
+        <button type='button' 
+          className='delete-cancel-button' 
+          onClick={this.handleClickCancel}>
+            Cancel
+        </button>
       </>
     );
   }

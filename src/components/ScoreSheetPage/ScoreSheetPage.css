@@ -1,11 +1,21 @@
+.game-header {
+    margin-top: 80px;
+}
+
+.game-header > h1 {
+    margin-bottom: 0;
+}
+
 .score-sheet {
+    background-color: #A3F7BF;
     height: fit-content;
     padding: 2px;
     margin-bottom: 20px;
+    padding-top: 20px;
 }
 
 .score-sheet > button {
-    margin-top: 30px;
+    margin: 30px auto;
 }
 
 .score-sheet-form {
@@ -37,5 +47,10 @@
 }
 
 .change-counter-number {
-    height: 95px;
+    height: 105px;
+    line-height: 1.8em;
+}
+
+.delete-cancel-button {
+    margin: 50px auto;
 }

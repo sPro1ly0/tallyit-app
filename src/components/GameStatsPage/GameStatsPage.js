@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TallyContext from '../../TallyContext';
 import Spinner from '../Spinner/Spinner';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
 import TallyitApiService from '../../services/tallyit-api-service';
@@ -103,7 +104,7 @@ class GameStatsPage extends Component {
             ? <Spinner />
             : false
         }
-        <button className='go-back-button' onClick={this.handleGoBack}>Go Back</button>
+
         <header className='game-stats-header'>
           <h1>{game.game_name} Stats</h1>
           <h2>Date Played: {date}</h2>
@@ -151,9 +152,15 @@ class GameStatsPage extends Component {
         </section>
 
         <div className='game-edit-delete-buttons'>
-          <Link className='edit-game-button' to={`/edit-game/${game.id}`}>Edit Game</Link>
-          <button className='delete-game-button' onClick={this.handleDelete}>Delete Game</button>
+          <Link className='edit-game-button' to={`/edit-game/${game.id}`}><FontAwesomeIcon icon='pencil-alt' size='1x'/> Edit</Link>
+          <button className='delete-game-button' onClick={this.handleDelete}><FontAwesomeIcon icon='trash' size='1x'/> Delete</button>
         </div>
+
+        <button 
+          className='go-back-stats-button' 
+          onClick={this.handleGoBack}>
+            Go Back
+        </button>
 
       </>
     );

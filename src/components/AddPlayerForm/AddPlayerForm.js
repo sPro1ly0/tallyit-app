@@ -57,7 +57,11 @@ class AddPlayerForm extends Component {
               value={this.state.name}
               onChange={this.handleNameChange} 
               required/>
-            <button type='submit'>Add Player</button>
+            <button 
+              type='submit'
+              className='add-player-button'>
+                Add Player
+            </button>
           </form>
         </section>
       </>

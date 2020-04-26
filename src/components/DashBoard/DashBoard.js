@@ -3,6 +3,7 @@ import TallyContext from '../../TallyContext';
 import TallyitApiService from '../../services/tallyit-api-service';
 import Spinner from '../Spinner/Spinner';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './DashBoard.css';
 import moment from 'moment';
 
@@ -117,7 +118,7 @@ class DashBoard extends Component {
           : ''}
         <div className='games-played'>
           <section className='all-games'>
-            <h2>Games Played</h2>
+            <h2><FontAwesomeIcon icon='dice' size='1x'/> Games Played <FontAwesomeIcon icon='dice' size='1x'/></h2>
             <div className='game-links'>
               {gameList}
             </div>

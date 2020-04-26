@@ -1,7 +1,7 @@
 .banner {
     background-color: #A3F7BF;
     height: 250px;
-    padding: 45px 15px;
+    padding: 60px 15px;
 }
 
 .banner > h1 {
@@ -61,11 +61,12 @@ section {
     font-size: 1.1em;
 }
 
+.signup-header,
 .login-header {
     height: 140px;
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
+    padding-top: 20px;    
 }
 
 .login-header > h2 {
@@ -78,7 +79,9 @@ section {
 }
 
 #group_name,
-#game_name {
+#game_name,
+#player_name,
+#counter-number {
     font-size: 1.15em;
     padding-left: 3px;
     border-radius: 3px;

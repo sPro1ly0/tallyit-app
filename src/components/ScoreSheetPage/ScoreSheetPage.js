@@ -137,8 +137,8 @@ class ScoreSheetPage extends Component {
           gameId={gameId}
           onAddPlayer={this.addCurrentPlayers}
         />
-        <div className='player-error' role="alert">
-          {this.state.error && <p className="red-error">{this.state.error}</p>}
+        <div className='player-error' role='alert'>
+          {this.state.error && <p className='red-error'>{this.state.error}</p>}
         </div>
         <CounterNumberForm 
           counterNumber={this.state.counter_number}
@@ -154,7 +154,8 @@ class ScoreSheetPage extends Component {
           </button>
         </section>
       
-        <button 
+        <button
+          className='delete-cancel-button' 
           onClick={this.handleDelete}>
             Delete
         </button>
