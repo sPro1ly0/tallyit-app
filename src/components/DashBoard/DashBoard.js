@@ -118,7 +118,7 @@ class DashBoard extends Component {
           : ''}
         <div className='games-played'>
           <section className='all-games'>
-            <h2><FontAwesomeIcon icon='dice' size='1x'/> Games Played <FontAwesomeIcon icon='dice' size='1x'/></h2>
+            <h2><FontAwesomeIcon className='two-dice' icon='dice' size='1x'/> Games Played <FontAwesomeIcon className='two-dice' icon='dice' size='1x'/></h2>
             <div className='game-links'>
               {gameList}
             </div>

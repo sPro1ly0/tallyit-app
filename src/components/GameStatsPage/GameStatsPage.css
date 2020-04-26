@@ -9,12 +9,14 @@
 
 .game-stats-header > h2 {
     font-size: 1.2em;
+    font-weight: 400;
 }
 
 .pie-chart {
   background-color: #F6F7EB;
   width: 320px;
   height: fit-content;
+  margin: 0 auto;
 }
 
 .game-edit-delete-buttons {
@@ -22,7 +24,7 @@
     display: flex;
     justify-content: space-around;
     align-items: baseline;
-    margin: 10px auto 50px;
+    margin: 30px auto 50px;
     padding-top: 3px;
     padding-bottom: 3px;
 }
@@ -55,11 +57,12 @@
     background-color: #F80008;
 }
 
-.games-played {
+.scores-table-section {
     height: fit-content;
     padding: 10px;
     text-align: center;
     width: 100%;
+    max-width: 530px;
     margin: 0 auto;
 }
 
@@ -86,4 +89,40 @@
 #game-results th {
     border: 1px solid #AAA;
     padding: 2px;
-} 
+}
+
+@media screen and (min-width: 768px) {
+    .scores-table-section {
+        width: 530px;
+    }
+
+    .game-edit-delete-buttons {
+        width: 50%;
+        max-width: 447px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .table-and-chart {
+        display: flex;
+        margin: 0 auto;
+        width: 90%;
+        max-width: 980px;
+    }
+
+    .pie-chart {
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    .table-and-chart {
+        display: flex;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .pie-chart {
+        width: 360px;
+    }
+}

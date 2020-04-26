@@ -44,8 +44,6 @@ section {
     padding: 20px 20px;
 }
 
-.signup,
-.login,
 .features {
     height: fit-content;
 }
@@ -64,58 +62,12 @@ section {
     min-height: 120px;
 }
 
-#signup {
-    min-height: 500px;
-    background-color: #F4E76E;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signup {
-    background-color: #F6F7EB;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border: 1px solid lightgray;
-    border-radius: 10px;
+.signup-header,
+.login-header {
+    height: 140px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 500px;
-    width: 300px;
-}
-
-.signup-form > div,
-.login-form > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    min-height: 80px;
-    margin: 40px auto;
-}
-
-.signup-form > div > label,
-.login-form > div > label {
-    text-align: left;
-}
-
-#login {
-    min-height: 360px;
-    background-color: #A3F7BF;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login {
-    background-color: #F6F7EB;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    height: 500px;
-    width: 300px;
-    margin: 0 auto;
+    padding-top: 30px;    
 }
 
 .new-user {
@@ -127,14 +79,6 @@ section {
     font-size: 1.1em;
 }
 
-.signup-header,
-.login-header {
-    height: 140px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 30px;    
-}
-
 .login-header > h2 {
     margin: 0;
 }
@@ -142,7 +86,60 @@ section {
 .signup-form > div > label,
 .login-form > div > label {
     font-weight: 600;
+    text-align: left;
 }
+
+#signup {
+    min-height: 500px;
+    background-color: #F4E76E;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-section {
+    background-color: #F6F7EB;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+    width: 300px;
+}
+
+
+#login {
+    min-height: 360px;
+    background-color: #A3F7BF;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-section {
+    background-color: #F6F7EB;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    height: 500px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.signup-label-input,
+.login-label-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 80px;
+    margin: 40px auto;
+}
+
+
 
 #group_name,
 #game_name,
@@ -157,6 +154,7 @@ section {
 .signup-error,
 .login-error {
     width: 100%;
+    height: 55px;
 }
 
 button {

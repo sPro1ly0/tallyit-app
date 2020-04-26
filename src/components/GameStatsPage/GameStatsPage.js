@@ -110,46 +110,49 @@ class GameStatsPage extends Component {
           <h2>Date Played: {date}</h2>
         </header>
 
-        <section className='games-played'>
-          <div className='player-list'>
-            <table id='game-results'>
-              <tbody>
-                <tr>
-                  <th>Players</th>
-                  <th>Scores</th>
-                </tr>
-                {results}
-              </tbody>
-            </table>
-          </div>
-        </section>
+        <div className='table-and-chart'>
+          <section className='scores-table-section'>
+            <div className='player-list'>
+              <table id='game-results'>
+                <tbody>
+                  <tr>
+                    <th>Players</th>
+                    <th>Scores</th>
+                  </tr>
+                  {results}
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-        <section className='pie-chart'>
-          <PieChart
-            animate={true}
-            animationDuration={1000}
-            animationEasing='ease-out'
-            cx={50}
-            cy={50}
-            data={playerData}
-            label={true}
-            labelPosition={60}
-            labelStyle={{
-              fontFamily: 'sans-serif',
-              fontSize: '6px'
-            }}
-            lengthAngle={360}
-            lineWidth={20}
-            paddingAngle={2}
-            radius={50}
-            rounded={false}
-            startAngle={0}
-            viewBoxSize={[
-              100,
-              100
-            ]} 
-          />
-        </section>
+          <section className='pie-chart'>
+            <PieChart
+              animate={true}
+              animationDuration={1000}
+              animationEasing='ease-out'
+              cx={50}
+              cy={50}
+              data={playerData}
+              label={true}
+              labelPosition={60}
+              labelStyle={{
+                fontFamily: 'sans-serif',
+                fontSize: '6px'
+              }}
+              lengthAngle={360}
+              lineWidth={20}
+              paddingAngle={2}
+              radius={50}
+              rounded={false}
+              startAngle={0}
+              viewBoxSize={[
+                100,
+                100
+              ]} 
+            />
+          </section>
+        </div>
+        
 
         <div className='game-edit-delete-buttons'>
           <Link className='edit-game-button' to={`/edit-game/${game.id}`}><FontAwesomeIcon icon='pencil-alt' size='1x'/> Edit</Link>

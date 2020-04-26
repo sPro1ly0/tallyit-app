@@ -65,7 +65,7 @@ class SignUpForm extends Component {
     const { error, group_name } = this.state;
 
     return (
-      <section className='signup'>
+      <section className='signup-section'>
         <header className='signup-header'>
           <h2 className='new-user'>New user?</h2>
           <p className='signup-info'>Sign up with a group name and use it to login</p>         
@@ -75,7 +75,7 @@ class SignUpForm extends Component {
           className='signup-form'
           onSubmit={this.handleSubmit}
         >
-          <div>
+          <div className='signup-label-input'>
             <label htmlFor='group_name'>Create a Group Name </label>
             <input
               type='text' 

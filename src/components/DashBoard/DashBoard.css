@@ -37,12 +37,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    border-radius: 5px;
 }
   
 .games-played {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: fit-content;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .game-links {
@@ -60,18 +66,23 @@
     -webkit-box-shadow: 0px 3px 10px 5px rgba(119, 119, 119, 0.4);
     color: black;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    min-height: 45px;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    min-height: 65px;
     line-height: 1.5em;
     margin-bottom: 5px;
     text-decoration: none;
+    padding: 0 5px 0 15px;
 }
 
 .game-links > a:hover,
 .game-links > a:focus,
+.game-links > a:active,
 .game-links > a > span:hover,
-.game-links > a > span:focus {
+.game-links > a > span:focus,
+.game-links > a > span:active {
     background-color: #06D6A0;
     color: white;
 }
@@ -83,7 +94,7 @@
 
 .game-date {
     font-size: 0.83em;
-    color: gray;
+    color: #636161;
 }
 
 .pagination {
@@ -94,9 +105,74 @@
 
 .page-number {
     border: 1px solid #ddd;
-    border-radius: 50%;
+    border-radius: 10px;
     background-color: white;
     font-size: 1.05em;
     padding: 7px 15px;
     margin: 0 2px;
+}
+
+.two-dice:hover {
+    color: #FF0000;
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media screen and (min-width: 375px) {
+    .games-played {
+        width: 375px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .games-played {
+        width: 375px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .games-played {
+        width: 450px;
+    }
+
+    .pagination {
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .games-played {
+        width: 550px;
+    }
+
+    .game-links > a {
+        padding-left: 25px;
+        padding-right: 8px;
+    }
+
+    .game-name {
+        font-size: 1.1em;
+    }
+
+    .game-date {
+        font-size: 0.9em;
+    }
+
+    .pagination {
+        width: 500px;
+    }
 }

@@ -2,13 +2,18 @@
     display: flex;
     flex-direction: column;
     margin-top: 60px;
-    height: 450px;
+    height: 500px;
 }
 
 .create-scoresheet-section {
     background-color: #A3F7BF;
-    height: fit-content;
     height: 300px;
+    width: 320px;
+    border-radius: 3px;
+    box-shadow: 0px 3px 10px 5px rgba(119, 119, 119, 0.4);
+    -moz-box-shadow: 0px 3px 10px 5px rgba(119, 119, 119, 0.4);
+    -webkit-box-shadow: 0px 3px 10px 5px rgba(119, 119, 119, 0.4);
+    margin: 0 auto;
 }
 
 .create-scoresheet-header {
@@ -32,17 +37,7 @@
 .create-score-sheet-form > label {
     font-size: 1.3em;
 }
-  
-.enter-player-names {
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
 
 .go-back-button {
-    position: absolute;
-    margin: 10px auto 20px -50px;
-    left: 45%;
-    bottom: 1px;
+    margin: 30px auto 20px;
 }

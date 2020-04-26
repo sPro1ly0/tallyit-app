@@ -56,7 +56,7 @@ class LoginForm extends Component {
     const { error } = this.state;
 
     return (
-      <section className='login'>
+      <section className='login-section'>
         <header className='login-header'>
           <h2>Login</h2>
           <p>Enter &apos;Demo&apos; to view demo account.</p>
@@ -65,7 +65,7 @@ class LoginForm extends Component {
           autoComplete='on'
           className='login-form'
           onSubmit={this.handleSubmit}>
-          <div>
+          <div className='login-label-input'>
             <label htmlFor='group_name'>Enter Your Group Name </label>
             <input  
               type='text' 

@@ -55,3 +55,23 @@ footer {
 .dashboard-link {
     border-bottom: 3px solid #06D6A0;
 }
+
+.nav-show-logout-link {
+    max-width: 155px;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-top {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .nav-show-logout-link {
+        max-width: 175px;
+    }
+
+    .nav-top-links > a {
+        font-size: 1.1em;
+        margin-right: 10px;
+    }
+
+}

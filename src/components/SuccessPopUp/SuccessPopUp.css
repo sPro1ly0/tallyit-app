@@ -1,5 +1,9 @@
 .popup-success {  
-    position: fixed;  
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 80px;
     width: 280px;  
     height: 280px;  
     top: 0;  
