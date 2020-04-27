@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import SucessPopUp from '../SuccessPopUp/SucessPopUp';
+import '../LandingPage/LandingPage.css';
 
 class SignUpForm extends Component {
 
@@ -22,23 +23,17 @@ class SignUpForm extends Component {
     });
   }
 
+  // show success pop up
   handleSignUpSuccessPopUp = () => {
-
     this.setState({
       showPopUp: !this.state.showPopUp
     });
-    
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    
     const { group_name } = this.state;
-    
-    this.setState({
-      error: null
-    });
-
+    this.setState({ error: null });
     this.props.onLoading(true);
 
     AuthApiService.postGroup({
@@ -50,7 +45,6 @@ class SignUpForm extends Component {
       })
       .catch(res => {
         this.props.onLoading(false);
-
         this.setState({ error: res.error });
       });
   }
@@ -91,7 +85,6 @@ class SignUpForm extends Component {
           <div className="signup-error" role="alert">
             {error && <p className="red-error">{error}</p>}
           </div>
-
           {
             this.state.showPopUp
               ? <SucessPopUp groupName={group_name} closePopUp={this.handleSignUpSuccessPopUp}/>

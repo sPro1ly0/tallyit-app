@@ -16,6 +16,7 @@ class LandingPage extends Component {
     };
   }
 
+  // control loading spinner
   setLoadingStatus = status => {
     this.setState({
       isLoading: status
