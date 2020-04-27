@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import './CreateScoreSheet.css';
 import TallyContext from '../../TallyContext';
 import TallyitApiService from '../../services/tallyit-api-service';
+import './CreateScoreSheet.css';
+import ValidationError from '../../ValidationError';
 
 class CreateScoreSheet extends Component {
 
@@ -12,8 +13,25 @@ class CreateScoreSheet extends Component {
     super(props);
     this.state = {
       error: null,
-      game_name: ''
+      game_name: {
+        value: '',
+        touched: false
+      }
     };
+  }
+
+  updateGameName = (e) => {
+    const gameName = e.target.value;
+    this.setState({
+      game_name: { value: gameName, touched: true }
+    });
+  }
+
+  validateGameName()  {
+    let gameName = this.state.game_name.value;
+    if (gameName.length > 30) {
+      return 'Game name cannot be more than 30 characters long.';
+    }
   }
 
   componentDidMount() {
@@ -30,14 +48,13 @@ class CreateScoreSheet extends Component {
     e.preventDefault();
 
     const game = {
-      game_name: this.state.game_name
+      game_name: this.state.game_name.value
     };
 
     TallyitApiService.postGame(game)
       .then(res => {
         this.context.setCurrentGame(res);
         this.context.addGame(res);
-
         this.props.history.push('/scoresheet');
       })
       .catch(this.context.setError);
@@ -67,8 +84,8 @@ class CreateScoreSheet extends Component {
               placeholder='Uno'
               value={this.state.game_name}
               onChange={this.handleGameName}
-              required
-            />
+              required />
+            {this.state.game_name.touched && (<ValidationError message={this.validateGameName()}/>)}
             <button type='submit'>Submit</button>
           </form>
         </section>
