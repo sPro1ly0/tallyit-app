@@ -93,7 +93,7 @@ class EditGame extends Component {
   };
 
   render() {
-    const { current_game } = this.context;
+    const { current_game, error } = this.context;
     let game;
     let gameId;
 
@@ -104,7 +104,7 @@ class EditGame extends Component {
       if (game === undefined) {
         game = 'Unknown';
       }
-      
+
       gameId = current_game[0].id;
 
     }
