@@ -56,7 +56,7 @@ footer {
     border-bottom: 3px solid #06D6A0;
 }
 
-.nav-show-logout-link {
+.nav-show-logout-links {
     max-width: 155px;
 }
 
@@ -66,7 +66,7 @@ footer {
         padding-right: 30px;
     }
 
-    .nav-show-logout-link {
+    .nav-show-logout-links {
         max-width: 175px;
     }
 

@@ -20,7 +20,7 @@ class NavBarTop extends Component {
 
   renderDashAndLogoutLink() {
     return (
-      <div className='nav-show-logout-link nav-top-links'>
+      <div className='nav-show-logout-links nav-top-links'>
         <NavLink
           to='/dashboard'
           activeClassName='dashboard-link'
@@ -69,7 +69,9 @@ class NavBarTop extends Component {
   render() {
     return (
       <nav className='nav-top'>
-        <p className='app-name'><span role='img' aria-label='pencil writing on paper emoji'>📝</span>tally<span>it</span></p>
+        <p className='app-name'>
+          <span role='img' aria-label='Pencil writing on paper memo emoji'>📝</span>tally<span>it</span>
+        </p>
         {
           TokenService.hasAuthToken()
             ? this.renderDashAndLogoutLink()
