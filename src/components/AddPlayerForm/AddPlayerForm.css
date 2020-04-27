@@ -1,8 +1,10 @@
 .add-player-section {
     background-color: #A3F7BF;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     margin-top: 10px;
-    min-height: 130px;
+    height: 250px;
     width: 100%;
 }
 
@@ -21,6 +23,15 @@
     font-size: 1.1em;
     padding: 5px 20px;
     margin:  0 auto;
+}
+
+@media screen and (min-width: 418px) {
+
+    #player_name {
+        margin: 0 auto;
+        width: 360px;
+    }
+
 }
 
 @media screen and (min-width: 768px) {

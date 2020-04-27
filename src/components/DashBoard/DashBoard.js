@@ -29,6 +29,8 @@ class DashBoard extends Component {
   componentDidMount() {
     this.setLoadingStatus(true);
     this.context.clearError();
+    this.context.setCurrentGame([]);
+    this.context.setPlayerScores([]);
     
     TallyitApiService.getGroupName()
       .then(res => {
@@ -120,7 +122,6 @@ class DashBoard extends Component {
               {gameList}
             </div>
             <div className='pagination'>
-              <span>Page</span>
               {renderPageNumbers}
             </div>
           </section>

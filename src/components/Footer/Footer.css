@@ -1,8 +1,8 @@
 footer {
     display: flex;
     text-align: center;
-    color: white;
-    background-color: #118A2C;
+    color: black;
+    background-color: #F4E76E;
 }
 
 footer > p {

@@ -76,6 +76,7 @@
     text-decoration: none;
     padding: 0 5px 0 15px;
 }
+/* safari has problem showing space-between for flexbox*/
 
 .game-links > a:hover,
 .game-links > a:focus,

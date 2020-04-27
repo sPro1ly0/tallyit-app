@@ -77,14 +77,20 @@ section {
 .features {
     height: fit-content;
     font-size: 0.9em;
+    animation: fadeInAnimation 6.5s ease-in forwards;
 }
 
-@keyframes slideInFromRight {
+@keyframes fadeInAnimation {
     0% {
-      transform: translateX(100%);
+        opacity: 0;
     }
+
+    50% {
+        opacity: .5;
+    }
+
     100% {
-      transform: translateX(0);
+        opacity: 1;
     }
 }
 
@@ -175,6 +181,7 @@ section {
     margin: 40px auto;
 }
 
+#new_group_name,
 #group_name,
 #game_name,
 #player_name,
@@ -242,22 +249,9 @@ button:focus {
         justify-content: space-around;
         height: 100%;
         width: 45%;
-        animation: fadeInAnimation 6.5s ease-in forwards;
     }
 
-    @keyframes fadeInAnimation {
-        0% {
-            opacity: 0;
-        }
 
-        50% {
-            opacity: .5;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
 
     #signup {
         position: relative;

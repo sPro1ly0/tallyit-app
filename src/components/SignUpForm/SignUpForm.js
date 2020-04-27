@@ -12,14 +12,14 @@ class SignUpForm extends Component {
       error: null,
       isLoading: false,
       showPopUp: false,
-      group_name: ''
+      new_group_name: ''
     };
   }
 
   updateGroupName = (e) => {
-    const group_name = e.target.value;
+    const new_group_name = e.target.value;
     this.setState({
-      group_name
+      new_group_name
     });
   }
 
@@ -32,12 +32,12 @@ class SignUpForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { group_name } = this.state;
+    const { new_group_name } = this.state;
     this.setState({ error: null });
     this.props.onLoading(true);
 
     AuthApiService.postGroup({
-      group_name: group_name
+      group_name: new_group_name
     })
       .then(() => {
         this.props.onLoading(false);
@@ -51,12 +51,12 @@ class SignUpForm extends Component {
 
   componentWillUnmount() {
     this.setState({
-      group_name: ''
+      new_group_name: ''
     });
   }
 
   render() {
-    const { error, group_name } = this.state;
+    const { error, new_group_name } = this.state;
 
     return (
       <section className='signup-section'>
@@ -70,11 +70,11 @@ class SignUpForm extends Component {
           onSubmit={this.handleSubmit}
         >
           <div className='signup-label-input'>
-            <label htmlFor='group_name'>Create a Group Name</label>
+            <label htmlFor='new_group_name'>Create a Group Name</label>
             <input
               type='text' 
-              id='group_name'
-              name='group_name'
+              id='new_group_name'
+              name='new_group_name'
               aria-label='Enter a group name to sign up and use this group name to login with'
               aria-required='true'
               placeholder='bestfam123' 
@@ -87,7 +87,7 @@ class SignUpForm extends Component {
           </div>
           {
             this.state.showPopUp
-              ? <SucessPopUp groupName={group_name} closePopUp={this.handleSignUpSuccessPopUp}/>
+              ? <SucessPopUp groupName={new_group_name} closePopUp={this.handleSignUpSuccessPopUp}/>
               : null
           }
         </form>

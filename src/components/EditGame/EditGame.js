@@ -16,22 +16,14 @@ class EditGame extends Component {
     super(props);
     this.state = {
       error: null,
-      game_name: '',
       new_players: [],
       counter_number: 1
     };
   }
 
   componentDidMount() {
-    const { current_game, player_scores } = this.context;
-    // const { game_id } = this.props.match.params;
-
-    const game = current_game;
+    const { player_scores } = this.context;
     const playerScores = player_scores;
-
-    this.setState({
-      game_name: game.game_name
-    });
 
     this.setState({
       new_players: playerScores
@@ -134,7 +126,7 @@ class EditGame extends Component {
     return (
       <>
         <header className='game-header'>
-          <h1>{this.state.game_name}</h1>
+          <h1>{game}</h1>
         </header>
         <div className='player-error' role='alert'>
           {this.state.error && <p className='red-error'>{this.state.error}</p>}

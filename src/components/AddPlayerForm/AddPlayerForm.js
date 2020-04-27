@@ -67,15 +67,16 @@ class AddPlayerForm extends Component {
               name='player_name'
               aria-label="Enter a player name"
               aria-required="true"
+              value={this.state.player_name.value}
               onChange={this.updatePlayerName} 
               required/>
-            {this.state.player_name.touched && (<ValidationError message={this.validatePlayerName()}/>)}
             <button 
               type='submit'
               className='add-player-button'>
                 Add Player
             </button>
           </form>
+          {this.state.player_name.touched && (<ValidationError message={this.validatePlayerName()}/>)}
         </section>
       </>
     );
