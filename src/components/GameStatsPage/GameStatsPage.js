@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import TallyContext from '../../TallyContext';
 import Spinner from '../Spinner/Spinner';
+import TallyContext from '../../TallyContext';
+import TallyitApiService from '../../services/tallyit-api-service';
+import GameResult from '../GameResult/GameResult';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import GameResult from '../GameResult/GameResult';
 import './GameStatsPage.css';
-import TallyitApiService from '../../services/tallyit-api-service';
 import moment from 'moment';
 import PieChart from 'react-minimal-pie-chart';
-import colors from '../Colors';
+import colors from '../Colors'; // colors for pie chart
 
 class GameStatsPage extends Component {
+
+  static defaultProps = {
+    match: { params: {} },
+  }
 
   static contextType = TallyContext;
 
@@ -36,10 +40,7 @@ class GameStatsPage extends Component {
   
   handleDelete = () => {
     const { game_id } = this.props.match.params;
-
-    this.setState({
-      error: null
-    });
+    this.setState({ error: null });
 
     TallyitApiService.deleteGame(game_id)
       .then(() => { 
@@ -48,13 +49,21 @@ class GameStatsPage extends Component {
         this.context.setCurrentGame([]);
       })
       .catch(this.context.setError);
-
   }
 
   componentDidMount() {
     this.setLoadingStatus(true);
     this.context.clearError();
     const { game_id } = this.props.match.params;
+
+    TallyitApiService.getGame(game_id)
+      .then(res => {
+        this.context.setCurrentGame(res);
+      })
+      .catch((res) => {
+        this.context.setError(res); 
+      });
+
     TallyitApiService.getGamePlayerScores(game_id)
       .then((res) => {
         this.context.setPlayerScores(res);
@@ -72,19 +81,32 @@ class GameStatsPage extends Component {
 
   render() {
 
-    const { games, player_scores } = this.context;
-    const { game_id } = this.props.match.params;
+    const { current_game, player_scores } = this.context;
+    let game;
+    let gameId;
+    let date;
+    let results;
 
-    const game = games.find(g =>
-      g.id === Number(game_id)    
-    );
-    
-    let date = (moment(game.date_created).format('MMM Do YYYY'));
+    if (current_game.length > 0) {
 
-    // console.log(player_scores);
-    const results = player_scores.map(p => 
-      <GameResult key={p.id} name={p.player_name} score={p.score} />
-    );
+      game = current_game[0].game_name;
+
+      if (game === undefined) {
+        game = 'Unknown';
+      }
+
+      gameId = game.id;
+
+      date = (moment(game.date_created).format('MMM Do YYYY'));
+        
+      results = player_scores.map(p => 
+        <GameResult 
+          key={p.id} 
+          name={p.player_name} 
+          score={p.score} 
+        />
+      );
+    } 
 
     // data for pie chart
     const playerData = player_scores.map((p, i) => {
@@ -93,9 +115,7 @@ class GameStatsPage extends Component {
         value: p.score, 
         color: colors[i] 
       };
-    }
-    
-    );
+    });
 
     return (
       <>
@@ -106,7 +126,7 @@ class GameStatsPage extends Component {
         }
 
         <header className='game-stats-header'>
-          <h1>{game.game_name} Stats</h1>
+          <h1>{game} Stats</h1>
           <h2>Date Played: {date}</h2>
         </header>
 
@@ -127,7 +147,7 @@ class GameStatsPage extends Component {
 
           <section className='pie-chart'>
             <PieChart
-              animate={true}
+              animate={false}
               animationDuration={1000}
               animationEasing='ease-out'
               cx={50}
@@ -153,10 +173,13 @@ class GameStatsPage extends Component {
           </section>
         </div>
         
-
         <div className='game-edit-delete-buttons'>
-          <Link className='edit-game-button' to={`/edit-game/${game.id}`}><FontAwesomeIcon icon='pencil-alt' size='1x'/> Edit</Link>
-          <button className='delete-game-button' onClick={this.handleDelete}><FontAwesomeIcon icon='trash' size='1x'/> Delete</button>
+          <Link className='edit-game-button' to={`/edit-game/${gameId}`}>
+            <FontAwesomeIcon icon='pencil-alt' size='1x'/> Edit
+          </Link>
+          <button className='delete-game-button' onClick={this.handleDelete}>
+            <FontAwesomeIcon icon='trash' size='1x'/> Delete
+          </button>
         </div>
 
         <button 
@@ -164,7 +187,6 @@ class GameStatsPage extends Component {
           onClick={this.handleGoBack}>
             Go Back
         </button>
-
       </>
     );
   }
