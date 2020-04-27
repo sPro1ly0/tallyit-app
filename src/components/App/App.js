@@ -38,17 +38,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //  set the function (callback) to call when a user goes idle
+    //  set function to callback when a user goes idle
     //  logout a user when they're idle
     IdleService.setIdleCallback(this.logoutFromIdle);
     // if a user is logged in 
     if (TokenService.hasAuthToken()) {
-
       IdleService.registerIdleTimerResets();
       TokenService.queueCallbackBeforeExpiry(() => {
         AuthApiService.postRefreshToken();
       });
-      
     }
   }
 
@@ -107,6 +105,7 @@ class App extends Component {
     });
   }
   // when user creates a new game name from CreateScoreSheet to ScoreSheet page component
+  // and when game stats page is rendered for each individual game
   setCurrentGame = game => {
     this.setState({
       current_game: [game]

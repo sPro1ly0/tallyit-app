@@ -42,7 +42,6 @@ class LandingPage extends Component {
               src={require('../../images/tallyit-stats-mobile.png')}
             />
           </section>
-   
           <section className='features'>
             <h2>Easy Sign Up and Login <FontAwesomeIcon className='green' icon='check-circle' size='3x' /></h2>
             <h2>Perfect for Game Nights  <FontAwesomeIcon className='green' icon='users' size='3x' /></h2>
@@ -50,7 +49,6 @@ class LandingPage extends Component {
           </section>
         </div>
 
-        
         <Element id='signup' name='signup'>
           <SignUpForm onLoading={this.setLoadingStatus} />
         </Element>

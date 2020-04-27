@@ -56,7 +56,6 @@ class EditGame extends Component {
         });
       })
       .catch(this.context.setError);
-    
   }
 
   handleScoreChange = (playerId, number) => {
@@ -105,8 +104,9 @@ class EditGame extends Component {
       if (game === undefined) {
         game = 'Unknown';
       }
-
+      
       gameId = current_game[0].id;
+
     }
 
     const playerList = this.state.new_players.map((player) => 
@@ -128,6 +128,9 @@ class EditGame extends Component {
         <header className='game-header'>
           <h1>{game}</h1>
         </header>
+        {error 
+          ? <p className='red-error'>{this.state.error}</p>
+          : ''}
         <div className='player-error' role='alert'>
           {this.state.error && <p className='red-error'>{this.state.error}</p>}
         </div>

@@ -52,7 +52,7 @@ class DashBoard extends Component {
       });
   }
 
-  // using pagination for games
+  // using pagination for games listed
   handlePagination = (event) => {
     this.setState({
       currentPage: Number(event.target.id)
@@ -76,6 +76,7 @@ class DashBoard extends Component {
       groupName = group[0].group_name; // Hello Demo!
     }
 
+    // pagination for results
     if (currentGameResults.length > 0) {
       gameList = currentGameResults.map(g => 
         <Link to={`/game/${g.id}`} key={g.id}><span className='game-name'>{`${g.game_name}`}</span> <span className='game-date'>{`${moment(g.date_created).format('lll')}`}</span></Link>
@@ -113,7 +114,7 @@ class DashBoard extends Component {
           <Link className='start-game-link' to='/create-scoresheet'>Start a New Game</Link>
         </header>
         {error 
-          ? <div className="red-error">{error}</div>
+          ? <div className='red-error'>{error}</div>
           : ''}
         <div className='games-played'>
           <section className='all-games'>

@@ -174,8 +174,9 @@ class GameStatsPage extends Component {
         </div>
         <button 
           className='go-back-stats-button' 
-          onClick={this.handleGoBack}>
-            Go Back
+          onClick={this.handleGoBack}
+        >
+          Go Back
         </button>
       </>
     );

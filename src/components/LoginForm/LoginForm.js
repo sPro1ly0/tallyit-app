@@ -77,8 +77,8 @@ class LoginForm extends Component {
               required/>
           </div>
           <button type='submit'>Login</button>
-          <div className='login-error' role="alert">
-            {error && <p className="red-error">{error}</p>}
+          <div className='login-error' role='alert'>
+            {error && <p className='red-error'>{error}</p>}
           </div>
         </form>
       </section>

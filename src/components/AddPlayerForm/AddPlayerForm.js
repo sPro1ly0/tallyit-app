@@ -65,8 +65,8 @@ class AddPlayerForm extends Component {
               id='player_name' 
               type='text'
               name='player_name'
-              aria-label="Enter a player name"
-              aria-required="true"
+              aria-label='Enter a player name'
+              aria-required='true'
               value={this.state.player_name.value}
               onChange={this.updatePlayerName} 
               required/>

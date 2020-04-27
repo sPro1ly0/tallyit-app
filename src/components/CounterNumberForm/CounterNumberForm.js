@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-
 // Allows users to change the number on the buttons 
 // and increase/decrease their scores by what number they want
 export default function CounterNumberForm(props) {

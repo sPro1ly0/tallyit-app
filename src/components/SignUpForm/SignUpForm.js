@@ -82,8 +82,8 @@ class SignUpForm extends Component {
               required/>
           </div>
           <button type='submit'>Sign Up</button>
-          <div className="signup-error" role="alert">
-            {error && <p className="red-error">{error}</p>}
+          <div className='signup-error' role='alert'>
+            {error && <p className='red-error'>{error}</p>}
           </div>
           {
             this.state.showPopUp

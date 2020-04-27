@@ -42,7 +42,6 @@ class CreateScoreSheet extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const game = {
       game_name: this.state.game_name.value
     };
@@ -69,17 +68,17 @@ class CreateScoreSheet extends Component {
           <h1>Create Score Sheet</h1>
         </header>
         {error 
-          ? <div className="error">{this.state.error}</div>
+          ? <div className='error'>{this.state.error}</div>
           : ''}
-        <section className="create-scoresheet-section">
+        <section className='create-scoresheet-section'>
           <form className='create-score-sheet-form' onSubmit={this.handleSubmit}>
             <label htmlFor='game_name'>Add Game Name</label>
             <input 
               id='game_name' 
               type='text'
               name='game_name'
-              aria-label="Enter a name for your game"
-              aria-required="true" 
+              aria-label='Enter a name for your game'
+              aria-required='true' 
               placeholder='Uno'
               onChange={this.updateGameName}
               required />
@@ -87,7 +86,7 @@ class CreateScoreSheet extends Component {
             <button type='submit'>Submit</button>
           </form>
         </section>
-        <button className="go-back-button" onClick={this.handleGoBack}>Go Back</button>
+        <button className='go-back-button' onClick={this.handleGoBack}>Go Back</button>
       </div>
     );
   }

@@ -23,7 +23,7 @@ class TallyError extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <h2 className="error-boundary">Could not display App. There is something wrong, please try again later.</h2>
+        <h2 className='error-boundary'>Could not display App. There is something wrong, please try again later.</h2>
       );
     }
     return this.props.children;
