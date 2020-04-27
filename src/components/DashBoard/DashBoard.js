@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import TallyContext from '../../TallyContext';
 import TallyitApiService from '../../services/tallyit-api-service';
+import './DashBoard.css';
 import Spinner from '../Spinner/Spinner';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './DashBoard.css';
 import moment from 'moment';
 
 class DashBoard extends Component {
@@ -28,11 +28,11 @@ class DashBoard extends Component {
 
   componentDidMount() {
     this.setLoadingStatus(true);
+    this.context.clearError();
     
     TallyitApiService.getGroupName()
       .then(res => {
         this.context.setGroupName(res);
-        
       })
       .catch((res) => {
         this.context.setError(res);
@@ -50,6 +50,7 @@ class DashBoard extends Component {
       });
   }
 
+  // using pagination for games
   handlePagination = (event) => {
     this.setState({
       currentPage: Number(event.target.id)
@@ -60,20 +61,17 @@ class DashBoard extends Component {
 
     const { group, games, error } = this.context;
     const { currentPage, resultsPerPage } = this.state;
-
+    let groupName;
+    let gameList = '';
     const lastIndexOfResults = currentPage * resultsPerPage;
     const firstIndexOfResults = lastIndexOfResults - resultsPerPage;
     const currentGameResults = games.slice(firstIndexOfResults, lastIndexOfResults);
     const pageNumbers = [];
 
-    let groupName;
-    let gameList = '';
-    // console.log(group);
-
     if (group.length === 0) {
-      groupName = 'there';
+      groupName = 'there'; // Hello there!
     } else {
-      groupName = group[0].group_name;
+      groupName = group[0].group_name; // Hello Demo!
     }
 
     if (currentGameResults.length > 0) {
@@ -100,7 +98,6 @@ class DashBoard extends Component {
         </button>
       );
     });
-
 
     return (
       <>
