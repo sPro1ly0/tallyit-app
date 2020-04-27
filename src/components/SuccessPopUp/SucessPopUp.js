@@ -2,6 +2,7 @@
 import React from 'react';
 import './SuccessPopUp.css';
 
+// success pop up for new created group name
 function SuccessPopUp(props) {
   return (
     <div className='popup-success'>
