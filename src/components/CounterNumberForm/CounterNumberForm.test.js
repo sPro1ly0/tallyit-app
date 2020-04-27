@@ -4,6 +4,7 @@ import CounterNumberForm from './CounterNumberForm';
 import { BrowserRouter } from 'react-router-dom';
 
 it('renders without crashing', () => {
+
   const handleNumberChange = (e) => {
     this.setState({
       counter_number: Number(e.target.value)
@@ -13,6 +14,7 @@ it('renders without crashing', () => {
   const number = 1;
   
   const div = document.createElement('div');
+  
   ReactDOM.render(
     <BrowserRouter>
       <CounterNumberForm 
