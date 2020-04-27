@@ -6,6 +6,7 @@ import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 import IdleService from '../../services/idle-service';
 import TallyitApiService from '../../services/tallyit-api-service';
+import '../LandingPage/LandingPage.css';
 
 class LoginForm extends Component {
 
@@ -26,7 +27,6 @@ class LoginForm extends Component {
     e.preventDefault();
     const { group_name } = e.target;
     this.setState({ error: null });
-
     this.props.onLoading(true);
 
     AuthApiService.postLogin({
@@ -66,7 +66,7 @@ class LoginForm extends Component {
           className='login-form'
           onSubmit={this.handleSubmit}>
           <div className='login-label-input'>
-            <label htmlFor='group_name'>Enter Your Group Name </label>
+            <label htmlFor='group_name'>Enter Your Group Name</label>
             <input  
               type='text' 
               id='group_name' 
