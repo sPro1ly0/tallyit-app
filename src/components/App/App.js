@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+
 import TallyContext from '../../TallyContext';
 import PrivateRoute from '../../Utils/PrivateRoute';
 import PublicOnlyRoute from '../../Utils/PublicOnlyRoute';
@@ -30,9 +31,9 @@ class App extends Component {
       error: null,
       loggedIn: TokenService.hasAuthToken() ? true : false,
       group: [],
-      player_scores: [],
       games: [],
-      current_game: []
+      current_game: [],
+      player_scores: []
     };
   }
 
@@ -40,7 +41,7 @@ class App extends Component {
     //  set the function (callback) to call when a user goes idle
     //  logout a user when they're idle
     IdleService.setIdleCallback(this.logoutFromIdle);
-    /* if a user is logged in */
+    // if a user is logged in 
     if (TokenService.hasAuthToken()) {
 
       IdleService.registerIdleTimerResets();
@@ -53,7 +54,7 @@ class App extends Component {
 
   componentWillUnmount() {
     //  when the app unmounts,
-    //  stop the event listeners that auto logout (clear the token from storage)
+    //  stop the event listeners and clear the token from storage
     //  and remove the refresh endpoint request
     IdleService.unRegisterIdleResets();
     TokenService.clearCallbackBeforeExpiry();
@@ -73,7 +74,9 @@ class App extends Component {
   }
 
   clearError = () => {
-    this.setState({ error: null });
+    this.setState({ 
+      error: null 
+    });
   }
 
   setLoginStatus = status => {
@@ -88,7 +91,7 @@ class App extends Component {
       group: [name]
     });
   }
-
+  // get all group's games
   setAllGames = games => {
     const allGames = games.reverse();
     this.setState({
@@ -103,7 +106,7 @@ class App extends Component {
       games: newGames
     });
   }
-
+  // when user creates a new game name from CreateScoreSheet to ScoreSheet page component
   setCurrentGame = game => {
     this.setState({
       current_game: [game]
@@ -122,7 +125,7 @@ class App extends Component {
       player_scores: scores
     });
   }
-
+  // clear when user logs out
   clearData = () => {
     this.setGroupName([]);
     this.setAllGames([]);
@@ -132,22 +135,21 @@ class App extends Component {
   }
 
   render() {
-    console.log('games',this.state.games);
     const contextValue = {
       error: this.state.error,
       group: this.state.group,
-      player_scores: this.state.player_scores,
       games: this.state.games,
       current_game: this.state.current_game,
+      player_scores: this.state.player_scores,
       setError: this.setError,
       clearError: this.clearError,
       setLoginStatus: this.setLoginStatus,
       setGroupName: this.setGroupName,
       setAllGames: this.setAllGames,
-      setPlayerScores: this.setPlayerScores,
       addGame: this.addGame,
       setCurrentGame: this.setCurrentGame,
       deleteGame: this.deleteGame,
+      setPlayerScores: this.setPlayerScores,
       clearData: this.clearData
     };
 
