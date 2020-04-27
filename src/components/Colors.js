@@ -1,3 +1,4 @@
+// Colors for the pie chart to use in GameStats component
 const colors = [
   '#EF2D56',
   '#00CC66',

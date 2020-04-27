@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './LandingPage.css';
+import { Element } from 'react-scroll'; // Use for accessing links on same page
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SignUpForm from '../SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import Spinner from '../Spinner/Spinner';
-import { Element } from 'react-scroll';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Footer from '../Footer/Footer';
 
 class LandingPage extends Component {
@@ -35,14 +35,12 @@ class LandingPage extends Component {
             <header className='banner' role='banner'>
               <h1>Keep your game scores and stats in one place <FontAwesomeIcon className='dice' icon='dice-one' size='1x' /></h1>
             </header>
-
             <img 
               className='mobile-img'
               alt='Phone with game statistics page displayed on screen'
               src={require('../../images/tallyit-stats-mobile.png')}
             />
           </section>
-          
    
           <section className='features'>
             <h2>Easy Sign Up and Login <FontAwesomeIcon className='green' icon='check-circle' size='3x' /></h2>
