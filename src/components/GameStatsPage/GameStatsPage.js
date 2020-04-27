@@ -75,12 +75,7 @@ class GameStatsPage extends Component {
       });
   }
 
-  componentWillUnmount() {
-    this.context.setPlayerScores([]);
-  }
-
   render() {
-
     const { current_game, player_scores } = this.context;
     let game;
     let gameId;

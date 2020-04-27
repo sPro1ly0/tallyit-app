@@ -23,21 +23,18 @@ class EditGame extends Component {
   }
 
   componentDidMount() {
-    const { games, player_scores } = this.context;
-    const { game_id } = this.props.match.params;
+    const { current_game, player_scores } = this.context;
+    // const { game_id } = this.props.match.params;
 
-    const game = games.find(g =>
-      g.id === Number(game_id)    
-    );
+    const game = current_game;
+    const playerScores = player_scores;
 
     this.setState({
       game_name: game.game_name
     });
 
-    // console.log(player_scores);
-    const findScores = player_scores.filter(p => p.game_id === game.id);
     this.setState({
-      new_players: findScores
+      new_players: playerScores
     });
   }
 
@@ -55,7 +52,6 @@ class EditGame extends Component {
   }
 
   deletePlayer = player_id => {
-    // console.log('Test', player_id);
     const newPlayers = this.state.new_players.filter(player => 
       player.id !== player_id
     );
@@ -72,12 +68,10 @@ class EditGame extends Component {
   }
 
   handleScoreChange = (playerId, number) => {
-
     const updateScores = this.state.new_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};
       }
-
       return player;
     });
 
@@ -108,12 +102,20 @@ class EditGame extends Component {
   };
 
   render() {
-    const { games } = this.context;
-    const { game_id } = this.props.match.params;
+    const { current_game } = this.context;
+    let game;
+    let gameId;
 
-    const game = games.find(g =>
-      g.id === Number(game_id)    
-    );
+    if (current_game.length > 0) {
+
+      game = current_game[0].game_name;
+
+      if (game === undefined) {
+        game = 'Unknown';
+      }
+
+      gameId = current_game[0].id;
+    }
 
     const playerList = this.state.new_players.map((player) => 
       <Player 
@@ -138,7 +140,7 @@ class EditGame extends Component {
           {this.state.error && <p className='red-error'>{this.state.error}</p>}
         </div>
         <AddPlayerForm 
-          gameId={game.id}
+          gameId={gameId}
           onAddPlayer={this.addNewPlayers}
         />
         <CounterNumberForm 
@@ -154,7 +156,6 @@ class EditGame extends Component {
               Save
           </button>
         </section>
-      
         <button type='button' 
           className='delete-cancel-button' 
           onClick={this.handleClickCancel}>
