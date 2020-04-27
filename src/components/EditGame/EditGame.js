@@ -72,7 +72,6 @@ class EditGame extends Component {
   }
 
   handleScoreChange = (playerId, number) => {
-    console.log('Good', playerId, number);
 
     const updateScores = this.state.new_players.map(player => {
       if (player.id === playerId) {
@@ -88,7 +87,6 @@ class EditGame extends Component {
   }
 
   handleNumberChange = (e) => {
-    e.preventDefault();
     this.setState({
       counter_number: Number(e.target.value)
     });
