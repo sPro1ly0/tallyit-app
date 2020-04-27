@@ -9,6 +9,16 @@
     height: fit-content;
     width: 100%;
     align-items: center;
+    animation: 4s ease 0s 1 slideInFromLeft;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
 }
 
 .banner {
@@ -31,15 +41,13 @@
     animation: rotation 7s 1 ease;
 }
 
-.dice:hover {
-    color: #FF0000;
-}
-
 @keyframes rotation {
     from {
+        color: black;
         transform: rotate(0deg);
     }
     to {
+        color: #FF0000;
         transform: rotate(379deg);
     }
 }
@@ -69,10 +77,17 @@ section {
 
 .features {
     height: fit-content;
+    font-size: 0.9em;
+    animation: 5s ease-in-out 0s 1 slideInFromRight;
 }
 
-.features {
-    font-size: 0.9em;
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
 }
 
 .features > h2 {
