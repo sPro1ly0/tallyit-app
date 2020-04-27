@@ -17,10 +17,10 @@ class ScoreSheetPage extends Component {
       error: null,
       current_players: [],
       counter_number: 1
-      // add player object with id, name, and score
     };
   }
 
+  // control the amount of players per game
   addCurrentPlayers = player => {
     let { current_players } = this.state;
     if (current_players.length >= 20) {
@@ -35,7 +35,6 @@ class ScoreSheetPage extends Component {
   }
 
   handleDeletePlayer = player_id => {
-    // console.log('Test', player_id);
     const newPlayers = this.state.current_players.filter(player => 
       player.id !== player_id
     );
@@ -52,12 +51,10 @@ class ScoreSheetPage extends Component {
   }
   
   handleScoreChange = (playerId, number) => {
-
     const updateScores = this.state.current_players.map(player => {
       if (player.id === playerId) {
         return {...player, score: player.score + number};
       }
-
       return player;
     });
 
@@ -73,7 +70,7 @@ class ScoreSheetPage extends Component {
     });
   }
   
-  handleDelete = () => {
+  handleDeleteGame = () => {
     const { current_game } = this.context;
     const gameId = current_game[0].id;
 
@@ -84,18 +81,13 @@ class ScoreSheetPage extends Component {
         this.context.setCurrentGame([]);
       })
       .catch(this.context.setError);
-
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-
-    this.setState({
-      error: null
-    });
-
-    console.log('working');
+    this.setState({ error: null });
     const playerScores = this.state.current_players;
+
     TallyitApiService.updatePlayersScores(playerScores)
       .then(() => {
         this.props.history.push('/dashboard');  
@@ -107,8 +99,19 @@ class ScoreSheetPage extends Component {
   render() {
 
     const { current_game, error } = this.context;
-    const gameName = current_game[0].game_name;
-    const gameId = current_game[0].id;
+    let game;
+    let gameId;
+
+    if (current_game.length > 0) {
+
+      game = current_game[0].game_name;
+
+      if (game === undefined) {
+        game = 'Unknown';
+      }
+
+      gameId = current_game[0].id;
+    }
 
     const playerList = this.state.current_players.map((player) => 
       <Player 
@@ -122,12 +125,13 @@ class ScoreSheetPage extends Component {
       />
     );
 
+    // disable save button and prevent patch request with no players
     let disable = (this.state.current_players.length === 0) ? true : false;
     
     return (
       <>
         <header className='game-header'>
-          <h1>{gameName}</h1>
+          <h1>{game}</h1>
         </header>
         {error 
           ? <p className='red-error'>{this.state.error}</p>
@@ -151,11 +155,10 @@ class ScoreSheetPage extends Component {
             onClick={this.handleSubmit}>
               Save
           </button>
-        </section>
-      
+        </section>      
         <button
           className='delete-cancel-button' 
-          onClick={this.handleDelete}>
+          onClick={this.handleDeleteGame}>
             Delete
         </button>
       </>

@@ -95,7 +95,7 @@ class GameStatsPage extends Component {
         game = 'Unknown';
       }
 
-      gameId = game.id;
+      gameId = current_game[0].id;
 
       date = (moment(game.date_created).format('MMM Do YYYY'));
         
@@ -124,12 +124,10 @@ class GameStatsPage extends Component {
             ? <Spinner />
             : false
         }
-
         <header className='game-stats-header'>
           <h1>{game} Stats</h1>
           <h2>Date Played: {date}</h2>
         </header>
-
         <div className='table-and-chart'>
           <section className='scores-table-section'>
             <div className='player-list'>
@@ -144,7 +142,6 @@ class GameStatsPage extends Component {
               </table>
             </div>
           </section>
-
           <section className='pie-chart'>
             <PieChart
               animate={false}
@@ -172,7 +169,6 @@ class GameStatsPage extends Component {
             />
           </section>
         </div>
-        
         <div className='game-edit-delete-buttons'>
           <Link className='edit-game-button' to={`/edit-game/${gameId}`}>
             <FontAwesomeIcon icon='pencil-alt' size='1x'/> Edit
@@ -181,7 +177,6 @@ class GameStatsPage extends Component {
             <FontAwesomeIcon icon='trash' size='1x'/> Delete
           </button>
         </div>
-
         <button 
           className='go-back-stats-button' 
           onClick={this.handleGoBack}>
