@@ -25,7 +25,6 @@
     background-color: #A3F7BF;
     height: 250px;
     padding: 60px 15px;
-    
 }
 
 .banner > h1 {
@@ -78,7 +77,6 @@ section {
 .features {
     height: fit-content;
     font-size: 0.9em;
-    animation: 5s ease-in-out 0s 1 slideInFromRight;
 }
 
 @keyframes slideInFromRight {
@@ -177,8 +175,6 @@ section {
     margin: 40px auto;
 }
 
-
-
 #group_name,
 #game_name,
 #player_name,
@@ -236,7 +232,7 @@ button:focus {
     }
 
     .mobile-img {
-        width: 270px;
+        width: 250px;
         transform: rotate(-18deg);
     }
     
@@ -246,6 +242,21 @@ button:focus {
         justify-content: space-around;
         height: 100%;
         width: 45%;
+        animation: fadeInAnimation 6.5s ease-in forwards;
+    }
+
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: .5;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 
     #signup {
@@ -273,5 +284,9 @@ button:focus {
     #signup,
     #login {
         height: calc(100vh - 60px);
+    }
+
+    .mobile-img {
+        width: 280px;
     }
 }

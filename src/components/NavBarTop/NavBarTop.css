@@ -65,6 +65,7 @@ footer {
         padding-left: 30px;
         padding-right: 30px;
     }
+
     .nav-show-logout-link {
         max-width: 175px;
     }
@@ -72,6 +73,19 @@ footer {
     .nav-top-links > a {
         font-size: 1.1em;
         margin-right: 10px;
+    }
+
+    .nav-show-login-links {
+        animation: 4s ease 0s 1 slideInFromRight;
+    }
+
+    @keyframes slideInFromRight {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
     }
 
 }
