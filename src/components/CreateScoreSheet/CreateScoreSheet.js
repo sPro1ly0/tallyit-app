@@ -20,6 +20,10 @@ class CreateScoreSheet extends Component {
     };
   }
 
+  componentDidMount() {
+    this.context.setCurrentGame([]); // clear any current game set
+  }
+
   updateGameName = (e) => {
     const gameName = e.target.value;
     this.setState({
@@ -29,19 +33,11 @@ class CreateScoreSheet extends Component {
 
   validateGameName()  {
     let gameName = this.state.game_name.value;
-    if (gameName.length > 30) {
+    if (gameName.length ===0) {
+      return 'Game name is required.';
+    } else if (gameName.length > 30) {
       return 'Game name cannot be more than 30 characters long.';
     }
-  }
-
-  componentDidMount() {
-    this.context.setCurrentGame([]);
-  }
-
-  handleGameName = (e) => {
-    this.setState({
-      game_name: e.target.value
-    });
   }
 
   handleSubmit = (e) => {
@@ -80,10 +76,12 @@ class CreateScoreSheet extends Component {
             <label htmlFor='game_name'>Add Game Name</label>
             <input 
               id='game_name' 
-              type='text' 
+              type='text'
+              name='game_name'
+              aria-label="Enter a name for your game"
+              aria-required="true" 
               placeholder='Uno'
-              value={this.state.game_name}
-              onChange={this.handleGameName}
+              onChange={this.updateGameName}
               required />
             {this.state.game_name.touched && (<ValidationError message={this.validateGameName()}/>)}
             <button type='submit'>Submit</button>
