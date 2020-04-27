@@ -1,3 +1,16 @@
+.banner-and-features {
+    width: 100%;
+}
+
+.banner-section {
+    background-color: #A3F7BF;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    align-items: center;
+}
+
 .banner {
     background-color: #A3F7BF;
     height: 250px;
@@ -37,6 +50,16 @@
 
 .green:hover {
     color: #0F7425;
+}
+
+.mobile-img {
+    width: 250px;
+    margin: 0 auto;
+    border-radius: 38px;
+    box-shadow: 0 8px 6px -6px grey;
+    -webkit-box-shadow: 0 8px 6px -6px grey;
+    -moz-box-shadow: 0 8px 6px -6px grey;
+
 }
   
 section {
@@ -184,13 +207,22 @@ button:focus {
         min-height: 500px;
     }
 
-    .banner {
+    .banner-section {
         height: 100%;
         width: 55%;
     }
 
+    .banner {
+        height: 277px; 
+    }
+
     .banner > h1 {
         margin: auto auto;
+    }
+
+    .mobile-img {
+        width: 270px;
+        transform: rotate(-18deg);
     }
     
     .features {
@@ -199,6 +231,10 @@ button:focus {
         justify-content: space-around;
         height: 100%;
         width: 45%;
+    }
+
+    #signup {
+        position: relative;
     }
 
 }

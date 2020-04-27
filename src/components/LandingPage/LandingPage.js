@@ -31,9 +31,18 @@ class LandingPage extends Component {
             : false
         }
         <div className='banner-and-features'>
-          <header className='banner' role='banner'>
-            <h1>Keep your game scores and stats in one place <FontAwesomeIcon className='dice' icon='dice-one' size='1x' /></h1>
-          </header>
+          <section className='banner-section'>
+            <header className='banner' role='banner'>
+              <h1>Keep your game scores and stats in one place <FontAwesomeIcon className='dice' icon='dice-one' size='1x' /></h1>
+            </header>
+
+            <img 
+              className='mobile-img'
+              alt='Phone with game statistics page displayed on screen'
+              src={require('../../images/tallyit-stats-mobile.png')}
+            />
+          </section>
+          
    
           <section className='features'>
             <h2>Easy Sign Up and Login <FontAwesomeIcon className='green' icon='check-circle' size='3x' /></h2>
