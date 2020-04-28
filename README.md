@@ -47,19 +47,19 @@ Tallyit lets users create an account to keep track of their game scores. A group
 
 ### Mobile Phone Screenshot for Landing Page
 
-![mobilelanding](https://user-images.githubusercontent.com/49177472/80436994-75d8bb80-88ce-11ea-87a0-20b1dbe47314.png)
+![mobilelanding](https://user-images.githubusercontent.com/49177472/80436994-75d8bb80-88ce-11ea-87a0-20b1dbe47314.png  =100x20)
 
 ### Mobile Phone Screenshot for Dashboard Page
 
-![mobiledash](https://user-images.githubusercontent.com/49177472/80436999-7a9d6f80-88ce-11ea-8e51-64291992aa1b.png)
+![mobiledash](https://user-images.githubusercontent.com/49177472/80436999-7a9d6f80-88ce-11ea-8e51-64291992aa1b.png  =100x20)
 
 ### Mobile Phone Screenshot for Score Sheet Page
 
-![mobilescorescheet](https://user-images.githubusercontent.com/49177472/80437005-7e30f680-88ce-11ea-843e-a4fc3f719264.png)
+![mobilescorescheet](https://user-images.githubusercontent.com/49177472/80437005-7e30f680-88ce-11ea-843e-a4fc3f719264.png  =100x20)
 
 ### Mobile Phone Screenshot for Game Statistics Page
 
-![mobilestats](https://user-images.githubusercontent.com/49177472/80437015-825d1400-88ce-11ea-899e-1c29cc45cbfa.png)
+![mobilestats](https://user-images.githubusercontent.com/49177472/80437015-825d1400-88ce-11ea-899e-1c29cc45cbfa.png  =100x20)
 
 
 ## Technologies Used
