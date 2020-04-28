@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tallyit
 
-## Available Scripts
+**Live app:** https://tallyit.now.sh/
 
-In the project directory, you can run:
+## API Documentation 
 
-### `npm start`
+Link to API documentation and repo: https://github.com/sPro1ly0/tallyit-api
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Summary
 
-### `npm test`
+I wanted to make an app that my boyfriend and family could use. My boyfriend's family always has family game night every week, and I thought I could make an app to help them keep track of scores for any games they play. Also, my family has been getting into a habit of playing Rummy and other card games. We also don't want to waste paper and keep track of our progress over time.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Tallyit lets users create an account to keep track of their game scores. A group name is used to sign up and login with for quick and easy use of the app. Users can create games which will make a score sheet for users to add and delete players. The player scores can be edited on the score sheet. The increase button and decrease button number values can be changed to allow any number to be added or subtracted to players' scores. A user's games will appear on their dashboard page with the game's name and date played. Each game is a link to its game statistics page with all the player names and their scores. The players and their scores can be further edited from the game statistics page. The games can also be deleted from the statistics page.
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Landing Page
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![laptoplanding](https://user-images.githubusercontent.com/49177472/80436938-5346a280-88ce-11ea-9acd-fd5ae0ac420e.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Sign Up Section
 
-### `npm run eject`
+![laptopsignup](https://user-images.githubusercontent.com/49177472/80436944-56da2980-88ce-11ea-89fb-9f2616df3c8e.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Login Section
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![laptoplogin](https://user-images.githubusercontent.com/49177472/80436955-5e99ce00-88ce-11ea-94eb-b760fb64991b.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Dashboard Page
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![laptopdahboard](https://user-images.githubusercontent.com/49177472/80436962-635e8200-88ce-11ea-824b-286adcb3638d.png)
 
-## Learn More
+### Create Score Sheet Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![laptopcreatescorescheet](https://user-images.githubusercontent.com/49177472/80436967-68233600-88ce-11ea-8807-a89ec568f8f9.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Score Sheet Page and Edit Game Pages
 
-### Code Splitting
+![lapscoresheet](https://user-images.githubusercontent.com/49177472/80436974-6bb6bd00-88ce-11ea-98bf-867d55d04bf1.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![laptopedit](https://user-images.githubusercontent.com/49177472/80436981-6f4a4400-88ce-11ea-8074-b9cf920c2784.png)
 
-### Analyzing the Bundle Size
+### Game Statistics Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+![laptopStats](https://user-images.githubusercontent.com/49177472/80436986-72ddcb00-88ce-11ea-8fac-d5f2f248645c.png)
 
-### Making a Progressive Web App
+### Mobile Phone Screenshot for Landing Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![mobilelanding](https://user-images.githubusercontent.com/49177472/80436994-75d8bb80-88ce-11ea-87a0-20b1dbe47314.png)
 
-### Advanced Configuration
+### Mobile Phone Screenshot for Dashboard Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+![mobiledash](https://user-images.githubusercontent.com/49177472/80436999-7a9d6f80-88ce-11ea-8e51-64291992aa1b.png)
 
-### Deployment
+### Mobile Phone Screenshot for Score Sheet Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+![mobilescorescheet](https://user-images.githubusercontent.com/49177472/80437005-7e30f680-88ce-11ea-843e-a4fc3f719264.png)
 
-### `npm run build` fails to minify
+### Mobile Phone Screenshot for Game Statistics Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![mobilestats](https://user-images.githubusercontent.com/49177472/80437015-825d1400-88ce-11ea-899e-1c29cc45cbfa.png)
+
+
+## Technologies Used
+
+<ul>
+  <li>React.js</li>
+  <li>Jest for testing</li>
+  <li><a href="https://momentjs.com/">Moment.js</a></li>
+  <li><a href="https://github.com/toomuchdesign/react-minimal-pie-chart#readme">React Minimal Pie Chart</a></li>
+  <li><a href="https://www.npmjs.com/package/@fortawesome/react-fontawesome">Font Awesome</a></li>
+  <li><a href="https://github.com/fisshy/react-scroll">React Scroll for accessing links on the same page</a></li>
+  <li>JavaScript</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>This project was bootstrapped with <a href="https://github.com/facebook/create-react-app">Create React App</a>.</li>
+</ul>
+
