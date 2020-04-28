@@ -47,7 +47,7 @@ Tallyit lets users create an account to keep track of their game scores. A group
 
 ### Mobile Phone Screenshot for Landing Page
 
-![mobilelanding](https://user-images.githubusercontent.com/49177472/80436994-75d8bb80-88ce-11ea-87a0-20b1dbe47314.png  =100x20)
+<img width="100" src="https://user-images.githubusercontent.com/49177472/80436994-75d8bb80-88ce-11ea-87a0-20b1dbe47314.png">
 
 ### Mobile Phone Screenshot for Dashboard Page
 
