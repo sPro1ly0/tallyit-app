@@ -92,7 +92,7 @@ class GameStatsPage extends Component {
 
       gameId = current_game[0].id;
 
-      date = (moment(game.date_created).format('MMM Do YYYY'));
+      date = (moment(current_game[0].date_created).format('MMM Do YYYY'));
         
       results = player_scores.map(p => 
         <GameResult 
