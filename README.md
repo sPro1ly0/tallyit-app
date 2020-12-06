@@ -9,7 +9,7 @@ Link to API documentation and repo: https://github.com/sPro1ly0/tallyit-api
 
 ## Summary
 
-I wanted to make an app that my boyfriend and family could use. My boyfriend's family always has family game night every week, and I thought I could make an app to help them keep track of scores for any games they play. Also, my family has been getting into a habit of playing Rummy and other card games. We also don't want to waste paper and keep track of our progress over time.
+I wanted to make an app that my friend and family could use. My friend's family always has family game night every week, and I thought I could make an app to help them keep track of scores for any games they play. Also, my family has been getting into a habit of playing Rummy and other card games. We also don't want to waste paper and keep track of our progress over time.
 
 Tallyit lets users create an account to keep track of their game scores. A group name is used to sign up and login with for quick and easy use of the app. Users can create games which will make a score sheet for users to add and delete players. The player scores can be edited on the score sheet. The increase button and decrease button number values can be changed to allow any number to be added or subtracted to players' scores. A user's games will appear on their dashboard page with the game's name and date played. Each game is a link to its game statistics page with all the player names and their scores. The players and their scores can be further edited from the game statistics page. The games can also be deleted from the statistics page.
 
